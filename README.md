@@ -1,5 +1,5 @@
-CSC 394 - Software Projects
-Spring Quarter 2020
+<h1>CSC 394 - Software Projects
+Spring Quarter 2020</h1>
 
 Team Members:
 
