@@ -7,6 +7,5 @@ John Yenter-Briars,
 Elona Selenica,
 Murtaza Meerza,
 Patrick Fisher,
-Jiten Patel,
 Lucas Welsh,
 & Shariq Khan
