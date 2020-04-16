@@ -210,3 +210,22 @@
 -- );
 
 -- insert into Admin(Name, RoleType) values("The Watcher", "perm3");
+
+--12: Generate User Table
+create table UserCredentials(
+    UserCredentialsID INTEGER,
+    UserID INTEGER,
+    UserType varchar(20),
+    UserName varchar(20),
+    UserPass varchar(20),
+
+    PRIMARY KEY (UserCredentialsID)
+);
+
+insert into UserCredentials
+(UserID, UserType, UserName, UserPass) 
+values(1, "Student", "bbanner22", "hulk");
+
+insert into UserCredentials
+(UserID, UserType, UserName, UserPass) 
+values(1, "Teacher", "BuckyB101", "wwII");
