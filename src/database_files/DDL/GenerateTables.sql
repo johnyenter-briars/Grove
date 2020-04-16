@@ -200,14 +200,14 @@
 -- values(3, 1, "now", "Hurry up you bum!");
 
 -- 11: Make Admin
-create table Admin(
-    AdminID INTEGER,
-    Name varchar(20),
-    RoleType varchar(20),
+-- create table Admin(
+--     AdminID INTEGER,
+--     Name varchar(20),
+--     RoleType varchar(20),
 
-    PRIMARY KEY (AdminID),
-    FOREIGN KEY (RoleType) REFERENCES RoleType(permission_level)
-);
+--     PRIMARY KEY (AdminID),
+--     FOREIGN KEY (RoleType) REFERENCES RoleType(permission_level)
+-- );
 
-insert into Admin(Name, RoleType) values("The Watcher", "perm3");
+-- insert into Admin(Name, RoleType) values("The Watcher", "perm3");
 
