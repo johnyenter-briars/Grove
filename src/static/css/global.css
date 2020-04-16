@@ -1,29 +1,30 @@
 /* Open Sans Google Font */
+
 @import url(https://fonts.googleapis.com/css?family=Open+Sans:600,700);
 
 /* Montserrat Google Font */
+
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
-
 .title {
-  color: green;
+    color: green;
 }
 
-body{
-  background: #E4EDE7;
+body {
+    background: #E4EDE7;
 }
 
-.column{
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
+.column {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
 }
 
-h1, h2{
-  font-family: 'Open Sans';
-  text-align: center;
-  color: rgb(30, 39, 30);
+h1,
+h2 {
+    font-family: 'Open Sans';
+    text-align: center;
+    color: rgb(30, 39, 30);
 }
-
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -72,4 +73,49 @@ button:hover {
 span.psw {
     float: right;
     padding-top: 16px;
+}
+
+ul {
+    display: block;
+    list-style-type: disc;
+    margin-block-start: 1em;
+    margin-block-end: 1em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    padding-inline-start: 40px;
+}
+
+ul.horizontal {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
+}
+
+ul.horizontal li {
+    float: left;
+}
+
+ul.horizontal li a {
+    display: inline-block;
+    color: #666;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+    background-color: #ddd;
+}
+
+ul.horizontal a.active {
+    color: white;
+    background-color: rgb(29, 116, 32);
+}
+
+ul.gray {
+    border: 1px solid #e7e7e7;
+    background-color: #f3f3f3;
 }
