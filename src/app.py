@@ -3,13 +3,18 @@ from flask import request, redirect
 from flask import render_template
 from services.DatabaseService import DatabaseService
 
+import os
+
 app = Flask(__name__)
 database = DatabaseService()
 
+print("Home: " +os.getcwd())
+
 @app.route('/')
 def hello():
-    # print(database.getStudents())
-    return render_template("index.html", appName="The Grove", students=database.getStudents())
+    for teacher in database.getTeachers():
+        print(teacher.getFirstName())
+    return render_template("index.html", appName="The Grove")
 
 @app.route('/home')
 def projects():
