@@ -45,7 +45,7 @@
 -- insert into ProjectStatus values("growth3");
 -- insert into ProjectStatus values("growth4");
 
--- 5 Generate Project Table
+-- -- 5 Generate Project Table
 -- create table Project(
 --     ProjectID INTEGER,
 --     TeacherID INTEGER,
@@ -96,7 +96,7 @@
 -- (FirstName, LastName, TeacherID, ProjectID, RoleType) 
 -- values("Sam", "Wilson", 1, 1, "perm1");
 
--- 7: Generate Awards table
+-- -- 7: Generate Awards table
 -- create table Award(
 --     AwardID INTEGER,
 --     StudentID INTEGER,
@@ -120,7 +120,7 @@
 -- (StudentID, apple_type, DateAwarded) 
 -- values(3, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS");
 
--- 8 Generate Branches
+-- -- 8 Generate Branches
 -- create table Branch(
 --     BranchID INTEGER,
 --     StudentID INTEGER,
@@ -151,7 +151,7 @@
 -- values(3, 3, 2, "Reformat document", 1, 25);
 
 
--- 9: Generate Task table
+-- -- 9: Generate Task table
 -- create table Task(
 --     TaskID INTEGER,
 --     BranchID INTEGER,
@@ -178,7 +178,7 @@
 -- (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 -- values(3, 3, 2, "Click reformat button", 0);
 
--- 10: Chat
+-- -- 10: Chat
 -- create table Chat(
 --     ChatID INTEGER,
 --     StudentID INTEGER,
@@ -199,7 +199,7 @@
 -- (StudentID, TaskID, TimeStamp, MessageString)
 -- values(3, 1, "now", "Hurry up you bum!");
 
--- 11: Make Admin
+-- -- 11: Make Admin
 -- create table Admin(
 --     AdminID INTEGER,
 --     Name varchar(20),
@@ -210,4 +210,3 @@
 -- );
 
 -- insert into Admin(Name, RoleType) values("The Watcher", "perm3");
-
