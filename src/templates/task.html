@@ -1,16 +1,70 @@
-{% extends "navbar.html" %} {% block content %}
-
+{% extends "header.html" %} {% block content %}
+<div class="guide">
+  <ul class="gray horizontal">
+      <li><a href="/home">Home</a></li>
+      <li><a href="javascript:void(0)">Project</a></li>
+      <li><a href="javascript:void(0)">Classlist</a></li>
+      <li class="rightli" style="float:right"><a href="/">Logout</a></li>
+  </ul>
+</div>
 <div class="task-page">
-    <div class="container">
+    <h1>Welcome to the Task Page</h1>
+    <div class="tasks">
         <div class="files">
-            <form>
-                <input type = "file" name = "file" />
-                <input type = "submit"/>
-            </form>  
+            <h2>List of Files</h2>
+            <div class="list-files">
+              <ul class="vertical">
+                <li><a href="static/img/tree1.png" download>Click me to download tree1</a></li>
+                <li><a href="static/img/tree2.png" download>Click me to download tree2</a></li>
+                <li><a href="static/img/tree3.png" download>Click me to download tree3</a></li>
+                <li><a href="static/img/tree4.png" download>Click me to download tree4</a></li>
+              </ul>
+            </div>
+            <div class="uploadDiv">
+            <div class="input-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                </div>
+                <div class="custom-file">
+                  <input type="file" class="custom-file-input" id="inputGroupFile01"
+                    aria-describedby="inputGroupFileAddon01">
+                  <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                </div>
+              </div> 
+              </div>
         </div>
+        <div class="chat-box">
+        <h2>Chat Messages</h2>
         <div class="chat">
+            <div class="message">
+            <h3>user1</h3>
+            <p>Hello. You're project looks great</p>
+            <span class="time-right">11:00</span>
+            </div>
 
+            <div class="message darker">
+            <h3>user2</h3>
+            <p>*your. thank you!</p>
+            <span class="time-left">11:01</span>
+            </div>
+
+            <div class="message">
+            <h3>user1</h3>
+            <p>When are the powerpoints going to be uploaded?</p>
+            <span class="time-right">11:02</span>
+            </div>
+
+            <div class="message darker">
+            <h3>user2</h3>
+            <p>Due next week. Can you help me draft it?</p>
+            <span class="time-left">11:05</span>
+            </div>
         </div>
+       <div class="chat-message">
+        <input class="chat-input" type="text" placeholder="enter your message" />
+      </div>
     </div>
+</div>
+
 </div>
 {% endblock %}
