@@ -14,7 +14,9 @@ def hello():
 @app.route('/home')
 def projects():
     return render_template("home.html")
-
+@app.route('/profile')
+def profile():
+    return render_template("profile.html")
 if __name__ == '__main__':
     app.run()
    
