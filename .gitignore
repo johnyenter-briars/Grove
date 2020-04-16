@@ -1,2 +1,3 @@
 .vscode/
 src/services/__pycache__
+src/models/__pycache__
