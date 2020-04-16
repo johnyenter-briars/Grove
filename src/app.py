@@ -11,6 +11,10 @@ def hello():
     # print(database.getStudents())
     return render_template("index.html", appName="The Grove", students=database.getStudents())
 
+@app.route('/home')
+def projects():
+    return render_template("home.html")
+
 if __name__ == '__main__':
     app.run()
    
