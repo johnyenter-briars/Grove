@@ -8,12 +8,10 @@ import os
 app = Flask(__name__)
 database = DatabaseService()
 
-print("Home: " +os.getcwd())
-
 @app.route('/')
 def hello():
-    for teacher in database.getTeachers():
-        print(teacher.getFirstName())
+    for project in database.getStudentProject(3):
+        print(project.getProjectID(), " ", project.getProjectDesc())
     return render_template("index.html", appName="The Grove")
 
 @app.route('/home')

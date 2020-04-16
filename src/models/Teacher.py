@@ -1,4 +1,4 @@
-class Teacher():
+class Teacher(object):
     def __init__(self, teacherTuple):
         super().__init__()
         self._TeacherID = teacherTuple[0]
