@@ -5,18 +5,43 @@
 /* Montserrat Google Font */
 
 @import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+* {
+    font-family: 'Montserrat';
+    margin: 0;
+    padding: 0;
+}
 .title {
     color: green;
 }
 
 body {
-    background: #E4EDE7;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #E4EDE7;
+}
+.guide{
+    margin: 4%;
 }
 
-.column {
+.row{
     display: flex;
     flex-direction: row;
     justify-content: center;
+    margin:0;
+}
+.column{
+    margin-left: 20px;
+}
+
+.container {
+    display: block;
+    background-color: #8EAB91;
+    border: 3px solid #f1f1f1;
+    width: 500px;
+    height: 500px;
+    padding: 16px;
+    border-radius: 12px;
 }
 
 h1,
@@ -24,16 +49,7 @@ h2 {
     font-family: 'Open Sans';
     text-align: center;
     color: rgb(30, 39, 30);
-}
-
-body {
-    font-family: Arial, Helvetica, sans-serif;
-    background-color: #E4EDE7;
-}
-
-form {
-    background-color: #8EAB91;
-    border: 3px solid #f1f1f1;
+    font-size: 23px;
 }
 
 input[type=text],
@@ -41,7 +57,6 @@ input[type=password] {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
-    display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
 }
@@ -53,6 +68,8 @@ button {
     margin: 8px 0;
     border: none;
     cursor: pointer;
+    width: 100%;
+    border-radius: 12px;
 }
 
 button:hover {
@@ -66,9 +83,7 @@ button:hover {
     background-color: #f44336;
 }
 
-.container {
-    padding: 16px;
-}
+
 
 span.psw {
     float: right;
@@ -83,6 +98,8 @@ ul {
     margin-inline-start: 0px;
     margin-inline-end: 0px;
     padding-inline-start: 40px;
+    border-radius: 15px;
+
 }
 
 ul.horizontal {
@@ -117,5 +134,99 @@ ul.horizontal a.active {
 
 ul.gray {
     border: 1px solid #e7e7e7;
-    background-color: #f3f3f3;
+    background-color: rgb(185, 206, 194);
+}
+
+
+
+ul.vertical {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+}
+
+ul.vertical li {
+    background-color: #202e1d;
+    margin-bottom: 10px;
+
+}
+
+ul.vertical li a {
+    display: inline-block;
+    color: rgb(202, 197, 197);
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+
+.tasks{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin: 4%;
+}
+
+.files{
+    height: 500px;
+    width:500px;
+    overflow:auto;
+    position: relative;
+    background-color: rgb(111, 129, 119);
+    border-radius: 12px;
+    padding: 2%;
+    margin-right: 12px;
+
+}
+
+.uploadDiv{
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.chat-box{
+    background-color: rgb(111, 129, 119);
+    border-radius: 12px;
+    padding: 4%;
+    margin-left: 12px;
+
+}
+.chat{
+    height: 300px;
+    width:400px; 
+    overflow-y:auto;
+}
+h3{
+    font-size: small;
+}
+.message{
+    border: 2px solid #dedede;
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px 0;
+      
+  }
+.darker {
+    border-color: rgb(178, 179, 178);
+    background-color: rgb(195, 196, 195);
+  }
+
+.message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+  
+.time-left {
+  float: left;
+  color: #999;
 }

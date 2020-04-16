@@ -15,11 +15,17 @@ def hello():
     return render_template("index.html", appName="The Grove")
 
 @app.route('/home')
-def projects():
+def home():
     return render_template("home.html")
+
+@app.route('/task')
+def task():
+    return render_template("task.html")
+
 @app.route('/profile')
 def profile():
     return render_template("profile.html")
+
 if __name__ == '__main__':
     app.run()
    
