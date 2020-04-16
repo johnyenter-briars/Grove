@@ -16,7 +16,7 @@ class DatabaseService(object):
         return self._db
 
     def getStudents(self):
-        return self._db.execute("select * from Students;").fetchall()
+        return self._db.execute("select * from Student;").fetchall()
 
     def close_connection(self, exception):
         self._db.close()
