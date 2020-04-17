@@ -8,12 +8,27 @@ import os
 app = Flask(__name__)
 database = DatabaseService()
 
-@app.route('/')
+@app.route('/',methods=['POST','GET'])
 def hello():
-    for project in database.getStudentProject(3):
+    """for project in database.getStudentProject(3):
         print(project.getProjectID(), " ", project.getProjectDesc())
-    return render_template("index.html", appName="The Grove")
-
+    """
+    if request.method=='POST':
+        username = request.form['username']
+        password = request.form['password']
+        shouldLogin = False
+        for user in database.getUserCredentials():
+            u = user._UserName
+            p = user._UserPass
+            if u == username and p == password:
+                shouldLogin = True
+            elif u == username and p != password:
+                return render_template('index.html', loggedInUser="Incorrect password")
+        if(shouldLogin):
+            return render_template('index.html', loggedInUser="Welcome, "+username)
+        else:
+            return render_template('index.html', loggedInUser="User does not exist")
+    return render_template("index.html", loggedInUser="Please login below")
 @app.route('/home')
 def projects():
     return render_template("home.html")
