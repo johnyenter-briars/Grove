@@ -8,7 +8,9 @@ import os
 app = Flask(__name__)
 database = DatabaseService()
 
+
 @app.route('/',methods=['POST','GET'])
+
 def hello():
     """for project in database.getStudentProject(3):
         print(project.getProjectID(), " ", project.getProjectDesc())
@@ -29,15 +31,26 @@ def hello():
         else:
             return render_template('index.html', loggedInUser="User does not exist")
     return render_template("index.html", loggedInUser="Please login below")
+
 @app.route('/home')
-def projects():
+def home():
     return render_template("home.html")
+
+
+@app.route('/projects')
+def projects():
+    return render_template("projects.html")
+
+
+@app.route('/task')
+def task():
+    return render_template("task.html")
+
+
 @app.route('/profile')
 def profile():
     return render_template("profile.html")
+
+
 if __name__ == '__main__':
     app.run()
-   
-
-
-
