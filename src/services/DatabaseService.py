@@ -30,10 +30,22 @@ class DatabaseService(object):
         return [Teacher(tuple) for tuple in self._db.execute("select * from Teacher;").fetchall()]
 
     def getStudentProject(self, StudentID):
-        return [Project(tuple) for tuple in 
+         return [Project(tuple) for tuple in 
                 self._db.execute("""select * from Project where ProjectID = 
                 (select ProjectID from Student where StudentID = {id});""".format(id=StudentID))
                 .fetchall()]
+
+    def getStudent(self, StudentID):
+        # a ="""select * from Student where StudentID=1;"""
+        # b = """select * from Student where StudentID={id};""".format(id=StudentID)
+
+        # x = self._db.execute(
+        #         """select * from Student where StudentID=1;"""
+        #         ).fetchall()
+        # y = Student(x[0])
+
+        return [Student(tuple) for tuple in self._db.execute(
+                """select * from Student where StudentID={id};""".format(id=StudentID)).fetchall()][0]
 
     def close_connection(self, exception):
         self._db.close()
