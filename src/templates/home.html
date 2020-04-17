@@ -1,23 +1,30 @@
 {% extends "header.html" %} {% block content %}
-
+<div class="guide">
+    <ul class="gray horizontal">
+        <li><a href="/home">Home</a></li>
+        <li><a href="javascript:void(0)">Project</a></li>
+        <li><a href="javascript:void(0)">Classlist</a></li>
+        <li class="rightli" style="float:right"><a href="/">Logout</a></li>
+    </ul>
+</div>
 <div class="home-page">
-    <div class="column">
-    <div class ="row">
+    <div class="row">
+    <div class ="column">
         <a href="/projects"><img src="static/img/tree1.png"/></a>
         <h1>Team A</h1>
         <h2>50%</h2>
     </div>
-    <div class ="row">
+    <div class ="column">
         <a href="/projects"><img src="static/img/tree2.png"/></a>
         <h1>Team B</h1>
         <h2>50%</h2>
     </div>
-    <div class ="row">
+    <div class ="column">
         <a href="/projects"><img src="static/img/tree3.png"/></a>
         <h1>Team C</h1>
         <h2>50%</h2>
     </div>
-    <div class ="row">
+    <div class ="column">
         <a href="/projects"><img src="static/img/tree4.png"/></a>
         <h1>Team D</h1>
         <h2>50%</h2>
