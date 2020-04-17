@@ -9,11 +9,13 @@ cupshelpers==1.0
 devscripts===2.17.12ubuntu1.1
 distro-info===0.18ubuntu0.18.04.1
 Flask==1.1.2
+Flask-Login==0.5.0
+Flask-Session==0.3.1
 gpg==1.10.0
 httplib2==0.9.2
 idna==2.6
 itsdangerous==1.1.0
-Jinja2==2.11.1
+Jinja2==2.11.2
 keyring==10.6.0
 keyrings.alt==3.0
 language-selector==0.1
@@ -32,6 +34,7 @@ python-debian==0.1.32
 python-magic==0.4.16
 pyxdg==0.25
 PyYAML==3.12
+redis==3.4.1
 reportlab==3.4.0
 requests==2.18.4
 requests-unixsocket==0.1.5
