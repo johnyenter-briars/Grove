@@ -21,6 +21,11 @@ def home():
     return render_template("home.html")
 
 
+@app.route('/projects')
+def projects():
+    return render_template("projects.html")
+
+
 @app.route('/task')
 def task():
     return render_template("task.html")
@@ -29,15 +34,6 @@ def task():
 @app.route('/profile')
 def profile():
     return render_template("profile.html")
-
-
-if __name__ == '__main__':
-    app.run()
-
-
-@app.route('/projects')
-def projects():
-    return render_template("projects.html")
 
 
 if __name__ == '__main__':
