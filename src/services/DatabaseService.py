@@ -1,4 +1,8 @@
 import sqlite3
+from models.Student import Student
+from models.Teacher import Teacher
+from models.Project import Project
+import os
 
 DATABASE_PATH = 'database_files/Grove.db'
 
@@ -16,7 +20,16 @@ class DatabaseService(object):
         return self._db
 
     def getStudents(self):
-        return self._db.execute("select * from Student;").fetchall()
+        return [Student(tuple) for tuple in self._db.execute("select * from Student;").fetchall()] 
+    
+    def getTeachers(self):
+        return [Teacher(tuple) for tuple in self._db.execute("select * from Teacher;").fetchall()]
+
+    def getStudentProject(self, StudentID):
+        return [Project(tuple) for tuple in 
+                self._db.execute("""select * from Project where ProjectID = 
+                (select ProjectID from Student where StudentID = {id});""".format(id=StudentID))
+                .fetchall()]
 
     def close_connection(self, exception):
         self._db.close()
