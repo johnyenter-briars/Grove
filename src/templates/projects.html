@@ -11,15 +11,16 @@
 <h1>Project Branches</h1>
 <br>
 <div class="projects-page">
-    {% if perm == "perm0" %}
-    <h2>Welcome, Prof. {{ name }}!</h2>
-    {% endif %}
-    <!-- add correct perm when those are sorted lol ...--->
-    {% if teach and proj %}
-    <h2>Hey, {{ name }} you are in {{ teach }}'s class. </h2>
-    <h2>You are assigned to Project {{ proj }}. </h2>
-    {% endif %}
-
+    <div class="projectdeets" style="text-align: center;">
+        {% if perm == "perm0" %}
+        <h2>Welcome, Prof. {{ name }}!</h2>
+        {% endif %}
+        <!-- add correct perm when those are sorted lol ...--->
+        {% if teach and proj %}
+        <h2>Hey, {{ name }} you are in {{ teach }}'s class. </h2>
+        <h3>You are assigned to Project {{ proj }}. </h3>
+        {% endif %}
+    </div>
     <div class="branches">
         <form name="myform" id="myform">
             <table id="branch-grid" style="border-spacing: 10px;">
