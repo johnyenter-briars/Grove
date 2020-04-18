@@ -39,6 +39,8 @@ def hello():
             userObject = [ele for ele in database.getUserCredentials() if ele.getUserName() == username and ele.getUserPass() == password][0]
             if userObject.getUserType() == "Student":
                 session['user_auth'] = ClassEncoder().encode(database.getStudent(userObject.getUserID()))
+            elif userObject.getUserType() == "Teacher":
+                session['user_auth'] = ClassEncoder().encode(database.getTeacher(userObject.getUserID()))
             return render_template('home.html', loggedInUser="Welcome, "+username)
         else:
             return render_template('index.html', loggedInUser="User does not exist")
