@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import request, redirect
 from flask import render_template
-from flask import session
+from flask import json, session
+from flask import jsonify
 # from flask_session import Session
 from config import Config
 from services.DatabaseService import DatabaseService
@@ -15,7 +16,6 @@ app.config.from_object(Config)
 # sess.init_app(app)
 
 database = DatabaseService()
-
 @app.route('/',methods=['POST','GET'])
 def hello():
     """for project in database.getStudentProject(3):
@@ -39,7 +39,8 @@ def hello():
             userObject = [ele for ele in database.getUserCredentials() if ele.getUserName() == username and ele.getUserPass() == password][0]
             if userObject.getUserType() == "Student":
                 session['user_auth'] = ClassEncoder().encode(database.getStudent(userObject.getUserID()))
-
+            elif userObject.getUserType() == "Teacher":
+                session['user_auth'] = ClassEncoder().encode(database.getTeacher(userObject.getUserID()))
             return render_template('home.html', loggedInUser="Welcome, "+username)
         else:
             return render_template('index.html', loggedInUser="User does not exist")
@@ -47,23 +48,35 @@ def hello():
 
 @app.route('/home')
 def home():
-    return render_template("home.html")
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    return render_template("home.html", name = first+' '+last)
 
 
 @app.route('/projects')
 def projects():
-    return render_template("projects.html")
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    return render_template("projects.html", name = first+' '+last)
 
 
 @app.route('/task')
 def task():
-    return render_template("task.html")
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    return render_template("task.html", name = first+' '+last)
 
 
 @app.route('/profile')
 def profile():
-    return render_template("profile.html")
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    return render_template("profile.html", name = first+' '+last)
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
