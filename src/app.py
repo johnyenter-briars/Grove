@@ -16,12 +16,12 @@ app.config.from_object(Config)
 # sess.init_app(app)
 
 database = DatabaseService()
-@app.route('/',methods=['POST','GET'])
+@app.route('/', methods=['POST', 'GET'])
 def hello():
     """for project in database.getStudentProject(3):
         print(project.getProjectID(), " ", project.getProjectDesc())
     """
-    if request.method=='POST':
+    if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
         shouldLogin = False
@@ -32,34 +32,43 @@ def hello():
                 shouldLogin = True
             elif u == username and p != password:
                 return render_template('index.html', loggedInUser="Incorrect password")
-        
+
         if(shouldLogin):
-            #add session persistance
-            #This code assumes the user is a student
-            userObject = [ele for ele in database.getUserCredentials() if ele.getUserName() == username and ele.getUserPass() == password][0]
+            # add session persistance
+            # This code assumes the user is a student
+            userObject = [ele for ele in database.getUserCredentials(
+            ) if ele.getUserName() == username and ele.getUserPass() == password][0]
             if userObject.getUserType() == "Student":
-                session['user_auth'] = ClassEncoder().encode(database.getStudent(userObject.getUserID()))
+                session['user_auth'] = ClassEncoder().encode(
+                    database.getStudent(userObject.getUserID()))
             elif userObject.getUserType() == "Teacher":
-                session['user_auth'] = ClassEncoder().encode(database.getTeacher(userObject.getUserID()))
+                session['user_auth'] = ClassEncoder().encode(
+                    database.getTeacher(userObject.getUserID()))
             return render_template('home.html', loggedInUser="Welcome, "+username)
         else:
             return render_template('index.html', loggedInUser="User does not exist")
     return render_template("index.html", loggedInUser="Please login below")
+
 
 @app.route('/home')
 def home():
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("home.html", name = first+' '+last)
+    return render_template("home.html", name=first+' '+last)
 
 
 @app.route('/projects')
 def projects():
     sess = json.loads(session['user_auth'])
+    if not sess:
+        return redirect('/')
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("projects.html", name = first+' '+last)
+    tId = sess.get('_TeacherID')
+    pId = sess.get('_ProjectID')
+    perm = sess.get('_PermissionLevel')
+    return render_template("projects.html", name=first+' '+last, teach=tId, proj=pId, perm=perm)
 
 
 @app.route('/task')
@@ -67,7 +76,7 @@ def task():
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("task.html", name = first+' '+last)
+    return render_template("task.html", name=first+' '+last)
 
 
 @app.route('/profile')
@@ -75,7 +84,7 @@ def profile():
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("profile.html", name = first+' '+last)
+    return render_template("profile.html", name=first+' '+last)
 
 
 if __name__ == '__main__':

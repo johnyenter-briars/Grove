@@ -19,6 +19,6 @@ class Project(object):
 
     def getProjectName(self):
         return self._ProjectName
-    
+
     def getProjectDesc(self):
         return self._ProjectDescription
