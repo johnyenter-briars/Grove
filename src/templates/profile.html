@@ -2,14 +2,28 @@
 
 <h1>Profile Page</h1>
 <!--This is the navbar-->
-<div>
+<div class="guide">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
-        <li><a href="javascript:void(0)">Project</a></li>
+        <li><a href="/projects">Projects</a></li>
         <li><a href="javascript:void(0)">Classlist</a></li>
         <li class="rightli" style="float:right"><a href="/">Logout</a></li>
+        <li class="rightli" style="float:right"><a href="javascript:void(0)">{{ name }}</a></li>
     </ul>
 </div>
+
+<table>
+    <tr>
+        <th>Branches</th>
+        <tr>Branch 1</tr>
+        <tr>Branch 2</tr>
+        <tr>Branch 3</tr>
+        <tr>Branch 4</tr>
+    </tr>
+    <tr>
+        <th>Fruits</th>
+    </tr>
+</table>
 
 
 {% endblock %}
