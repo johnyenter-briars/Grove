@@ -8,9 +8,18 @@
         <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
     </ul>
 </div>
-
+<h1>Project Branches</h1>
+<br>
 <div class="projects-page">
-    <h1>Project</h1>
+    {% if perm == "perm0" %}
+    <h2>Welcome, Prof. {{ name }}!</h2>
+    {% endif %}
+    <!-- add correct perm when those are sorted lol ...--->
+    {% if teach and proj %}
+    <h2>Hey, {{ name }} you are in {{ teach }}'s class. </h2>
+    <h2>You are assigned to Project {{ proj }}. </h2>
+    {% endif %}
+
     <div class="branches">
         <form name="myform" id="myform">
             <table id="branch-grid" style="border-spacing: 10px;">
@@ -50,23 +59,30 @@
                 </tr>
             </table>
             <br>
+            {% if teach and proj %}
+            <button type="button" id="branchRev">Request Branch & Task Review</button>
+            {% endif %}
+            {% if perm == "perm0" %}
             <button type="button" id="btnAddCol">Add Branch</button>
             </br>
             <button type="button" id="btnAdd">Add Task</button>
             </br>
+            <button type="button" id="branchUpdate">Update Branches & Tasks</button>
+            </br>
+            {% endif %}
     </div>
 
     <script lang="js">
-        $(document).ready(function() {
-            $('#btnAdd').click(function() {
+        $(document).ready(function () {
+            $('#btnAdd').click(function () {
                 var count = 1,
                     first_row = $('#branch-content');
                 while (count-- > 0) first_row.clone().appendTo('#branch-grid');
             });
             var myform = $('#myform'),
                 iter = 6;
-            $('#btnAddCol').click(function() {
-                myform.find('tr').each(function() {
+            $('#btnAddCol').click(function () {
+                myform.find('tr').each(function () {
                     var trow = $(this);
                     if (trow.index() === 0) {
                         trow.append('<td><b>Branch' + " " + +iter + '</b></td>');
