@@ -2,9 +2,10 @@
 <div class="guide">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
-        <li><a href="/projects">Project</a></li>
+        <li><a href="javascript:void(0)">Projects</a></li>
         <li><a href="javascript:void(0)">Classlist</a></li>
-        <li class="rightli" style="float:right"><a href="/index">Logout</a></li>
+        <li class="rightli" style="float:right"><a href="/">Logout</a></li>
+        <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
     </ul>
 </div>
 
@@ -56,16 +57,16 @@
     </div>
 
     <script lang="js">
-        $(document).ready(function () {
-            $('#btnAdd').click(function () {
+        $(document).ready(function() {
+            $('#btnAdd').click(function() {
                 var count = 1,
                     first_row = $('#branch-content');
                 while (count-- > 0) first_row.clone().appendTo('#branch-grid');
             });
             var myform = $('#myform'),
                 iter = 6;
-            $('#btnAddCol').click(function () {
-                myform.find('tr').each(function () {
+            $('#btnAddCol').click(function() {
+                myform.find('tr').each(function() {
                     var trow = $(this);
                     if (trow.index() === 0) {
                         trow.append('<td><b>Branch' + " " + +iter + '</b></td>');
