@@ -1,9 +1,4 @@
-from flask import Flask
-from flask import request, redirect
-from flask import render_template
-from flask import json, session
-from flask import jsonify
-# from flask_session import Session
+from flask import Flask, request, redirect, render_template, json, session, jsonify
 from config import Config
 from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
@@ -12,8 +7,6 @@ import os
 
 app = Flask(__name__)
 app.config.from_object(Config)
-# sess = Session()
-# sess.init_app(app)
 
 database = DatabaseService()
 @app.route('/', methods=['POST', 'GET'])
