@@ -4,6 +4,7 @@ from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
 
 import os
+from flask.helpers import url_for
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -77,6 +78,10 @@ def profile():
     last = sess.get('_LastName')
     return render_template("profile.html", name=first+' '+last)
 
+@app.route('/logout')
+def logout():
+    session.pop('user_auth')
+    return redirect('/')
 
 if __name__ == '__main__':
     app.run(debug=True)
