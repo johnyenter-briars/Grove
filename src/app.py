@@ -38,7 +38,7 @@ def hello():
             elif userObject.getUserType() == "Teacher":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getTeacher(userObject.getUserID()))
-            return render_template('home.html', loggedInUser="Welcome, "+username)
+            return redirect(url_for('home'))
         else:
             return render_template('index.html', loggedInUser="User does not exist")
     return render_template("index.html", loggedInUser="Please login below")
