@@ -83,5 +83,9 @@ def logout():
     session.pop('user_auth')
     return redirect('/')
 
+@app.errorhandler(KeyError)
+def keyerror_exception_handler(error):
+    return render_template('keyerror.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
