@@ -26,8 +26,11 @@
             <table id="branch-grid" style="border-spacing: 10px;">
                 
                 <tr id="branches" style="text-align: center;">
-                    {% for ele in branches%}
-                    <td><b>Branch 1</b></td>
+                    {% for branch in branches%}
+                        <td>
+                            <b>{{branch.getBranchDesc()}}</b>
+                            <p>Students in this branch: {{branch.getStudents()}}</p>
+                        </td>
                     {% endfor %}
                 </tr>
                  <!-- <tr id="branches" style="text-align: center;">
@@ -40,8 +43,9 @@
                 
                 <tr id="branch-content" style="text-align: left;">
                 
-                    {% for ele in branches%}
+                    {% for branch in branches%}
                     <td>
+                        <p>Test?</p>
                         <input type="text" placeholder="Task 1" />
                         <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
                     </td>

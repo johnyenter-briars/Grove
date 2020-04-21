@@ -14,7 +14,7 @@ class Branch(object):
         return self._BranchID
 
     def getStudents(self):
-        return self._StudentID
+        return self._StudentList
 
     def getProjectID(self):
         return self._ProjectID

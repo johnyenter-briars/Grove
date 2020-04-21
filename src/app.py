@@ -63,12 +63,10 @@ def projects():
 
     branches = database.getBranchesForProject(pId)
     
-
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
         proj=pId, perm=perm,
-        branches=branches
-
+        branches=branches)
 
 @app.route('/task')
 def task():

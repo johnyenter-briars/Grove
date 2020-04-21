@@ -5,7 +5,6 @@ class BranchFlattener(object):
     def __init__(self, rowTuples):
         self._rawRows = rowTuples
 
-
     def flatten(self):
         listOfBranchIds = [t[0] for t in self._rawRows]
         duplicateBranchIds = [id for id, count in collections.Counter(listOfBranchIds).items() if count > 1]
