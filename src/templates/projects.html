@@ -18,21 +18,42 @@
         <!-- add correct perm when those are sorted lol ...--->
         {% if teach and proj %}
         <h2>Hey, {{ name }} you are in {{ teach }}'s class. </h2>
-        <h3>You are assigned to Project {{ proj }}. </h3>
+        <h3>You are assigned to Project: {{ proj }}. </h3>
         {% endif %}
     </div>
     <div class="branches">
         <form name="myform" id="myform">
             <table id="branch-grid" style="border-spacing: 10px;">
+                
                 <tr id="branches" style="text-align: center;">
+                    {% for branch in branches%}
+                        <td>
+                            <b>{{branch.getBranchDesc()}}</b>
+                            <p>Students in this branch: {{branch.getStudents()}}</p>
+                        </td>
+                    {% endfor %}
+                </tr>
+                 <!-- <tr id="branches" style="text-align: center;">
                     <td><b>Branch 1</b></td>
                     <td><b>Branch 2</b></td>
                     <td><b>Branch 3</b></td>
                     <td><b>Branch 4</b></td>
                     <td><b>Branch 5</b></td>
-                    <td><b>Branch 6</b></td>
-                </tr>
+                    <!-- <td><b>Branch 6</b></td> -->
+                
                 <tr id="branch-content" style="text-align: left;">
+                
+                    {% for branch in branches%}
+                    <td>
+                        <p>Test?</p>
+                        <input type="text" placeholder="Task 1" />
+                        <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
+                    </td>
+                    {% endfor %}
+        
+                </tr>
+                
+                <!-- <tr id="branch-content" style="text-align: left;">
                     <td>
                         <input type="text" placeholder="Task 1" />
                         <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
@@ -57,7 +78,7 @@
                         <input type="text" placeholder="Task 6" />
                         <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
                     </td>
-                </tr>
+                </tr> -->
             </table>
             <br> {% if teach and proj %}
             <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
