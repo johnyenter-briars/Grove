@@ -16,5 +16,5 @@ values (3, 5, 1, "Change font in document", 0, 5);
 
 insert into Branch 
 (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
-values (2, 5, 1, "Make headers", 0, 5);
+values (2, 5, 1, "Update ppt", 1, 25);
 

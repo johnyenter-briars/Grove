@@ -60,10 +60,14 @@ def projects():
     teacherObj = database.getTeacher(sess.get('_TeacherID'))
     pId = sess.get('_ProjectID')
     perm = sess.get('_PermissionLevel')
+
+    branches = database.getBranchesForProject(pId)
+    
+
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
         proj=pId, perm=perm,
-        branches=range(3))
+        branches=rawBranches
 
 
 @app.route('/task')
