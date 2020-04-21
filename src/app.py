@@ -67,7 +67,7 @@ def projects():
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
         proj=pId, perm=perm,
-        branches=rawBranches
+        branches=branches
 
 
 @app.route('/task')
