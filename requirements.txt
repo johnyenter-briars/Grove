@@ -27,7 +27,7 @@ pygobject==3.26.1
 python-apt==1.6.5+ubuntu0.2
 python-debian==0.1.32
 python-magic==0.4.16
-pyxdg==0.25
+pyxdg==0.26
 PyYAML==5.1
 redis==3.4.1
 reportlab==3.4.0
@@ -41,7 +41,7 @@ ubuntu-drivers-common==0.0.0
 ufw==0.36
 unattended-upgrades==0.1
 unidiff==0.5.4
-urllib3==1.22
+urllib3==1.24.2
 Werkzeug==1.0.1
 xkit==0.0.0
 xlrd==1.2.0
