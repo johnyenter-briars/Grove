@@ -4,7 +4,7 @@ from models.Teacher import Teacher
 from models.Project import Project
 from models.UserCredentials import UserCredentials
 from models.Branch import Branch
-from services.FlatternService import BranchFlattener
+from services.FlattenerService import BranchFlattener
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
