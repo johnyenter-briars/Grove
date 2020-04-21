@@ -57,10 +57,13 @@ def projects():
         return redirect('/')
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    tId = sess.get('_TeacherID')
+    teacherObj = database.getTeacher(sess.get('_TeacherID'))
     pId = sess.get('_ProjectID')
     perm = sess.get('_PermissionLevel')
-    return render_template("projects.html", name=first+' '+last, teach=tId, proj=pId, perm=perm)
+    return render_template("projects.html", name=first+' '+last, 
+        teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
+        proj=pId, perm=perm,
+        branches=range(3))
 
 
 @app.route('/task')
