@@ -4,6 +4,7 @@ from models.Teacher import Teacher
 from models.Project import Project
 from models.UserCredentials import UserCredentials
 from models.Branch import Branch
+from services.FlatternService import BranchFlattener
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -43,12 +44,11 @@ class DatabaseService(object):
     def getTeacher(self, TeacherID):
         return [Teacher(tuple) for tuple in self._db.execute(
                 """select * from Teacher where TeacherID={id};""".format(id=TeacherID)).fetchall()][0]
-
+    
     def getBranchesForProject(self, ProjectID):
-        #flatten here
-
-        return [Branch(tuple) for tuple in self._db.execute(
-                """select * from Branch where ProjectID={id};""".format(id=ProjectID)).fetchall()]
+        return BranchFlattener(
+                self._db.execute("""select * from Branch where ProjectID={id};"""
+                .format(id=ProjectID)).fetchall()).flatten()
 
     def close_connection(self, exception):
         self._db.close()

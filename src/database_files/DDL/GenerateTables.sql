@@ -103,6 +103,14 @@ insert into Student
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
 values("Sam", "Wilson", 1, 1, "perm1");
 
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("Wanda", "Maximoff", 1, 1, "perm1");
+
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("Pietro", "Maximoff", 1, 1, "perm1");
+
 create table Award(
     AwardID INTEGER,
     StudentID INTEGER,
@@ -168,6 +176,14 @@ values (3, 5, 1, "Change font in document", 0, 5);
 insert into Branch 
 (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
 values (2, 5, 1, "Update ppt", 1, 25);
+
+insert into Branch 
+(BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (2, 6, 1, "Update ppt", 1, 25);
+
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (1, 7, 1, "Add pictures", 0, 10);
 
 
 create table Task(
