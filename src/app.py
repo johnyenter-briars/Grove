@@ -12,9 +12,6 @@ app.config.from_object(Config)
 database = DatabaseService()
 @app.route('/', methods=['POST', 'GET'])
 def hello():
-    """for project in database.getStudentProject(3):
-        print(project.getProjectID(), " ", project.getProjectDesc())
-    """
     if request.method == 'POST':
         username = request.form['username']
         password = request.form['password']
@@ -41,6 +38,7 @@ def hello():
             return redirect(url_for('home'))
         else:
             return render_template('index.html', loggedInUser="User does not exist")
+
     return render_template("index.html", loggedInUser="Please login below")
 
 
