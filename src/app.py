@@ -88,6 +88,13 @@ def logout():
     session.pop('user_auth')
     return redirect('/')
 
+@app.route('/classlist')
+def classlist():
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    return render_template("classlist.html", name=first + ' ' + last)
+
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
