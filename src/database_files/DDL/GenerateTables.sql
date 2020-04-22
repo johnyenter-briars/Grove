@@ -40,9 +40,9 @@ create table Teacher(
     FOREIGN KEY (PermissionLevel) REFERENCES RoleType(permission_level)
 );
 
-insert into Teacher (FirstName, LastName, PermissionLevel) values("Bucky", "Barnes", "perm0");
+insert into Teacher (FirstName, LastName, PermissionLevel) values("Bucky", "Barnes", "perm1");
 insert into Teacher (FirstName, LastName, PermissionLevel) values("Gamora", "Titan", "perm1");
-insert into Teacher (FirstName, LastName, PermissionLevel) values("Peter", "Quill", "perm2");
+insert into Teacher (FirstName, LastName, PermissionLevel) values("Peter", "Quill", "perm1");
 
 create table ProjectStatus(
     GrowthStatus varchar(20) PRIMARY KEY
@@ -85,31 +85,31 @@ create table Student(
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Bruce", "Banner", 1, 1, "perm0");
+values("Bruce", "Banner", 1, 1, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Clint", "Barton", 2, 2, "perm0");
+values("Clint", "Barton", 2, 2, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Steven", "Strange", 2, 2, "perm1");
+values("Steven", "Strange", 2, 2, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Tony", "Stark", 3, null, "perm1");
+values("Tony", "Stark", 3, null, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Sam", "Wilson", 1, 1, "perm1");
+values("Sam", "Wilson", 1, 1, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Wanda", "Maximoff", 1, 1, "perm1");
+values("Wanda", "Maximoff", 1, 1, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Pietro", "Maximoff", 1, 1, "perm1");
+values("Pietro", "Maximoff", 1, 1, "perm2");
 
 create table Award(
     AwardID INTEGER,
@@ -241,7 +241,7 @@ create table Admin(
     FOREIGN KEY (RoleType) REFERENCES RoleType(permission_level)
 );
 
-insert into Admin(Name, RoleType) values("The Watcher", "perm3");
+insert into Admin(Name, RoleType) values("The Watcher", "perm0");
 
 create table UserCredentials(
     UserCredentialsID INTEGER,
