@@ -54,5 +54,10 @@ class DatabaseService(object):
         return [Student(tuple) for tuple in self._db.execute(
                 """select * from Student where TeacherID={id};""".format(id=TeacherID)).fetchall()]
 
+    def getProject(self, ProjectID):
+        return [Project(tuple) for tuple in self._db.execute("""
+            select * from Project where ProjectID={id}"""
+            .format(id=ProjectID)).fetchall()][0]
+
     def close_connection(self, exception):
         self._db.close()
