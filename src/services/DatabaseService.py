@@ -49,6 +49,16 @@ class DatabaseService(object):
         return BranchFlattener(
                 self._db.execute("""select * from Branch where ProjectID={id};"""
                 .format(id=ProjectID)).fetchall()).flatten()
+    
+    def getBranchesForStudent(self, StudentID):
+        return BranchFlattener(
+                self._db.execute("""select * from Branch where StudentID={id};"""
+                .format(id=StudentID)).fetchall()).flatten()
+
+    def getAwardsForStudent(self, StudentID):
+        return BranchFlattener(
+                self._db.execute("""select * from Award where StudentID={id};"""
+                .format(id=StudentID)).fetchall()).flatten()
 
     def close_connection(self, exception):
         self._db.close()

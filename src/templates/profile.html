@@ -1,8 +1,6 @@
 {% extends "header.html" %} {% block content %}
-
-<h1>Profile Page</h1>
 <!--This is the navbar-->
-<div class="guide">
+<div class="guide" style="margin-bottom:2%;">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
         <li><a href="/projects">Projects</a></li>
@@ -11,19 +9,24 @@
         <li class="rightli" style="float:right"><a href="javascript:void(0)">{{ name }}</a></li>
     </ul>
 </div>
-
-<table>
-    <tr>
-        <th>Branches</th>
-        <tr>Branch 1</tr>
-        <tr>Branch 2</tr>
-        <tr>Branch 3</tr>
-        <tr>Branch 4</tr>
-    </tr>
-    <tr>
-        <th>Fruits</th>
-    </tr>
-</table>
+<h1 style="font-size: 30pt">Welcome back, {{ name }}!</h1>
+<div align="center">
+    <table>
+        <td style="border-spacing: 10px;">
+            <div class="container" style="width: 200px;">
+                <h2>Branches</h2> {% for branch in branches%}
+                <a href="/projects">{{branch.getBranchDesc()}}</a>
+                <br>
+            </div>
+        </td>
+        <td style="border-spacing: 10px;">
+            <div class="container" style="width: 800px;">
+                <h2>Fruits</h2> {% for award in awards%}
+                <img src=><br> {% endfor %}
+            </div>
+        </td>
+    </table>
+</div>
 
 
 {% endblock %}
