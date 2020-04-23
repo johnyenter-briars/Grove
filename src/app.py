@@ -3,6 +3,7 @@ from config import Config
 from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
 from werkzeug.utils import secure_filename
+from models.Branch import Branch
 import os
 from flask.helpers import url_for
 UPLOAD_FOLDER = '/static/img'
@@ -64,12 +65,20 @@ def projects():
     pId = sess.get('_ProjectID')
     perm = sess.get('_PermissionLevel')
 
-    branches = database.getBranchesForProject(pId)
-    
+    branches: List[Branch] = database.getBranchesForProject(pId)
+    projectObj = database.getProject(pId)
+    studentsOnProject = {}
+
+    for branch in branches:
+        for studentId in branch.getStudents():
+            studentsOnProject[studentId] = database.getStudent(studentId)
+        
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
-        proj=pId, perm=perm,
-        branches=branches)
+        proj=projectObj, 
+        perm=perm,
+        branches=branches,
+        studentsOnProject=studentsOnProject)
 
 @app.route('/task', methods=['POST', 'GET'])
 def task():
@@ -99,14 +108,27 @@ def allowed_file(filename):
 @app.route('/profile')
 def profile():
     sess = json.loads(session['user_auth'])
+    branches = database.getBranchesForStudent(sess.get('_StudentID'))
+    awards = database.getAwardsForStudent(sess.get('_StudentID'))
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("profile.html", name=first+' '+last)
+    return render_template("profile.html", name=first+' '+last, branches=branches, awards=awards)
 
 @app.route('/logout')
 def logout():
     session.pop('user_auth')
     return redirect('/')
+
+@app.route('/classlist')
+def classlist():
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+    teachID = sess.get('_TeacherID')
+    
+    students = database.getClassList(teachID)
+    
+    return render_template("classlist.html", students=students)
 
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
@@ -114,3 +136,6 @@ def keyerror_exception_handler(error):
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+

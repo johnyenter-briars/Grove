@@ -4,6 +4,7 @@ from models.Teacher import Teacher
 from models.Project import Project
 from models.UserCredentials import UserCredentials
 from models.Branch import Branch
+from models.Award import Award
 from services.FlattenerService import BranchFlattener
 from models.Files import Files
 
@@ -51,6 +52,24 @@ class DatabaseService(object):
         return BranchFlattener(
                 self._db.execute("""select * from Branch where ProjectID={id};"""
                 .format(id=ProjectID)).fetchall()).flatten()
+    
+    def getBranchesForStudent(self, StudentID):
+        return BranchFlattener(
+                self._db.execute("""select * from Branch where StudentID={id};"""
+                .format(id=StudentID)).fetchall()).flatten()
+
+    def getAwardsForStudent(self, StudentID):
+        return [Award(tuple) for tuple in self._db.execute(
+            """select * from Award where StudentID={id};""".format(id=StudentID)).fetchall()]
+
+    def getClassList(self, TeacherID):
+        return [Student(tuple) for tuple in self._db.execute(
+                """select * from Student where TeacherID={id};""".format(id=TeacherID)).fetchall()]
+
+    def getProject(self, ProjectID):
+        return [Project(tuple) for tuple in self._db.execute("""
+            select * from Project where ProjectID={id}"""
+            .format(id=ProjectID)).fetchall()][0]
 
     def getFilesForTask(self, FileID):
         return [Files(tuple) for tuple in self._db.execute("select * from Files;").fetchall()] 
@@ -71,3 +90,4 @@ class DatabaseService(object):
 
     def close_connection(self, exception):
         self._db.close()
+        
