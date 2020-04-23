@@ -93,7 +93,11 @@ def classlist():
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
-    return render_template("classlist.html", name=first + ' ' + last)
+    teachID = sess.get('_TeacherID')
+    
+    students = database.getClassList(teachID)
+    
+    return render_template("classlist.html", students=students)
 
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
