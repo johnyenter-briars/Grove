@@ -4,6 +4,7 @@ from models.Teacher import Teacher
 from models.Project import Project
 from models.UserCredentials import UserCredentials
 from models.Branch import Branch
+from models.Award import Award
 from services.FlattenerService import BranchFlattener
 import os
 
@@ -56,9 +57,8 @@ class DatabaseService(object):
                 .format(id=StudentID)).fetchall()).flatten()
 
     def getAwardsForStudent(self, StudentID):
-        return BranchFlattener(
-                self._db.execute("""select * from Award where StudentID={id};"""
-                .format(id=StudentID)).fetchall()).flatten()
+        return [Award(tuple) for tuple in self._db.execute(
+            """select * from Award where StudentID={id};""".format(id=StudentID)).fetchall()]
 
     def close_connection(self, exception):
         self._db.close()
