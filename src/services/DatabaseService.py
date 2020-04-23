@@ -50,5 +50,10 @@ class DatabaseService(object):
                 self._db.execute("""select * from Branch where ProjectID={id};"""
                 .format(id=ProjectID)).fetchall()).flatten()
 
+    def getProject(self, ProjectID):
+        return [Project(tuple) for tuple in self._db.execute("""
+            select * from Project where ProjectID={id}"""
+            .format(id=ProjectID)).fetchall()][0]
+
     def close_connection(self, exception):
         self._db.close()
