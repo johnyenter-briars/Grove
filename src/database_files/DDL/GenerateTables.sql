@@ -12,6 +12,7 @@ drop table ProjectStatus;
 drop table Teacher;
 drop table RoleType;
 drop table AppleType;
+drop table Files;
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
@@ -276,3 +277,12 @@ values(1, "Student", "bbanner22", "hulk");
 insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
 values(1, "Teacher", "BuckyB101", "wwII");
+
+create table Files (
+    FileID INTEGER PRIMARY KEY,
+    FileName TEXT NOT NULL,
+    FileType BLOB NOT NULL
+);
+
+insert into Files (FileID, FileName, FileType)
+values(1, "Tree pics", "static/img/tree1.png");
