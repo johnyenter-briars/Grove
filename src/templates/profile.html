@@ -14,9 +14,12 @@
     <table>
         <td style="border-spacing: 10px;">
             <div class="container" style="width: 200px;">
-                <h2>Branches</h2> {% for branch in branches%}
-                <a href="/projects">{{branch.getBranchDesc()}}</a>
-                <br> {% endfor %}
+                <h2>Branches</h2>
+                <ul>
+                    {% for branch in branches%}
+                    <li><a href="/projects">{{branch.getBranchDesc()}}</a></li>
+                    <br> {% endfor %}
+                </ul>
             </div>
         </td>
         <td style="border-spacing: 10px;">
