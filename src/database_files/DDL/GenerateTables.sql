@@ -134,6 +134,22 @@ insert into Award
 (StudentID, apple_type, DateAwarded) 
 values(3, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS");
 
+insert into Award 
+(StudentID, apple_type, DateAwarded) 
+values(1, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS");
+
+insert into Award 
+(StudentID, apple_type, DateAwarded) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+
+insert into Award 
+(StudentID, apple_type, DateAwarded) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+
+insert into Award 
+(StudentID, apple_type, DateAwarded) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+
 create table Branch(
     BranchID INTEGER,
     StudentID INTEGER,
