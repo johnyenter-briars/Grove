@@ -22,36 +22,24 @@
         {% endif %}
     </div>
     <div class="branches">
-        <form name="myform" id="myform">
-            <table id="branch-grid" style="border-spacing: 10px;">
-                
-                <tr id="branches" style="text-align: center;">
-                    {% for branch in branches%}
+        {% for branch in branches%}
+            <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
+                <h1>{{branch.getBranchDesc()}}</h1>
+                {% for studentID in branch.getStudents() %}
+                    <b>{{ studentsOnProject[studentID].getFirstName()}}</b>
+                {% endfor %}
+
+                {% if branch.getBranchID() in tasksPerBranch%}
+                    {% for task in tasksPerBranch[branch.getBranchID()]%}
                         <td>
-                            <h1>{{branch.getBranchDesc()}}</h1>
-                            {% for studentID in branch.getStudents() %}
-                                <b>{{ studentsOnProject[studentID].getFirstName()}}</b>
-
-
-                                
-                                
-                            {% endfor %}
+                            <input type="text" placeholder="Task 1" />
+                            <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
                         </td>
                     {% endfor %}
-                </tr>
-            
-                <tr id="branch-content" style="text-align: left;">
-                
-                    {% for branch in branches%}
-                    <td>
-                        <input type="text" placeholder="Task 1" />
-                        <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
-                    </td>
-                    {% endfor %}
-        
-                </tr>
-            </table>
-            <br> {% if teach and proj %}
+                {% endif%}
+            </div>
+        {% endfor %}
+        <br> {% if teach and proj %}
             <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
             <button type="button" id="btnAddCol">Add Branch</button>
             </br>
