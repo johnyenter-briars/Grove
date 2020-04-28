@@ -10,7 +10,7 @@ class Branch(object):
         self._Resolved = branchTuple[4]
         self._Weight = branchTuple[5]
 
-    def getBranchId(self):
+    def getBranchID(self):
         return self._BranchID
 
     def getStudents(self):
