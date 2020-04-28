@@ -58,9 +58,10 @@ class DatabaseService(object):
                 self._db.execute("""select * from Branch where StudentID={id};"""
                 .format(id=StudentID)).fetchall()).flatten()
 
-    def getTasksForBranch(self, BranchID):
+    def getTasksForBranch(self, BranchID, ProjectID):
         return [Task(tuple) for tuple in self._db.execute("""
-                    select * from Task where BranchID={id};""".format(id=BranchID)).fetchall()]
+                    select * from Task where BranchID={bid} and ProjectID={pid};"""
+                    .format(bid=BranchID, pid=ProjectID)).fetchall()]
 
     def getAwardsForStudent(self, StudentID):
         return [Award(tuple) for tuple in self._db.execute(

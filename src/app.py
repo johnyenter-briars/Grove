@@ -78,11 +78,14 @@ def projects():
             studentsOnProject[studentId] = database.getStudent(studentId)
     
     for branch in branches:
-        rawtasks += database.getTasksForBranch(branch.getBranchID())
+        rawtasks += database.getTasksForBranch(branch.getBranchID(), branch.getProjectID())
         
     for task in rawtasks:
-        tasksByBranchId[task.getBranchID()] = task
-
+        if task.getBranchID() in tasksByBranchId:
+            tasksByBranchId[task.getBranchID()].append(task)
+        else:
+            tasksByBranchId[task.getBranchID()] = [task]
+   
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
         proj=projectObj, 
