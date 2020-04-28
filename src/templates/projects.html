@@ -39,6 +39,15 @@
                 {% endif%}
             </div>
         {% endfor %}
+        <br> {% if teach and proj %}
+            <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
+            <button type="button" id="btnAddCol">Add Branch</button>
+            </br>
+            <button type="button" id="btnAdd">Add Task</button>
+            </br>
+            <button type="button" id="branchUpdate">Update Branches & Tasks</button>
+            </br>
+            {% endif %}
     </div>
 
     <script lang="js">
