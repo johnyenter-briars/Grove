@@ -40,11 +40,18 @@
                 <tr id="branch-content" style="text-align: left;">
                 
                     {% for branch in branches%}
-                    <b>{{ tasksPerBranch[branch.getBranchID()].getTaskDesc() }}</b>
-                    <td>
+                        {% if branch.getBranchID() in tasksPerBranch%}
+                            {% for task in tasksPerBranch[branch.getBranchID()]%}
+                                <td>
+                                    <input type="text" placeholder="Task 1" />
+                                    <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                                </td>
+                            {% endfor %}
+                        {% endif%}
+                    <!-- <td>
                         <input type="text" placeholder="Task 1" />
                         <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>
-                    </td>
+                    </td> -->
                     {% endfor %}
         
                 </tr>
