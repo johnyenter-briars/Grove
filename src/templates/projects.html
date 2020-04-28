@@ -32,9 +32,6 @@
                             {% for studentID in branch.getStudents() %}
                                 <b>{{ studentsOnProject[studentID].getFirstName()}}</b>
 
-
-                                
-                                
                             {% endfor %}
                         </td>
                     {% endfor %}
@@ -43,6 +40,7 @@
                 <tr id="branch-content" style="text-align: left;">
                 
                     {% for branch in branches%}
+                    <b>{{ tasksPerBranch[branch.getBranchID()].getTaskDesc() }}</b>
                     <td>
                         <input type="text" placeholder="Task 1" />
                         <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;View Task</b></a>

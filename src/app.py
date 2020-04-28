@@ -68,17 +68,28 @@ def projects():
     branches: List[Branch] = database.getBranchesForProject(pId)
     projectObj = database.getProject(pId)
     studentsOnProject = {}
-
+    rawtasks = []
+    tasksByBranchId = {}
+    
+    #Just getting a list of all students who are on this project
+    #I realize there is a better way to do this now, but John from a week ago was dumb
     for branch in branches:
         for studentId in branch.getStudents():
             studentsOnProject[studentId] = database.getStudent(studentId)
+    
+    for branch in branches:
+        rawtasks += database.getTasksForBranch(branch.getBranchID())
         
+    for task in rawtasks:
+        tasksByBranchId[task.getBranchID()] = task
+
     return render_template("projects.html", name=first+' '+last, 
         teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
         proj=projectObj, 
         perm=perm,
         branches=branches,
-        studentsOnProject=studentsOnProject)
+        studentsOnProject=studentsOnProject,
+        tasksPerBranch=tasksByBranchId)
 
 @app.route('/task', methods=['POST', 'GET'])
 def task():
