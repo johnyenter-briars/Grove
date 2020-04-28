@@ -12,6 +12,7 @@ drop table ProjectStatus;
 drop table Teacher;
 drop table RoleType;
 drop table AppleType;
+drop table Files;
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
@@ -218,7 +219,7 @@ create table Task(
 
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 1, 1, "Open power point", 0);
+values(2, 1, 1, "Open power point", 1);
 
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
@@ -227,6 +228,19 @@ values(3, 2, 2, "Open ms word", 1);
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(3, 3, 2, "Click reformat button", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(2, 5, 1, "Add picture to powerpoint", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(2, 6, 1, "Close powerpoint", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(3, 5, 1, "Choose better font", 0);
+
 
 create table Chat(
     ChatID INTEGER,
@@ -276,3 +290,12 @@ values(1, "Student", "bbanner22", "hulk");
 insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
 values(1, "Teacher", "BuckyB101", "wwII");
+
+create table Files (
+    FileID INTEGER PRIMARY KEY,
+    FileName TEXT NOT NULL,
+    FileType BLOB NOT NULL
+);
+
+insert into Files (FileID, FileName, FileType)
+values(1, "Tree pics", "static/img/tree1.png");

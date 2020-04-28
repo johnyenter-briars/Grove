@@ -15,23 +15,27 @@
             <h2>List of Files</h2>
             <div class="list-files">
                 <ul class="vertical">
-                    <li><a href="static/img/tree1.png" download>Click me to download tree1</a></li>
+                    <li><a href="{{ displayPhoto }}" download>Click me to download tree1</a></li>
                     <li><a href="static/img/tree2.png" download>Click me to download tree2</a></li>
                     <li><a href="static/img/tree3.png" download>Click me to download tree3</a></li>
                     <li><a href="static/img/tree4.png" download>Click me to download tree4</a></li>
                 </ul>
             </div>
+            <form action="/task" method="POST">
+
             <div class="uploadDiv">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+                        <button type="submit" class="input-group-text" id="inputGroupFileAddon01">Upload</button>
                     </div>
                     <div class="custom-file">
-                        <input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                        <input type="file" name="fileType" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
                         <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
                     </div>
                 </div>
             </div>
+            </form>
+
         </div>
         <div class="chat-box">
             <h2>Chat Messages</h2>
