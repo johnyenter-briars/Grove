@@ -219,7 +219,7 @@ create table Task(
 
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 1, 1, "Open power point", 0);
+values(2, 1, 1, "Open power point", 1);
 
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
@@ -228,6 +228,19 @@ values(3, 2, 2, "Open ms word", 1);
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(3, 3, 2, "Click reformat button", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(2, 5, 1, "Add picture to powerpoint", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(2, 6, 1, "Close powerpoint", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(3, 5, 1, "Choose better font", 0);
+
 
 create table Chat(
     ChatID INTEGER,
