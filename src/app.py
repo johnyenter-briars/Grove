@@ -5,8 +5,10 @@ from services.JSONEncoderService import ClassEncoder
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 import os
+import sqlite3
 from flask.helpers import url_for
-UPLOAD_FOLDER = '/static/img'
+
+UPLOAD_FOLDER = '/static/files'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 
 app = Flask(__name__)
@@ -82,24 +84,25 @@ def projects():
 
 @app.route('/task', methods=['POST', 'GET'])
 def task():
-    #NOT COMPLETE - Unable to make a post call (changed span to button but it still didn't work)
+    files = database.getFilesForTask()
+    newID = len(files)
+    sess = json.loads(session['user_auth'])
+    first = sess.get('_FirstName')
+    last = sess.get('_LastName')
+
     if request.method == 'POST':
-        if 'file' not in request.files:
-            return redirect(request.url)
         file = request.files['fileType']
         if file.filename == '':
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            file.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
-            return redirect(url_for('uploaded_file', filename=filename))
-    # This is code to check if the "file" from the database can be returned
-    files = database.getFilesForTask(1)[0]
-    displayPhoto = files.getPhoto()
-    sess = json.loads(session['user_auth'])
-    first = sess.get('_FirstName')
-    last = sess.get('_LastName')
-    return render_template("task.html", name=first+' '+last, displayPhoto=displayPhoto)
+            path = app.config['UPLOAD_FOLDER'] + "/"
+            completeName = os.path.join(path, filename)
+            file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
+            database.addFile(newID,filename, completeName)
+            return redirect('/task')
+
+    return render_template("task.html", name=first+' '+last, files=files)
 
 def allowed_file(filename):
     return '.' in filename and \

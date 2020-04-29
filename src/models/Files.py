@@ -3,7 +3,7 @@ class Files(object):
         super().__init__()
         self._FileID = filesTuple[0]
         self._FileName = filesTuple[1]
-        self._FileType = filesTuple[2]
+        self._FileLocation = filesTuple[2]
 
     def getFileID(self):
         return self._FileID
@@ -11,5 +11,5 @@ class Files(object):
     def getFileName(self):
         return self._FileName
 
-    def getPhoto(self):
-        return self._FileType
+    def getFileLocation(self):
+        return self._FileLocation
