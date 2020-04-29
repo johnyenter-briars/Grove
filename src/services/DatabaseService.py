@@ -7,7 +7,7 @@ from models.Branch import Branch
 from models.Award import Award
 from services.FlattenerService import BranchFlattener
 from models.Files import Files
-
+from models.Task import Task
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -57,6 +57,11 @@ class DatabaseService(object):
         return BranchFlattener(
                 self._db.execute("""select * from Branch where StudentID={id};"""
                 .format(id=StudentID)).fetchall()).flatten()
+
+    def getTasksForBranch(self, BranchID, ProjectID):
+        return [Task(tuple) for tuple in self._db.execute("""
+                    select * from Task where BranchID={bid} and ProjectID={pid};"""
+                    .format(bid=BranchID, pid=ProjectID)).fetchall()]
 
     def getAwardsForStudent(self, StudentID):
         return [Award(tuple) for tuple in self._db.execute(
