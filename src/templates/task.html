@@ -15,18 +15,20 @@
             <h2>List of Files</h2>
             <div class="list-files">
                 <ul class="vertical">
-                    <li><a href="{{ displayPhoto }}" download>Click me to download tree1</a></li>
-                    <li><a href="static/img/tree2.png" download>Click me to download tree2</a></li>
-                    <li><a href="static/img/tree3.png" download>Click me to download tree3</a></li>
-                    <li><a href="static/img/tree4.png" download>Click me to download tree4</a></li>
+                    {% for file in files%}
+                    <li>
+                        <a href="{{file.getFileLocation()}}" download>{{file.getFileName()}}</a>
+                        <br>
+                    </li>
+                    {% endfor %}
                 </ul>
             </div>
-            <form action="/task" method="POST">
 
+            <form action="/task" method=post enctype=multipart/form-data>
             <div class="uploadDiv">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <button type="submit" class="input-group-text" id="inputGroupFileAddon01">Upload</button>
+                        <button type="submit" value=Upload class="input-group-text" style="margin-top: 0px;" id="inputGroupFileAddon01">Upload</button>
                     </div>
                     <div class="custom-file">
                         <input type="file" name="fileType" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
