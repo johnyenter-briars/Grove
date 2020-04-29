@@ -378,8 +378,12 @@ values(1, "Teacher", "BuckyB101", "wwII");
 create table Files (
     FileID INTEGER PRIMARY KEY,
     FileName TEXT NOT NULL,
-    FileType BLOB NOT NULL
+    FileLocation TEXT
 );
 
-insert into Files (FileID, FileName, FileType)
-values(1, "Tree pics", "static/img/tree1.png");
+insert into Files (FileID, FileName, FileLocation)
+values(1, "Tree1", "static/img/tree1.png");
+insert into Files (FileID, FileName, FileLocation)
+values(2, "Tree2", "static/img/tree2.png");
+insert into Files (FileID, FileName, FileLocation)
+values(3, "Tree3", "static/img/tree3.png");
