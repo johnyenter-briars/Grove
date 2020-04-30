@@ -12,6 +12,9 @@
     <h1>Welcome to the Task Page</h1>
     <div class="tasks">
         <div class="files">
+            <div class="task-description">
+                <p>{{taskObj.getTaskDesc()}}</p>
+            </div>
             <h2>List of Files</h2>
             <div class="list-files">
                 <ul class="vertical">
@@ -43,17 +46,27 @@
             <h2>Chat Messages</h2>
             <div class="chat">
                 {% for message in messages%}
-                <div class="message">
-                    <h3>{{message.getStudentID()}}</h3>
-                    <p>{{message.getMessageString()}}</p>
-                    <span class="time-right">{{message.getTimeStamp()}}</span>
-                </div>
+                    {%if message.getUserName() == name %}
+                    <div class="message darker">
+                        <h3>{{message.getUserName()}}</h3>
+                        <p>{{message.getMessageString()}}</p>
+                        <span class="time-right">{{message.getTimeStamp()}}</span>
+                    </div>
+                    {% else %}
+                    <div class="message">
+                        <h3>{{message.getUserName()}}</h3>
+                        <p>{{message.getMessageString()}}</p>
+                        <span class="time-right">{{message.getTimeStamp()}}</span>
+                    </div>
+                    {% endif %}
                 {% endfor %}
             </div>
+            <form action="/task/?taskID=6" method=post>
             <div class="chat-message">
-                <input class="chat-input" type="text" placeholder="enter your message" />
+                <input class="chat-input" type="text" name="message" placeholder="enter your message" />
                 <button type="submit">Send</button>
             </div>
+            </form>
         </div>
     </div>
 

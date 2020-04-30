@@ -84,6 +84,11 @@ class DatabaseService(object):
     def getChatForTask(self):
         return [Chat(tuple) for tuple in self._db.execute("select * from Chat;").fetchall()] 
 
+    def getTask(self, TaskID):
+        return [Task(tuple) for tuple in self   ._db.execute("""
+        select * from Task where TaskID={id};"""
+        .format(id=TaskID)).fetchall()][0]
+
     def getFilesForTask(self):
         return [Files(tuple) for tuple in self._db.execute("select * from Files;").fetchall()] 
 
