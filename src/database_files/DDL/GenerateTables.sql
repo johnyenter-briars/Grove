@@ -66,9 +66,9 @@ create table Project(
     FOREIGN KEY (GrowthStatus) REFERENCES ProjectStatus(GrowthStatus)
 );
 
-insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(1, "growth0", "test", "test desc");
+insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(1, "growth0", "American History Presentation", "Construct presentation materials to better communicate the intricacies of American History.");
 
-insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(2, "growth3", "test", "test desc");
+insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(2, "growth3", "Ethics Essay", "Write our essay on Socratic ethics.");
 
 create table Student(
     StudentID INTEGER,

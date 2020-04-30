@@ -275,3 +275,7 @@ h3 {
     padding: 16px;
     border-radius: 12px;
 }
+
+.micro-task-description > a{
+    color: #3a506b;
+}
