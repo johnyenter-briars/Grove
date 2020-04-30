@@ -2,7 +2,7 @@ class Chat(object):
     def __init__(self, chatTuple):
         super().__init__()
         self._ChatID = chatTuple[0]
-        self._StudentID = chatTuple[1]
+        self._UserName = chatTuple[1]
         self._TaskID = chatTuple[2]
         self._TimeStamp = chatTuple[3]
         self._MessageString = chatTuple[4]
@@ -10,8 +10,8 @@ class Chat(object):
     def getChatID(self):
         return self._ChatID
 
-    def getStudentID(self):
-        return self._StudentID
+    def getUserName(self):
+        return self._UserName
 
     def getTimeStamp(self):
         return self._TimeStamp
