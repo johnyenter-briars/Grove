@@ -103,7 +103,6 @@ def task():
         raise NoTaskIDException
     
     
-    
     files = database.getFilesForTask()
     newID = len(files)
     sess = json.loads(session['user_auth'])
@@ -116,15 +115,16 @@ def task():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            path = app.config['UPLOAD_FOLDER'] + "/"
-            completeName = os.path.join(path, filename)
-            file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
-            database.addFile(newID,filename, completeName)
-            return redirect('/task')
+            #path = app.config['UPLOAD_FOLDER'] + "/"
+            #completeName = os.path.join(path, filename)
+            #file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
+            database.addFile(newID,filename, file.read())
+            return redirect('/task/?taskID='+request.args.get('taskID') )
 
     return render_template("task.html", 
         name=first+' '+last, files=files, 
-        taskObj=database.getTask(int(request.args.get('taskID'))) 
+        taskObj=database.getTask(int(request.args.get('taskID'))),
+        taskID='?taskID='+request.args.get('taskID') 
     )
 
 def allowed_file(filename):
@@ -154,12 +154,26 @@ def classlist():
     
     students = database.getClassList(teachID)
     
-    return render_template("classlist.html", students=students)
+    return render_template("classlist.html", students=students, name=first+' '+last)
 
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
 
+@app.after_request
+def after_request_func(response):
+    path = request.path
+    print(path)
+    if (path != '/task/'):
+        if(path != '/scripts/scripts.js'):
+            if('/static/tmp/' not in path):
+                print("after_request is running")
+                directory = os.getcwd()+"/static/tmp/"
+                filelist = [ f for f in os.listdir(directory)]
+                for f in filelist:
+                    if (f!='.gitkeep'):
+                        os.remove(os.path.join(directory,f))
+    return response
 @app.errorhandler(NoTaskIDException)
 def keyerror_exception_handler(error):
     return render_template('generalexception.html')
