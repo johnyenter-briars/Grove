@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
-from config import Config
+from config.config import Config
 from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
 from werkzeug.utils import secure_filename
