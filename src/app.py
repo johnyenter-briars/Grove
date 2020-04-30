@@ -103,7 +103,6 @@ def task():
         raise NoTaskIDException
     
     
-    
     files = database.getFilesForTask()
     newID = len(files)
     sess = json.loads(session['user_auth'])
@@ -120,11 +119,12 @@ def task():
             #completeName = os.path.join(path, filename)
             #file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
             database.addFile(newID,filename, file.read())
-            return redirect('/task')
+            return redirect('/task/?taskID='+request.args.get('taskID') )
 
     return render_template("task.html", 
         name=first+' '+last, files=files, 
-        taskObj=database.getTask(int(request.args.get('taskID'))) 
+        taskObj=database.getTask(int(request.args.get('taskID'))),
+        taskID='?taskID='+request.args.get('taskID') 
     )
 
 def allowed_file(filename):
@@ -160,17 +160,19 @@ def classlist():
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
 
-@app.before_request
-def before_request_func():
+@app.after_request
+def after_request_func(response):
     path = request.path
     print(path)
-    if (path != '/task'):
+    if (path != '/task/'):
         if(path != '/scripts/scripts.js'):
-            print("after_request is running")
-            directory = os.getcwd()+"/static/tmp/"
-            filelist = [ f for f in os.listdir(directory)]
-            for f in filelist:
-                os.remove(os.path.join(directory,f))
+            if('/static/tmp/' not in path):
+                print("after_request is running")
+                directory = os.getcwd()+"/static/tmp/"
+                filelist = [ f for f in os.listdir(directory)]
+                for f in filelist:
+                    os.remove(os.path.join(directory,f))
+    return response
 @app.errorhandler(NoTaskIDException)
 def keyerror_exception_handler(error):
     return render_template('generalexception.html')
