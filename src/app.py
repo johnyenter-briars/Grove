@@ -171,7 +171,8 @@ def after_request_func(response):
                 directory = os.getcwd()+"/static/tmp/"
                 filelist = [ f for f in os.listdir(directory)]
                 for f in filelist:
-                    os.remove(os.path.join(directory,f))
+                    if (f!='.gitkeep'):
+                        os.remove(os.path.join(directory,f))
     return response
 @app.errorhandler(NoTaskIDException)
 def keyerror_exception_handler(error):
