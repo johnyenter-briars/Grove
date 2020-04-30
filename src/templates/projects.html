@@ -33,7 +33,7 @@
                     {% for task in tasksPerBranch[branch.getBranchID()]%}
                         <td>
                             <input type="text" placeholder="Task 1" />
-                            <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                            <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
                         </td>
                     {% endfor %}
                 {% endif%}
