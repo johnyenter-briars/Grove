@@ -42,32 +42,17 @@
         <div class="chat-box">
             <h2>Chat Messages</h2>
             <div class="chat">
+                {% for message in messages%}
                 <div class="message">
-                    <h3>user1</h3>
-                    <p>Hello. You're project looks great</p>
-                    <span class="time-right">11:00</span>
+                    <h3>{{message.getStudentID()}}</h3>
+                    <p>{{message.getMessageString()}}</p>
+                    <span class="time-right">{{message.getTimeStamp()}}</span>
                 </div>
-
-                <div class="message darker">
-                    <h3>user2</h3>
-                    <p>*your. thank you!</p>
-                    <span class="time-left">11:01</span>
-                </div>
-
-                <div class="message">
-                    <h3>user1</h3>
-                    <p>When are the powerpoints going to be uploaded?</p>
-                    <span class="time-right">11:02</span>
-                </div>
-
-                <div class="message darker">
-                    <h3>user2</h3>
-                    <p>Due next week. Can you help me draft it?</p>
-                    <span class="time-left">11:05</span>
-                </div>
+                {% endfor %}
             </div>
             <div class="chat-message">
                 <input class="chat-input" type="text" placeholder="enter your message" />
+                <button type="submit">Send</button>
             </div>
         </div>
     </div>
