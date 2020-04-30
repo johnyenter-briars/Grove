@@ -18,5 +18,5 @@ class Files(object):
         with open(fname, 'wb') as file:
             file.write(self._File)
         print("Stored blob data into: ", self._FileName, "\n")
-        shortfname = '/app/static/tmp/'+self._FileName
+        shortfname = '/static/tmp/'+self._FileName
         return shortfname
