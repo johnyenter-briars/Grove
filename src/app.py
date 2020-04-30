@@ -110,10 +110,10 @@ def task():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            path = app.config['UPLOAD_FOLDER'] + "/"
-            completeName = os.path.join(path, filename)
-            file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
-            database.addFile(newID,filename, completeName)
+            #path = app.config['UPLOAD_FOLDER'] + "/"
+            #completeName = os.path.join(path, filename)
+            #file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
+            database.addFile(newID,filename, file.read())
             return redirect('/task')
 
     return render_template("task.html", name=first+' '+last, files=files)
@@ -145,11 +145,23 @@ def classlist():
     
     students = database.getClassList(teachID)
     
-    return render_template("classlist.html", students=students)
+    return render_template("classlist.html", students=students, name=first+' '+last)
 
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
+
+@app.before_request
+def before_request_func():
+    path = request.path
+    print(path)
+    if (path != '/task'):
+        if(path != '/scripts/scripts.js'):
+            print("after_request is running")
+            directory = os.getcwd()+"/static/tmp/"
+            filelist = [ f for f in os.listdir(directory)]
+            for f in filelist:
+                os.remove(os.path.join(directory,f))
 
 if __name__ == '__main__':
     app.run(debug=True)

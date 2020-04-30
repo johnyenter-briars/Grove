@@ -3,7 +3,7 @@
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
         <li><a href="/projects">Projects</a></li>
-        <li><a href="javascript:void(0)">Classlist</a></li>
+        <li><a href="/classlist">Classlist</a></li>
         <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
         <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
     </ul>
@@ -17,7 +17,7 @@
                 <ul class="vertical">
                     {% for file in files%}
                     <li>
-                        <a href="{{file.getFileLocation()}}" download>{{file.getFileName()}}</a>
+                        <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
                         <br>
                     </li>
                     {% endfor %}
@@ -25,17 +25,17 @@
             </div>
 
             <form action="/task" method=post enctype=multipart/form-data>
-            <div class="uploadDiv">
-                <div class="input-group">
-                    <div class="input-group-prepend">
-                        <button type="submit" value=Upload class="input-group-text" style="margin-top: 0px;" id="inputGroupFileAddon01">Upload</button>
-                    </div>
-                    <div class="custom-file">
-                        <input type="file" name="fileType" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
-                        <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                <div class="uploadDiv">
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <button type="submit" value=Upload class="input-group-text" style="margin-top: 0px;" id="inputGroupFileAddon01">Upload</button>
+                        </div>
+                        <div class="custom-file">
+                            <input type="file" name="fileType" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01">
+                            <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                        </div>
                     </div>
                 </div>
-            </div>
             </form>
 
         </div>
