@@ -17,8 +17,8 @@
         {% endif %}
         <!-- add correct perm when those are sorted lol ...--->
         {% if teach and proj %}
-        <h2>Hey, {{ name }} you are in {{ teach }}'s class. </h2>
-        <h3>You are assigned to Project: {{ proj.getProjectDesc() }}. </h3>
+        <h1>{{proj.getProjectName()}}</h1>
+        <h3>Project Goal: {{ proj.getProjectDesc() }}. </h3>
         {% endif %}
     </div>
     <div class="branches">
@@ -28,10 +28,16 @@
             {% for studentID in branch.getStudents() %}
             <b>{{ studentsOnProject[studentID].getFirstName()}}</b> {% endfor %} {% if branch.getBranchID() in tasksPerBranch%} {% for task in tasksPerBranch[branch.getBranchID()]%}
             <td>
-                <input type="text" placeholder="Task 1" />
-                <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                <div class="micro-task-description">
+                    <h1>{{task.getTaskDesc()}}</h1>
+                    <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;Go to task page</b></a>
+                </div>
             </td>
             {% endfor %} {% endif%}
+
+            <input type="text" placeholder="Add a Leaf" />
+            <a style="border-left: 4px solid black;" href="javascript:void(0);"><b>&nbsp;Add</b></a>
+
         </div>
         {% endfor %}
         <br> {% if teach and proj %}

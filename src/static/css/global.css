@@ -259,3 +259,23 @@ h3 {
   padding: 16px;
   border-radius: 12px;
 }
+
+.task-description{
+    display: inline-flexbox;
+    background-color: #8EAB91;
+    border: 3px solid #f1f1f1;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.micro-task-description{
+    display: inline-flexbox;
+    background-color: #808000;
+    border: 3px solid #20B2AA;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.micro-task-description > a{
+    color: #3a506b;
+}
