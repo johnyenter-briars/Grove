@@ -84,10 +84,10 @@ class DatabaseService(object):
     def getFilesForTask(self):
         return [Files(tuple) for tuple in self._db.execute("select * from Files;").fetchall()] 
 
-    def addFile(self, FileID, FileName, FileLocation):
+    def addFile(self, FileID, FileName, FileType):
         try:
             self._db.execute(""" INSERT INTO Files
-            (FileID, FileName, FileLocation) VALUES (?, ?, ?)""", (FileID, FileName, FileLocation))
+            (FileID, FileName, FileType) VALUES (?, ?, ?)""", (FileID, FileName, FileType))
             self._db.commit()
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
