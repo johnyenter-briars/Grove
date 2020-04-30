@@ -55,11 +55,11 @@ def keyerror_exception_handler(error):
 
 @app.after_request
 def after_request_func(response):
-    pass
+    print(os.getcwd())
     path = request.path
     print(path)
-    if not path in ['/task/', '/scripts/scripts.js', '/scripts/scripts.js', '/static/css/global.css']:
-        if '/app/static/tmp/' not in path:
+    if (not path in ['/task/', '/scripts/scripts.js', '/scripts/scripts.js', '/static/css/global.css']):
+        if '/static/tmp/' not in path:
             print("after_request is running")
             directory = os.getcwd()+"/app/static/tmp/"
             filelist = [ f for f in os.listdir(directory)]
