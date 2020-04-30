@@ -58,15 +58,14 @@ def after_request_func(response):
     pass
     path = request.path
     print(path)
-    if (path != '/task/'):
-        if(path != '/app/scripts/scripts.js'):
-            if('/app/static/tmp/' not in path):
-                print("after_request is running")
-                directory = os.getcwd()+"/app/static/tmp/"
-                filelist = [ f for f in os.listdir(directory)]
-                for f in filelist:
-                    if (f!='.gitkeep'):
-                        os.remove(os.path.join(directory,f))
+    if not path in ['/task/', '/scripts/scripts.js', '/scripts/scripts.js', '/static/css/global.css']:
+        if '/app/static/tmp/' not in path:
+            print("after_request is running")
+            directory = os.getcwd()+"/app/static/tmp/"
+            filelist = [ f for f in os.listdir(directory)]
+            for f in filelist:
+                if (f!='.gitkeep'):
+                    os.remove(os.path.join(directory,f))
     return response
 
 @app.errorhandler(NoTaskIDException)
