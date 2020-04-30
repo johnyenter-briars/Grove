@@ -3,7 +3,7 @@
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
         <li><a href="javascript:void(0)">Projects</a></li>
-        <li><a href="javascript:void(0)">Classlist</a></li>
+        <li><a href="/classlist">Classlist</a></li>
         <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
         <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
     </ul>
@@ -23,31 +23,26 @@
     </div>
     <div class="branches">
         {% for branch in branches%}
-            <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
-                <h1>{{branch.getBranchDesc()}}</h1>
-                {% for studentID in branch.getStudents() %}
-                    <b>{{ studentsOnProject[studentID].getFirstName()}}</b>
-                {% endfor %}
-
-                {% if branch.getBranchID() in tasksPerBranch%}
-                    {% for task in tasksPerBranch[branch.getBranchID()]%}
-                        <td>
-                            <input type="text" placeholder="Task 1" />
-                            <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
-                        </td>
-                    {% endfor %}
-                {% endif%}
-            </div>
+        <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
+            <h1>{{branch.getBranchDesc()}}</h1>
+            {% for studentID in branch.getStudents() %}
+            <b>{{ studentsOnProject[studentID].getFirstName()}}</b> {% endfor %} {% if branch.getBranchID() in tasksPerBranch%} {% for task in tasksPerBranch[branch.getBranchID()]%}
+            <td>
+                <input type="text" placeholder="Task 1" />
+                <a style="border-left: 4px solid black;" href="/task"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+            </td>
+            {% endfor %} {% endif%}
+        </div>
         {% endfor %}
         <br> {% if teach and proj %}
-            <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
-            <button type="button" id="btnAddCol">Add Branch</button>
-            </br>
-            <button type="button" id="btnAdd">Add Task</button>
-            </br>
-            <button type="button" id="branchUpdate">Update Branches & Tasks</button>
-            </br>
-            {% endif %}
+        <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
+        <button type="button" id="btnAddCol">Add Branch</button>
+        </br>
+        <button type="button" id="btnAdd">Add Task</button>
+        </br>
+        <button type="button" id="branchUpdate">Update Branches & Tasks</button>
+        </br>
+        {% endif %}
     </div>
 
     <script lang="js">
