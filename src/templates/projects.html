@@ -32,8 +32,11 @@
                 {% if branch.getBranchID() in tasksPerBranch%}
                     {% for task in tasksPerBranch[branch.getBranchID()]%}
                         <td>
-                            <input type="text" placeholder="Task 1" />
-                            <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                            <div class="micro-task-description">
+                                <h1>{{task.getTaskDesc()}}</h1>
+                                <input type="text" placeholder="Task 1" />
+                                <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;Go to task page</b></a>
+                            </div>
                         </td>
                     {% endfor %}
                 {% endif%}
