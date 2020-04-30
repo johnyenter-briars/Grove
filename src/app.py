@@ -4,6 +4,7 @@ from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
+from exceptions.NoTaskIDException import NoTaskIDException
 import os
 import sqlite3
 from flask.helpers import url_for
@@ -96,8 +97,13 @@ def projects():
         studentsOnProject=studentsOnProject,
         tasksPerBranch=tasksByBranchId)
 
-@app.route('/task', methods=['POST', 'GET'])
+@app.route('/task/', methods=['POST', 'GET'])
 def task():
+    if request.args.get('taskID') == None:
+        raise NoTaskIDException
+    
+    
+    
     files = database.getFilesForTask()
     newID = len(files)
     sess = json.loads(session['user_auth'])
@@ -116,7 +122,10 @@ def task():
             database.addFile(newID,filename, completeName)
             return redirect('/task')
 
-    return render_template("task.html", name=first+' '+last, files=files)
+    return render_template("task.html", 
+        name=first+' '+last, files=files, 
+        taskObj=database.getTask(int(request.args.get('taskID'))) 
+    )
 
 def allowed_file(filename):
     return '.' in filename and \
@@ -150,6 +159,10 @@ def classlist():
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
+
+@app.errorhandler(NoTaskIDException)
+def keyerror_exception_handler(error):
+    return render_template('generalexception.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
