@@ -13,10 +13,10 @@ class Files(object):
         return self._FileName
 
     def getFile(self):
-        fname = os.getcwd()+"/static/tmp/"+self._FileName
+        fname = os.getcwd()+"/app/static/tmp/"+self._FileName
         print(fname)
         with open(fname, 'wb') as file:
             file.write(self._File)
         print("Stored blob data into: ", self._FileName, "\n")
-        shortfname = '/static/tmp/'+self._FileName
+        shortfname = '/app/static/tmp/'+self._FileName
         return shortfname
