@@ -17,6 +17,7 @@ app.config.from_object(Config)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 database = DatabaseService()
+
 @app.route('/', methods=['POST', 'GET'])
 def hello():
     if request.method == 'POST':
@@ -48,80 +49,6 @@ def hello():
 
     return render_template("index.html", loggedInUser="Please login below")
 
-
-@app.route('/home')
-def home():
-    sess = json.loads(session['user_auth'])
-    first = sess.get('_FirstName')
-    last = sess.get('_LastName')
-    return render_template("home.html", name=first+' '+last)
-
-
-@app.route('/projects')
-def projects():
-    sess = json.loads(session['user_auth'])
-    if not sess:
-        return redirect('/')
-    first = sess.get('_FirstName')
-    last = sess.get('_LastName')
-    teacherObj = database.getTeacher(sess.get('_TeacherID'))
-    pId = sess.get('_ProjectID')
-    perm = sess.get('_PermissionLevel')
-
-    branches: List[Branch] = database.getBranchesForProject(pId)
-    projectObj = database.getProject(pId)
-    studentsOnProject = {}
-    rawtasks = []
-    tasksByBranchId = {}
-    
-    #Just getting a list of all students who are on this project
-    #I realize there is a better way to do this now, but John from a week ago was dumb
-    for branch in branches:
-        for studentId in branch.getStudents():
-            studentsOnProject[studentId] = database.getStudent(studentId)
-    
-    for branch in branches:
-        rawtasks += database.getTasksForBranch(branch.getBranchID(), branch.getProjectID())
-        
-    for task in rawtasks:
-        if task.getBranchID() in tasksByBranchId:
-            tasksByBranchId[task.getBranchID()].append(task)
-        else:
-            tasksByBranchId[task.getBranchID()] = [task]
-   
-    return render_template("projects.html", name=first+' '+last, 
-        teach=teacherObj.getFirstName() + " " + teacherObj.getLastName(), 
-        proj=projectObj, 
-        perm=perm,
-        branches=branches,
-        studentsOnProject=studentsOnProject,
-        tasksPerBranch=tasksByBranchId)
-
-@app.route('/profile')
-def profile():
-    sess = json.loads(session['user_auth'])
-    branches = database.getBranchesForStudent(sess.get('_StudentID'))
-    awards = database.getAwardsForStudent(sess.get('_StudentID'))
-    first = sess.get('_FirstName')
-    last = sess.get('_LastName')
-    return render_template("profile.html", name=first+' '+last, branches=branches, awards=awards)
-
-@app.route('/logout')
-def logout():
-    session.pop('user_auth')
-    return redirect('/')
-
-@app.route('/classlist')
-def classlist():
-    sess = json.loads(session['user_auth'])
-    first = sess.get('_FirstName')
-    last = sess.get('_LastName')
-    teachID = sess.get('_TeacherID')
-    
-    students = database.getClassList(teachID)
-    
-    return render_template("classlist.html", students=students, name=first+' '+last)
-
 @app.errorhandler(KeyError)
 def keyerror_exception_handler(error):
     return render_template('keyerror.html')
@@ -140,8 +67,8 @@ def after_request_func(response):
                 for f in filelist:
                     if (f!='.gitkeep'):
                         os.remove(os.path.join(directory,f))
-
     return response
+
 @app.errorhandler(NoTaskIDException)
 def keyerror_exception_handler(error):
     return render_template('generalexception.html')
@@ -150,5 +77,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-
-from app import task
+from app import task, projects, profile, home, classlist, logout
