@@ -99,6 +99,7 @@ def projects():
 @app.route('/task', methods=['POST', 'GET'])
 def task():
     files = database.getFilesForTask()
+    messages = database.getChatForTask()
     newID = len(files)
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
@@ -116,7 +117,13 @@ def task():
             database.addFile(newID,filename, completeName)
             return redirect('/task')
 
-    return render_template("task.html", name=first+' '+last, files=files)
+        newChat = request.form['message']
+        if newChat:
+            database.addMessage()
+            return redirect('/task')
+
+
+    return render_template("task.html", name=first+' '+last, files=files, messages=messages)
 
 def allowed_file(filename):
     return '.' in filename and \
