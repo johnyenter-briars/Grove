@@ -328,23 +328,23 @@ values(3, 5, 1, "Choose better font", 0);
 
 create table Chat(
     ChatID INTEGER,
-    StudentID INTEGER,
+    UserName varchar(20),
     TaskID INTEGER,
     TimeStamp TEXT,
     MessageString TEXT,
 
     PRIMARY KEY (ChatID),
-    FOREIGN KEY (StudentID) REFERENCES Student(StudentID),
+    FOREIGN KEY (UserName) REFERENCES UserCredentials(UserName),
     FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
 );
 
 insert into Chat
-(StudentID, TaskID, TimeStamp, MessageString)
-values(2, 3, "now", "All done with task number 2! You can format document now. ");
+(UserName, TaskID, TimeStamp, MessageString)
+values("Wanda Maximoff", 3, "01/19/20 05:34:14 AM", "All done with task number 2! You can format document now. ");
 
 insert into Chat
-(StudentID, TaskID, TimeStamp, MessageString)
-values(3, 1, "now", "Hurry up you bum!");
+(UserName, TaskID, TimeStamp, MessageString)
+values("Tony Stark", 1, "01/20/20 08:34:29 PM", "Hurry up you bum!");
 
 create table Admin(
     AdminID INTEGER,
