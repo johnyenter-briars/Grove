@@ -13,10 +13,10 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 def task():
     if request.args.get('taskID') == None:
         raise NoTaskIDException
-    
-    files = database.getFilesForTask()
-    messages = database.getChatForTask()
-    newID = len(files)
+    currentTaskID = request.args.get('taskID')
+    files = database.getFilesForTask(currentTaskID)
+    messages = database.getChatForTask(currentTaskID)
+
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
@@ -27,20 +27,20 @@ def task():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            database.addFile(newID,filename, file.read())
-            return redirect('/task/?taskID='+request.args.get('taskID') )
+            database.addFile(currentTaskID, filename, file.read())
+            return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST':
         now = datetime.now()
         current_time = now.strftime("%x %I:%M:%S %p")
         newChat = request.form['message']
-        database.addMessage(fullName, request.args.get('taskID'),current_time, newChat)
-        return redirect('/task/?taskID='+request.args.get('taskID') )
+        database.addMessage(fullName, currentTaskID, current_time, newChat)
+        return redirect('/task/?taskID='+currentTaskID)
 
     return render_template("task.html", 
         name=first+' '+last, files=files, 
-        taskObj=database.getTask(int(request.args.get('taskID'))),
-        taskID='?taskID='+request.args.get('taskID'),
+        taskObj=database.getTask(int(currentTaskID)),
+        taskID='?taskID='+currentTaskID,
         messages=messages,
     )
 
