@@ -66,9 +66,9 @@ create table Project(
     FOREIGN KEY (GrowthStatus) REFERENCES ProjectStatus(GrowthStatus)
 );
 
-insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(1, "growth0", "test", "test desc");
+insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(1, "growth0", "American History Presentation", "Construct presentation materials to better communicate the intricacies of American History.");
 
-insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(2, "growth3", "test", "test desc");
+insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(2, "growth3", "Ethics Essay", "Write our essay on Socratic ethics.");
 
 create table Student(
     StudentID INTEGER,
@@ -340,11 +340,11 @@ create table Chat(
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
-values("Gamora Titan", 3, "now", "All done with task number 2! You can format document now. ");
+values("Wanda Maximoff", 3, "01/19/20 05:34:14 AM", "All done with task number 2! You can format document now. ");
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
-values("Bucky Barnes", 1, "now", "Hurry up you bum!");
+values("Tony Stark", 1, "01/20/20 08:34:29 PM", "Hurry up you bum!");
 
 create table Admin(
     AdminID INTEGER,

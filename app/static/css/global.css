@@ -53,6 +53,7 @@ h2 {
   text-align: center;
   color: rgb(30, 39, 30);
   font-size: 23px;
+  margin-top: 10px;
 }
 
 input[type=text],
@@ -102,7 +103,6 @@ ul {
   margin-inline-end: 0px;
   padding-inline-start: 40px;
   border-radius: 15px;
-
 }
 
 ul.horizontal {
@@ -170,9 +170,8 @@ ul.vertical li a {
 }
 
 .files {
-  height: 500px;
-  width: 500px;
-  overflow: auto;
+  height: 600px;
+  width: 450px;
   position: relative;
   background-color: rgb(111, 129, 119);
   border-radius: 12px;
@@ -191,13 +190,13 @@ ul.vertical li a {
 .chat-box {
   background-color: rgb(111, 129, 119);
   border-radius: 12px;
-  padding: 4%;
+  padding: 2%;
   margin-left: 12px;
 
 }
 
 .chat {
-  height: 300px;
+  height: 320px;
   width: 400px;
   overflow-y: auto;
 }
@@ -261,11 +260,13 @@ h3 {
 }
 
 .task-description{
-    display: inline-flexbox;
+    margin: auto;
     background-color: #8EAB91;
     border: 3px solid #f1f1f1;
-    padding: 16px;
+    padding: 10px;
     border-radius: 12px;
+    text-align: center;
+    width: 40%;
 }
 
 .micro-task-description{
@@ -278,4 +279,11 @@ h3 {
 
 .micro-task-description > a{
     color: #3a506b;
+}
+
+.list-files{
+  height: 400px;
+  width: 400px;
+  overflow-y: auto;
+
 }
