@@ -9,20 +9,19 @@
     </ul>
 </div>
 <div class="task-page">
-    <h1>Welcome to the Task Page</h1>
+    <div class="task-description">
+        <p>{{taskObj.getTaskDesc()}}</p>
+    </div>
     <div class="tasks">
         <div class="files">
-            <div class="task-description">
-                <p>{{taskObj.getTaskDesc()}}</p>
-            </div>
             <h2>List of Files</h2>
             <div class="list-files">
                 <ul class="vertical">
                     {% for file in files%}
-                    <li>
-                        <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
-                        <br>
-                    </li>
+                        <li>
+                            <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
+                            <br>
+                        </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -63,7 +62,7 @@
             </div>
             <form action="/task/{{taskID}}" method=post>
             <div class="chat-message">
-                <input class="chat-input" type="text" name="message" value ="" placeholder="enter your message" />
+                <input class="chat-input" type="text" name="message" placeholder="enter your message" />
                 <button type="submit">Send</button>
             </div>
             </form>

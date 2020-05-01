@@ -3,6 +3,8 @@ from app import app, database
 from exceptions.NoTaskIDException import NoTaskIDException
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
+from datetime import datetime
+
 
 UPLOAD_FOLDER = '/app/static/files'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -25,21 +27,21 @@ def task():
             return redirect(request.url)
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
-            #path = app.config['UPLOAD_FOLDER'] + "/"
-            #completeName = os.path.join(path, filename)
-            #file.save(os.path.join(app.root_path, 'static','files',secure_filename(file.filename)))
             database.addFile(newID,filename, file.read())
             return redirect('/task/?taskID='+request.args.get('taskID') )
 
     if request.method == 'POST':
+        now = datetime.now()
+        current_time = now.strftime("%x %I:%M:%S %p")
         newChat = request.form['message']
-        database.addMessage(fullName, request.args.get('taskID'), "now", newChat)
+        database.addMessage(fullName, request.args.get('taskID'),current_time, newChat)
         return redirect('/task/?taskID='+request.args.get('taskID') )
 
     return render_template("task.html", 
         name=first+' '+last, files=files, 
         taskObj=database.getTask(int(request.args.get('taskID'))),
-        taskID='?taskID='+request.args.get('taskID') 
+        taskID='?taskID='+request.args.get('taskID'),
+        messages=messages,
     )
 
 def allowed_file(filename):
