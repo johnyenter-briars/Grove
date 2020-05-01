@@ -8,6 +8,7 @@ from models.Award import Award
 from services.FlattenerService import BranchFlattener
 from models.Files import Files
 from models.Task import Task
+from models.Chat import Chat
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -75,6 +76,14 @@ class DatabaseService(object):
         return [Project(tuple) for tuple in self._db.execute("""
             select * from Project where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()][0]
+
+    def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
+        self._db.execute(""" INSERT INTO Chat
+            (UserName, TaskID, TimeStamp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStamp, MessageString))
+        self._db.commit()
+
+    def getChatForTask(self):
+        return [Chat(tuple) for tuple in self._db.execute("select * from Chat;").fetchall()] 
 
     def getTask(self, TaskID):
         return [Task(tuple) for tuple in self   ._db.execute("""
