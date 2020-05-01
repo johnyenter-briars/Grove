@@ -340,11 +340,11 @@ create table Chat(
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
-values("Bruce Banner", 3, "now", "All done with task number 2! You can format document now. ");
+values("Gamora Titan", 3, "now", "All done with task number 2! You can format document now. ");
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
-values("Bruce Banner", 1, "now", "Hurry up you bum!");
+values("Bucky Barnes", 1, "now", "Hurry up you bum!");
 
 create table Admin(
     AdminID INTEGER,

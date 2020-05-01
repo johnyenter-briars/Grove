@@ -106,20 +106,15 @@ def task():
     messages = database.getChatForTask()
     newID = len(files)
     sess = json.loads(session['user_auth'])
-    print(sess)
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     fullName = first + " " + last
-    if request.method == 'POST':
-        print(request.get_json)
-        print("FILES INSIDE")
+    if request.method == 'POST' and request.form.getlist("message") == [] :
         file = request.files['fileType']
         print(file)
         if file.filename == '':
-            print("tes1")
             return redirect(request.url)
         if file and allowed_file(file.filename):
-            print("tes2")
             filename = secure_filename(file.filename)
             #path = app.config['UPLOAD_FOLDER'] + "/"
             #completeName = os.path.join(path, filename)
@@ -129,8 +124,6 @@ def task():
 
     if request.method == 'POST':
         newChat = request.form['message']
-        print("WE ARE PRINTING:" + newChat)
-        print("we crezy")
         database.addMessage(fullName, request.args.get('taskID'), "now", newChat)
         return redirect('/task/?taskID='+request.args.get('taskID') )
 
