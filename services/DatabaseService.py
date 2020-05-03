@@ -101,6 +101,14 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
+    def removeFile(self, FileName):
+        try:
+            self._db.execute(""" DELETE FROM Files
+            WHERE FileName = ?""", (FileName,))
+            self._db.commit()
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
+
     def close_connection(self, exception):
         self._db.close()
         

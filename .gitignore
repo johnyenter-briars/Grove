@@ -7,3 +7,4 @@ app/static/tmp/*
 app/__pycache__
 test/__pycache__
 !static/tmp/.gitkeep
+.vscode/settings.json
