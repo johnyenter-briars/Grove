@@ -1,4 +1,20 @@
 {% extends "header.html" %} {% block content %}
+<script>
+    async function deleteFile(fname) {
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+        formData.append("filename", fname);
+        console.log(fname);
+        xhr.open("POST", "/task/{{taskID}}", true);
+        //xhr.setRequestHeader('Content-Type', 'application/json');
+        xhr.send(formData);
+        await reloadPage();
+    }
+
+    function reloadPage() {
+        location.reload();
+    }
+</script>
 <div class="guide">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
@@ -20,10 +36,7 @@
                     {% for file in files%}
                     <li>
                         <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
-                        <form action="/task/{{taskID}}" method=post>
-                            <input type="hidden" name="filename" value={{file.getFileName()}}>
-                            <button type="submit">Delete</button>
-                        </form>
+                        <input type="image" align="right" style="padding-top: 10px;padding-right: 10px;" height=40px src="/static/img/delete-icon.png" onclick="deleteFile('{{file.getFileName()}}');">
                     </li>
                     {% endfor %}
                 </ul>
