@@ -40,7 +40,7 @@ def task():
     if request.method == 'POST':
         fname = request.form['filename']
         database.removeFile(fname)
-        return redirect('/task/?taskID='+request.args.get('taskID') )
+        return redirect('/task/?taskID='+currentTaskID)
 
     return render_template("task.html", 
         name=first+' '+last, files=files, 
