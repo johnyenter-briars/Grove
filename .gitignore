@@ -1,9 +1,9 @@
-__pycache__
-services/__pycache__
-models/__pycache__
-exceptions/__pycache__
-config/__pycache__
+__pycache__/
+services/__pycache__/
+models/__pycache__/
+exceptions/__pycache__/
+config/__pycache__/
 app/static/tmp/*
-app/__pycache__
-test/__pycache__
+app/__pycache__/
+test/__pycache__/
 !static/tmp/.gitkeep
