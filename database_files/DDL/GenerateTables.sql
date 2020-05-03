@@ -328,7 +328,7 @@ values(3, 5, 1, "Choose better font", 0);
 
 create table Chat(
     ChatID INTEGER,
-    UserName varchar(20),
+    UserName TEXT,
     TaskID INTEGER,
     TimeStamp TEXT,
     MessageString TEXT,
@@ -340,7 +340,7 @@ create table Chat(
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
-values("Wanda Maximoff", 3, "01/19/20 05:34:14 AM", "All done with task number 2! You can format document now. ");
+values("Wanda Maximoff", 6, "01/19/20 05:34:14 AM", "All done with task number 6! You can format document now. ");
 
 insert into Chat
 (UserName, TaskID, TimeStamp, MessageString)
@@ -377,13 +377,9 @@ values(1, "Teacher", "BuckyB101", "wwII");
 
 create table Files (
     FileID INTEGER PRIMARY KEY,
+    TaskID INTEGER,
     FileName TEXT NOT NULL,
-    FileType blob
-);
+    FileType blob,
 
---insert into Files (FileID, FileName, FileType)
---values(1, "Tree1", "static/img/tree1.png");
---insert into Files (FileID, FileName, FileType)
---values(2, "Tree2", "static/img/tree2.png");
---insert into Files (FileID, FileName, FileType)
---values(3, "Tree3", "static/img/tree3.png");
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
+);
