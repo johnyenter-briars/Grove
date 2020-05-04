@@ -8,6 +8,7 @@ from models.Award import Award
 from services.FlattenerService import BranchFlattener
 from models.Files import Files
 from models.Task import Task
+from models.Chat import Chat
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -76,18 +77,28 @@ class DatabaseService(object):
             select * from Project where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()][0]
 
+    def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
+        self._db.execute(""" INSERT INTO Chat
+            (UserName, TaskID, TimeStamp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStamp, MessageString))
+        self._db.commit()
+
+    def getChatForTask(self, TaskID):
+        return [Chat(tuple) for tuple in self._db.execute(
+                """select * from Chat where TaskID={id};""".format(id=TaskID)).fetchall()]
+
     def getTask(self, TaskID):
         return [Task(tuple) for tuple in self   ._db.execute("""
         select * from Task where TaskID={id};"""
         .format(id=TaskID)).fetchall()][0]
 
-    def getFilesForTask(self):
-        return [Files(tuple) for tuple in self._db.execute("select * from Files;").fetchall()] 
+    def getFilesForTask(self, TaskID):
+        return [Files(tuple) for tuple in self._db.execute(
+                """select * from Files where TaskID={id};""".format(id=TaskID)).fetchall()]
 
-    def addFile(self, FileID, FileName, FileLocation):
+    def addFile(self, TaskID, FileName, FileType):
         try:
             self._db.execute(""" INSERT INTO Files
-            (FileID, FileName, FileLocation) VALUES (?, ?, ?)""", (FileID, FileName, FileLocation))
+            (TaskID, FileName, FileType) VALUES (?, ?, ?)""", (TaskID, FileName, FileType))
             self._db.commit()
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
