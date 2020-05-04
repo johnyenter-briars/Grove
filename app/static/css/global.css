@@ -1,0 +1,289 @@
+/* Open Sans Google Font */
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:600,700);
+
+/* Montserrat Google Font */
+
+@import url(https://fonts.googleapis.com/css?family=Montserrat:400,700);
+
+
+* {
+  font-family: 'Montserrat';
+  margin: 0;
+  padding: 0;
+}
+
+.title {
+  color: green;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #E4EDE7;
+}
+
+.guide {
+  margin: 4%;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0;
+}
+
+.column {
+  margin-left: 20px;
+}
+
+.container {
+  display: block;
+  background-color: #8EAB91;
+  border: 3px solid #f1f1f1;
+  width: 500px;
+  height: 500px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+h1,
+h2 {
+  font-family: 'Open Sans';
+  text-align: center;
+  color: rgb(30, 39, 30);
+  font-size: 23px;
+  margin-top: 10px;
+}
+
+input[type=text],
+input[type=password] {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+button {
+  background-color: #EDF8E8;
+  color: gray;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  border-radius: 12px;
+}
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  color: black;
+  background-color: #f44336;
+}
+
+
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+ul {
+  display: block;
+  list-style-type: disc;
+  margin-block-start: 1em;
+  margin-block-end: 1em;
+  margin-inline-start: 0px;
+  margin-inline-end: 0px;
+  padding-inline-start: 40px;
+  border-radius: 15px;
+}
+
+ul.horizontal {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid #e7e7e7;
+  background-color: #f3f3f3;
+}
+
+ul.horizontal li {
+  float: left;
+}
+
+ul.horizontal li a {
+  display: inline-block;
+  color: #666;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+ul.horizontal li a:hover:not(.active) {
+  background-color: #ddd;
+}
+
+ul.horizontal a.active {
+  color: white;
+  background-color: rgb(29, 116, 32);
+}
+
+ul.gray {
+  border: 1px solid #e7e7e7;
+  background-color: rgb(185, 206, 194);
+}
+
+ul.vertical {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+ul.vertical li {
+  background-color: #202e1d;
+  margin-bottom: 10px;
+
+}
+
+ul.vertical li a {
+  display: inline-block;
+  color: rgb(202, 197, 197);
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+
+.tasks {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin: 4%;
+}
+
+.files {
+  height: 600px;
+  width: 450px;
+  position: relative;
+  background-color: rgb(111, 129, 119);
+  border-radius: 12px;
+  padding: 2%;
+  margin-right: 12px;
+
+}
+
+.uploadDiv {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
+
+.chat-box {
+  background-color: rgb(111, 129, 119);
+  border-radius: 12px;
+  padding: 2%;
+  margin-left: 12px;
+
+}
+
+.chat {
+  height: 320px;
+  width: 400px;
+  overflow-y: auto;
+}
+
+h3 {
+  font-size: small;
+}
+
+.message {
+  border: 2px solid #dedede;
+  background-color: #f1f1f1;
+  border-radius: 5px;
+  padding: 10px;
+  margin: 10px 0;
+
+}
+
+.darker {
+  border-color: rgb(178, 179, 178);
+  background-color: rgb(195, 196, 195);
+}
+
+.message::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+.time-right {
+  float: right;
+  color: #aaa;
+}
+
+.time-left {
+  float: left;
+  color: #999;
+}
+
+.branches {
+  display: block;
+  margin-left: 4%;
+  margin-right: 4%;
+  background-color: #8EAB91;
+  border: 3px solid #f1f1f1;
+  width: auto;
+  height: auto;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.projectdeets {
+  display: block;
+  margin-left: 4%;
+  margin-right: 4%;
+  background-color: #8EAB91;
+  border: 3px solid #f1f1f1;
+  width: auto;
+  height: auto;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.task-description{
+    margin: auto;
+    background-color: #8EAB91;
+    border: 3px solid #f1f1f1;
+    padding: 10px;
+    border-radius: 12px;
+    text-align: center;
+    width: 40%;
+}
+
+.micro-task-description{
+    display: inline-flexbox;
+    background-color: #808000;
+    border: 3px solid #20B2AA;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.micro-task-description > a{
+    color: #3a506b;
+}
+
+.list-files{
+  height: 400px;
+  width: 400px;
+  overflow-y: auto;
+
+}
