@@ -1,0 +1,20 @@
+.teacherconsole-actionarea {
+    display: block;
+    margin-left: 4%;
+    margin-right: 4%;
+    background-color: #8EAB91;
+    border: 3px solid #f1f1f1;
+    width: auto;
+    height: auto;
+    padding: 16px;
+    border-radius: 12px;
+}
+
+.add-student{
+    display: inline-flexbox;
+    background-color: #808000;
+    border: 3px solid #20B2AA;
+    padding: 16px;
+    border-radius: 12px;
+    width: 30%;
+}
