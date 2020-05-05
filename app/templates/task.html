@@ -7,12 +7,12 @@
         console.log(fname);
         xhr.open("POST", "/task/{{taskID}}", true);
         //xhr.setRequestHeader('Content-Type', 'application/json');
-        xhr.send(formData);
-        await reloadPage();
+        await xhr.send(formData);
+        await this.reload();
+        return false;
     }
-
-    function reloadPage() {
-        location.reload();
+    function reload(){
+        window.location.reload(true);
     }
 </script>
 <div class="guide">
