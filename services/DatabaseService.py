@@ -103,11 +103,15 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
-    def removeFile(self, FileName):
+    def insertNewStudent(self, FirstName:str, LastName:str, TeacherID:int, ProjectID: int, PermissionLevel:str):
         try:
-            self._db.execute(""" DELETE FROM Files
-            WHERE FileName = ?""", (FileName,))
+            self._db.execute("""insert into Student(FirstName, LastName, TeacherID, 
+                                ProjectID, RoleType) 
+                                values("{fname}", "{lname}", {teachID}, {projID}, "{permLvl}");"""
+                                .format(fname=FirstName, lname=LastName, teachID=TeacherID,
+                                        projID=ProjectID, permLvl=PermissionLevel))
             self._db.commit()
+
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
