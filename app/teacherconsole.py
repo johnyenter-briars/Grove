@@ -16,7 +16,12 @@ def addStudent():
     if request.method == 'POST':
         fname = request.form['studentFName']
         lname = request.form['studentLName']
-        
-        
+        projID = request.form['projectID']
 
-    return "uh oh"
+        database.insertNewStudent(
+            fname, lname, 
+            int(json.loads(session['user_auth']).get('_TeacherID')), 
+            int(projID), "perm0")
+    
+    return render_template("teacherconsole.html", 
+            name = json.loads(session['user_auth']).get('_FirstName'))
