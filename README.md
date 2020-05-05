@@ -30,7 +30,7 @@ To view this project running live, visit: [Grove2020.com](https://grove2020.hero
 
 ## Authors
 
-* **John Yenter-Briars** - *Project Manager* - [PurpleBooth](https://github.com/PurpleBooth)
+* **John Yenter-Briars** - *Project Manager* - (https://github.com/johnyenter-briars)
 * **Elona Selenica** - *Front End Engineer* - (https://github.com/eselenic)
 * **Murtaza Meerza** - *Service and Integration Engineer* - (https://github.com/superskhan4200)
 * **Patrick Fisher** - *Back End Engineer* - (https://github.com/patrickfisher1)
@@ -39,7 +39,7 @@ To view this project running live, visit: [Grove2020.com](https://grove2020.hero
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the LICENSE.md file for details
 
 ## Acknowledgments
 
