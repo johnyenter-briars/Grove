@@ -16,7 +16,7 @@ def addStudent():
     if request.method == 'POST':
         fname = request.form['studentFName']
         lname = request.form['studentLName']
-
+        
         
 
     return "uh oh"
