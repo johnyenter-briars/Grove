@@ -40,10 +40,11 @@ def hello():
             if userObject.getUserType() == "Student":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getStudent(userObject.getUserID()))
+                return redirect(url_for('home'))
             elif userObject.getUserType() == "Teacher":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getTeacher(userObject.getUserID()))
-            return redirect(url_for('home'))
+                return redirect(url_for('teacherconsole'))
         else:
             return render_template('index.html', loggedInUser="User does not exist")
 
@@ -76,4 +77,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-from app import task, projects, profile, home, classlist, logout
+from app import task, projects, profile, home, classlist, logout, teacherconsole

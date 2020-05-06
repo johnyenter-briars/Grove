@@ -86,7 +86,7 @@ create table Student(
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
-values("Bruce", "Banner", 1, 1, "perm2");
+values("Thomas", "Muscarello", 1, 1, "perm2");
 
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
@@ -369,7 +369,7 @@ create table UserCredentials(
 
 insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
-values(1, "Student", "bbanner22", "hulk");
+values(1, "Student", "tom", "1234");
 
 insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
