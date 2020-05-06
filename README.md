@@ -35,7 +35,7 @@ To view this project running live, visit: [Grove2020.com](https://grove2020.hero
 * **Murtaza Meerza** - [Service and Integration Engineer](https://github.com/velocitybolt)
 * **Patrick Fisher** - [Back End Engineer](https://github.com/patrickfisher1)
 * **Lucas Welsh** - [Back End Engineer](https://github.com/lucasmwelsh)
-* **Sariq Khan** - [Database Designer and Engineer](https://github.com/superskhan4200)
+* **Shariq Khan** - [Database Designer and Engineer](https://github.com/superskhan4200)
 
 ## License
 
