@@ -32,10 +32,10 @@ To view this project running live, visit: [Grove2020.com](https://grove2020.hero
 
 * **John Yenter-Briars** - [Project Manager](https://github.com/johnyenter-briars)
 * **Elona Selenica** - [Front End Engineer](https://github.com/eselenic)
-* **Murtaza Meerza** - [Service and Integration Engineer](https://github.com/superskhan4200)
+* **Murtaza Meerza** - [Service and Integration Engineer](https://github.com/velocitybolt)
 * **Patrick Fisher** - [Back End Engineer](https://github.com/patrickfisher1)
 * **Lucas Welsh** - [Back End Engineer](https://github.com/lucasmwelsh)
-* **Sariq Khan** - [Database Designer and Engineer](https://github.com/velocitybolt)
+* **Shariq Khan** - [Database Designer and Engineer](https://github.com/superskhan4200)
 
 ## License
 
