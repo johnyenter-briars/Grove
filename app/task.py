@@ -21,7 +21,7 @@ def task():
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     fullName = first + " " + last
-    if request.method == 'POST' and request.form.getlist("message") == [] :
+    if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] :
         file = request.files['fileType']
         if file.filename == '':
             return redirect(request.url)
@@ -30,11 +30,16 @@ def task():
             database.addFile(currentTaskID, filename, file.read())
             return redirect('/task/?taskID='+currentTaskID)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.getlist("message") != []:
         now = datetime.now()
         current_time = now.strftime("%x %I:%M:%S %p")
         newChat = request.form['message']
         database.addMessage(fullName, currentTaskID, current_time, newChat)
+        return redirect('/task/?taskID='+currentTaskID)
+
+    if request.method == 'POST':
+        fname = request.form['filename']
+        database.removeFile(fname)
         return redirect('/task/?taskID='+currentTaskID)
 
     return render_template("task.html", 
