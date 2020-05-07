@@ -1,13 +1,27 @@
 {% extends "header.html" %} {% block content %}
 <script>
 function deleteFile(fname) {
-    var xhr = new XMLHttpRequest();
+    /*var xhr = new XMLHttpRequest();
     var formData = new FormData();
     formData.append("filename", fname);
     console.log(fname);
     xhr.open("POST", "/task/{{taskID}}", true);
     xhr.send(formData);
     window.location.reload();
+    */
+    const form = document.createElement('form');
+    form.method = 'post';
+    form.action = '/task/{{taskID}}';
+
+    const hiddenField = document.createElement('input');
+    hiddenField.type = 'hidden';
+    hiddenField.name = 'filename';
+    hiddenField.value = fname;
+
+    form.appendChild(hiddenField);
+
+    document.body.appendChild(form);
+    form.submit();
 }
 </script>
 <div class="guide">
