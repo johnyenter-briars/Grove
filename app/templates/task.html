@@ -1,4 +1,15 @@
 {% extends "header.html" %} {% block content %}
+<script>
+function deleteFile(fname) {
+    var xhr = new XMLHttpRequest();
+    var formData = new FormData();
+    formData.append("filename", fname);
+    console.log(fname);
+    xhr.open("POST", "/task/{{taskID}}", true);
+    xhr.send(formData);
+    window.location.reload();
+}
+</script>
 <div class="guide">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
