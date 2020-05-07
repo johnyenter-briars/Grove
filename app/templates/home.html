@@ -11,26 +11,35 @@
 <div class="home-page">
     <h1>Welcome to Grove</h1>
     <div class="row">
+        {% for project in projects %}
         <div class="column">
-            <a href="/projects"><img src="static/img/tree1.png" /></a>
-            <h1>Team A</h1>
-            <h2>50%</h2>
+            {% if project.getGrowthStatus() == "growth0" %}
+                <a href="/projects"><img src="static/img/tree1.png" /></a>
+                <h1>Team {{project.getProjectID()}}</h1>
+                <h2>0%</h2>
+            {% endif %}
+            {% if project.getGrowthStatus() == "growth1" %}
+                <a href="/projects"><img src="static/img/tree2.png" /></a>
+                <h1>Team {{project.getProjectID()}}</h1>
+                <h2>25%</h2>
+            {% endif %}
+            {% if project.getGrowthStatus() == "growth2" %}
+                <a href="/projects"><img src="static/img/tree3.png" /></a>
+                <h1>Team {{project.getProjectID()}}</h1>
+                <h2>50%</h2>
+            {% endif %}
+            {% if project.getGrowthStatus() == "growth3" %}
+                <a href="/projects"><img src="static/img/tree4.png" /></a>
+                <h1>Team {{project.getProjectID()}}</h1>
+                <h2>75%</h2>
+            {% endif %}
+            {% if project.getGrowthStatus() == "growth4" %}
+                <a href="/projects"><img src="static/img/tree5.png" /></a>
+                <h1>Team {{project.getProjectID()}}</h1>
+                <h2>100%</h2>
+            {% endif %}
         </div>
-        <div class="column">
-            <a href="/projects"><img src="static/img/tree2.png" /></a>
-            <h1>Team B</h1>
-            <h2>50%</h2>
-        </div>
-        <div class="column">
-            <a href="/projects"><img src="static/img/tree3.png" /></a>
-            <h1>Team C</h1>
-            <h2>50%</h2>
-        </div>
-        <div class="column">
-            <a href="/projects"><img src="static/img/tree4.png" /></a>
-            <h1>Team D</h1>
-            <h2>50%</h2>
-        </div>
+        {% endfor %}
     </div>
 </div>
 {% endblock %}
