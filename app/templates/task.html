@@ -1,4 +1,20 @@
 {% extends "header.html" %} {% block content %}
+<script>
+    async function deleteFile(fname) {
+        var xhr = new XMLHttpRequest();
+        var formData = new FormData();
+        formData.append("filename", fname);
+        console.log(fname);
+        xhr.open("POST", "/task/{{taskID}}", true);
+        //xhr.setRequestHeader('Content-Type', 'application/json');
+        await xhr.send(formData);
+        await this.reload();
+        return false;
+    }
+    function reload(){
+        window.location.reload(true);
+    }
+</script>
 <div class="guide">
     <ul class="gray horizontal">
         <li><a href="/home">Home</a></li>
@@ -18,10 +34,10 @@
             <div class="list-files">
                 <ul class="vertical">
                     {% for file in files%}
-                        <li>
-                            <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
-                            <br>
-                        </li>
+                    <li>
+                        <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
+                        <input type="image" align="right" style="padding-top: 10px;padding-right: 10px;" height=40px src="/static/img/delete-icon.png" onclick="deleteFile('{{file.getFileName()}}');">
+                    </li>
                     {% endfor %}
                 </ul>
             </div>
@@ -44,27 +60,25 @@
         <div class="chat-box">
             <h2>Chat Messages</h2>
             <div class="chat">
-                {% for message in messages%}
-                    {%if message.getUserName() == name %}
-                    <div class="message darker">
-                        <h3>{{message.getUserName()}}</h3>
-                        <p>{{message.getMessageString()}}</p>
-                        <span class="time-right">{{message.getTimeStamp()}}</span>
-                    </div>
-                    {% else %}
-                    <div class="message">
-                        <h3>{{message.getUserName()}}</h3>
-                        <p>{{message.getMessageString()}}</p>
-                        <span class="time-right">{{message.getTimeStamp()}}</span>
-                    </div>
-                    {% endif %}
-                {% endfor %}
+                {% for message in messages%} {%if message.getUserName() == name %}
+                <div class="message darker">
+                    <h3>{{message.getUserName()}}</h3>
+                    <p>{{message.getMessageString()}}</p>
+                    <span class="time-right">{{message.getTimeStamp()}}</span>
+                </div>
+                {% else %}
+                <div class="message">
+                    <h3>{{message.getUserName()}}</h3>
+                    <p>{{message.getMessageString()}}</p>
+                    <span class="time-right">{{message.getTimeStamp()}}</span>
+                </div>
+                {% endif %} {% endfor %}
             </div>
             <form action="/task/{{taskID}}" method=post>
-            <div class="chat-message">
-                <input class="chat-input" type="text" name="message" placeholder="enter your message" />
-                <button type="submit">Send</button>
-            </div>
+                <div class="chat-message">
+                    <input class="chat-input" type="text" name="message" placeholder="enter your message" />
+                    <button type="submit">Send</button>
+                </div>
             </form>
         </div>
     </div>

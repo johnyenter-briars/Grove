@@ -77,6 +77,9 @@ class DatabaseService(object):
             select * from Project where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()][0]
 
+    def getProjects(self):
+        return [Project(tuple) for tuple in self._db.execute("select * from Project").fetchall()]
+
     def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
         self._db.execute(""" INSERT INTO Chat
             (UserName, TaskID, TimeStamp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStamp, MessageString))
