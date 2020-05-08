@@ -26,53 +26,58 @@
         <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
             <h1>{{branch.getBranchDesc()}}</h1>
             {% for studentID in branch.getStudents() %}
-            <b>{{ studentsOnProject[studentID].getFirstName()}}</b> {% endfor %} {% if branch.getBranchID() in tasksPerBranch%} {% for task in tasksPerBranch[branch.getBranchID()]%}
+            <b>{{ studentsOnProject[studentID].getFirstName()}}</b> {% endfor %}
+            {% if branch.getBranchID() in tasksPerBranch%} {% for task in tasksPerBranch[branch.getBranchID()]%}
             <td>
-                <div class="micro-task-description">
-                    <h1>{{task.getTaskDesc()}}</h1>
-                    <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;Go to task page</b></a>
+                <div class="addingImage">
+                    <div class = "boxLeaf">
+                        <a href="task?taskID={{task.getTaskID()}}"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                    </div>
                 </div>
             </td>
             {% endfor %} {% endif%}
 
-        <form action="/projects" method=post>
-            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
-                aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header text-center">
-                    <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                    </div>
-                    <div class="modal-body mx-4">
-                    <div class="md-form mb-4">
-                        <input name="title" class="form-control validate" >
-                        <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
-                    </div>
-            
-                    <div class="md-form mb-4">
-                        <input name="definition" class="form-control validate" >
-                        <label data-error="wrong" data-success="right" for="defaultForm">Task Definition</label>
-                    </div>
+            <form action="/projects" method=post>
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+                    aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header text-center">
+                                <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body mx-4">
+                                <div class="md-form mb-4">
+                                    <input name="title" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
+                                </div>
 
-                    <div class="md-form mb-4">
-                        <input name="user" class="form-control validate" >
-                        <label data-error="wrong" data-success="right" for="defaultForm">Id of User to Assign</label>
-                    </div>
+                                <div class="md-form mb-4">
+                                    <input name="definition" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm">Task
+                                        Definition</label>
+                                </div>
 
-                    </div>
-                        <div class="modal-footer d-flex justify-content-center">
-                        <button type="submit" class="btn btn-success">Submit</button>
+                                <div class="md-form mb-4">
+                                    <input name="user" class="form-control validate">
+                                    <label data-error="wrong" data-success="right" for="defaultForm">Id of User to
+                                        Assign</label>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer d-flex justify-content-center">
+                                <button type="submit" class="btn btn-success">Submit</button>
+                            </div>
+                        </div>
                     </div>
                 </div>
+                <div class="text-center">
+                    <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal"
+                        data-target="#modalLoginForm">Add a LEAF</a>
                 </div>
-            </div>
-            <div class="text-center">
-                <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal" data-target="#modalLoginForm">Add a LEAF</a>
-            </div>
-            <!--<a style="border-left: 4px solid black;" href="javascript:void(0);"><b>&nbsp;Add</b></a> --->
+                <!--<a style="border-left: 4px solid black;" href="javascript:void(0);"><b>&nbsp;Add</b></a> --->
 
         </div>
         {% endfor %}
@@ -89,16 +94,16 @@
     </div>
 
     <script lang="js">
-        $(document).ready(function() {
-            $('#btnAdd').click(function() {
+        $(document).ready(function () {
+            $('#btnAdd').click(function () {
                 var count = 1,
                     first_row = $('#branch-content');
                 while (count-- > 0) first_row.clone().appendTo('#branch-grid');
             });
             var myform = $('#myform'),
                 iter = 6;
-            $('#btnAddCol').click(function() {
-                myform.find('tr').each(function() {
+            $('#btnAddCol').click(function () {
+                myform.find('tr').each(function () {
                     var trow = $(this);
                     if (trow.index() === 0) {
                         trow.append('<td><b>Branch' + " " + +iter + '</b></td>');
