@@ -35,27 +35,27 @@
             </td>
             {% endfor %} {% endif%}
 
-        <form action="/projects" method=post>
             <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        <form action="/projects" method=post>
                 aria-hidden="true">
-                <div class="modal-dialog" role="document">
                 <div class="modal-content">
+                <div class="modal-dialog" role="document">
                     <div class="modal-header text-center">
                     <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     </button>
+                    </div>
+                    </div>
+                        <input name="definition" class="form-control validate" >
+                        <label data-error="wrong" data-success="right" for="defaultForm">Task Definition</label>
+                    <div class="md-form mb-4">
+            
                     </div>
                     <div class="modal-body mx-4">
                     <div class="md-form mb-4">
-                        <input name="title" class="form-control validate" >
                         <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
-                    </div>
-            
-                    <div class="md-form mb-4">
-                        <input name="definition" class="form-control validate" >
-                        <label data-error="wrong" data-success="right" for="defaultForm">Task Definition</label>
-                    </div>
+                        <input name="title" class="form-control validate" >
 
                     <div class="md-form mb-4">
                         <input name="user" class="form-control validate" >
@@ -87,7 +87,8 @@
         </br>
         {% endif %}
     </div>
-
+    <script type="text/javascript"
+         src="{{ url_for('static', filename='js/script.js') }}"></script>
     <script lang="js">
         $(document).ready(function() {
             $('#btnAdd').click(function() {
