@@ -1,8 +1,14 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
 
-@app.route('/projects')
+@app.route('/projects', methods=['POST', 'GET'])
 def projects():
+    
+    if request.method == 'POST':
+        title = request.form['title']
+        definition = request.form['definition']
+        user = request.form['user']
+
     sess = json.loads(session['user_auth'])
     if not sess:
         return redirect('/')
