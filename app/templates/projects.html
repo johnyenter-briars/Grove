@@ -23,63 +23,61 @@
     </div>
     <div class="branches">
         {% for branch in branches%}
-        <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
-            <h1>{{branch.getBranchDesc()}}</h1>
-            {% for studentID in branch.getStudents() %}
-            <b>{{ studentsOnProject[studentID].getFirstName()}}</b> {% endfor %}
-            {% if branch.getBranchID() in tasksPerBranch%} {% for task in tasksPerBranch[branch.getBranchID()]%}
-            <td>
-                <div class="micro-task-description">
-                    <h1>{{task.getTaskDesc()}}</h1>
-                    <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;Go to task
-                            page</b></a>
-                </div>
-            </td>
-            {% endfor %} {% endif%}
-
-            <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-                <form action="/projects" method=post>
-                    aria-hidden="true">
-                    <div class="modal-content">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-header text-center">
-                                <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
-                                <span aria-hidden="true">&times;</span>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                </button>
+            <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
+                <h1>{{branch.getBranchDesc()}}</h1>
+                {% for studentID in branch.getStudents() %}
+                    <b>{{ studentsOnProject[studentID].getFirstName()}}</b> 
+                {% endfor %}
+                {% if branch.getBranchID() in tasksPerBranch%} 
+                    {% for task in tasksPerBranch[branch.getBranchID()]%}
+                        <td>
+                            <div class="micro-task-description">
+                                <h1>{{task.getTaskDesc()}}</h1>
+                                <a style="border-left: 4px solid black;" href="task?taskID={{task.getTaskID()}}"><b>&nbsp;Go to task
+                                        page</b></a>
                             </div>
-                        </div>
-                        <input name="definition" class="form-control validate">
-                        <label data-error="wrong" data-success="right" for="defaultForm">Task Definition</label>
-                        <div class="md-form mb-4">
-
-                        </div>
-                        <div class="modal-body mx-4">
-                            <div class="md-form mb-4">
-                                <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
-                                <input name="title" class="form-control validate">
-
-                                <div class="md-form mb-4">
-                                    <input name="user" class="form-control validate">
-                                    <label data-error="wrong" data-success="right" for="defaultForm">Id of User to
-                                        Assign</label>
+                        </td>
+                    {% endfor %} 
+                {% endif%}
+                <h1>{{branch.getBranchID()}}</h1>
+                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                    <form action="/task/addtasktobranch?branchID={{branch.getBranchID()}}&projectID={{branch.getProjectID()}}" method=post>
+                        <div class="modal-content">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-header text-center">
+                                    <h4 class="modal-title w-100 font-weight-bold">Add a new Task{{branch.getBranchID()}}</h4>
+                                    <span aria-hidden="true">&times;</span>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    </button>
                                 </div>
+                            </div>
+                            <div class="md-form mb-4">
 
                             </div>
-                            <div class="modal-footer d-flex justify-content-center">
-                                <button type="submit" class="btn btn-success">Submit</button>
+                            <div class="modal-body mx-4">
+                                <div class="md-form mb-4">
+                                    <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
+                                    <input name="title" class="form-control validate">
+
+                                    <div class="md-form mb-4">
+                                        <input name="user" class="form-control validate">
+                                        <label data-error="wrong" data-success="right" for="defaultForm">Id of User to
+                                            Assign</label>
+                                    </div>
+
+                                </div>
+                                <div class="modal-footer d-flex justify-content-center">
+                                    <button type="submit" class="btn btn-success">Submit</button>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </form>
+                    </form>
+                </div>
+                <div class="text-center">
+                    <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal"
+                        data-target="#modalLoginForm">Add a LEAF</a>
+                </div>
             </div>
-            <div class="text-center">
-                <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal"
-                    data-target="#modalLoginForm">Add a LEAF</a>
-            </div>
-            <!--<a style="border-left: 4px solid black;" href="javascript:void(0);"><b>&nbsp;Add</b></a> --->
-
-        </div>
         {% endfor %}
         </form>
         <br> {% if teach and proj %}

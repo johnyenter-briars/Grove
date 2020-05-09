@@ -127,6 +127,18 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
+    def insertNewTask(self, BranchID: int, StudentID: int, ProjectID: int, TaskDesc: str):
+        try:
+            self._db.execute("""insert into Task
+                                (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+                                values({bID}, {sID}, {pID}, "{tDesc}", 0);"""
+                                .format(bID=BranchID, sID=StudentID, pID=ProjectID, tDesc=TaskDesc))
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
+
+
     def close_connection(self, exception):
         self._db.close()
         
