@@ -321,6 +321,7 @@ insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(2, 6, 1, "Close powerpoint", 0);
 
+
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(3, 5, 1, "Choose better font", 0);

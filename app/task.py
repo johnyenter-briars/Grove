@@ -49,6 +49,20 @@ def task():
         messages=messages,
     )
 
+@app.route('/task/addtasktobranch', methods=['POST'])
+def addTaskToBranch():
+    taskTitle = request.form["title"]
+    studentOnTaskId = int(request.form["user"])
+    branchId = request.args.get("branchID")
+    projectId = request.args.get("projectID")
+    
+    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
+
+
+    return redirect(url_for("projects"))
+
+
+
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
