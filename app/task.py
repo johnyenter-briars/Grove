@@ -58,7 +58,6 @@ def addTaskToBranch():
     
     database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
 
-
     return redirect(url_for("projects"))
 
 

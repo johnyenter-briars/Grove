@@ -39,13 +39,12 @@
                         </td>
                     {% endfor %} 
                 {% endif%}
-                <h1>{{branch.getBranchID()}}</h1>
-                <div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div class="modal fade" id="modalLoginForm_{{branch.getBranchID()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <form action="/task/addtasktobranch?branchID={{branch.getBranchID()}}&projectID={{branch.getProjectID()}}" method=post>
                         <div class="modal-content">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Add a new Task{{branch.getBranchID()}}</h4>
+                                    <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
                                     <span aria-hidden="true">&times;</span>
                                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     </button>
@@ -75,7 +74,7 @@
                 </div>
                 <div class="text-center">
                     <a href="" class="btn btn-success btn-rounded mb-4" data-toggle="modal"
-                        data-target="#modalLoginForm">Add a LEAF</a>
+                        data-target="#modalLoginForm_{{branch.getBranchID()}}">Add a LEAF</a>
                 </div>
             </div>
         {% endfor %}
