@@ -25,9 +25,9 @@
         {% for branch in branches%}
             <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
                 <h1>{{branch.getBranchDesc()}}</h1>
-                {% for studentID in branch.getStudents() %}
+                <!-- {% for studentID in branch.getStudents() %}
                     <b>{{ studentsOnProject[studentID].getFirstName()}}</b> 
-                {% endfor %}
+                {% endfor %} -->
                 {% if branch.getBranchID() in tasksPerBranch%} 
                     {% for task in tasksPerBranch[branch.getBranchID()]%}
                         <td>
@@ -39,15 +39,13 @@
                         </td>
                     {% endfor %} 
                 {% endif%}
-                <div class="modal fade" id="modalLoginForm_{{branch.getBranchID()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+                <div style="width: 500px; text-align: center;" class="modal fade" id="modalLoginForm_{{branch.getBranchID()}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
                     <form action="/task/addtasktobranch?branchID={{branch.getBranchID()}}&projectID={{branch.getProjectID()}}" method=post>
                         <div class="modal-content">
                             <div class="modal-dialog" role="document">
                                 <div class="modal-header text-center">
-                                    <h4 class="modal-title w-100 font-weight-bold">Add a new Task</h4>
+                                    <h2 class="modal-title w-100 font-weight-bold">Add a new Leaf</h4>
                                     <span aria-hidden="true">&times;</span>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    </button>
                                 </div>
                             </div>
                             <div class="md-form mb-4" style="display: inline-flexbox; text-align: center;">
@@ -60,13 +58,10 @@
                             </div>
                             <div class="modal-body mx-4">
                                 <div class="md-form mb-4">
-                                    <label data-error="wrong" data-success="right" for="defaultForm">Task Title</label>
-                                    <input name="title" class="form-control validate">
+                                    <input name="title" class="form-control validate" placeholder="Leaf Title">
 
                                     <div class="md-form mb-4">
-                                        <input name="user" class="form-control validate">
-                                        <label data-error="wrong" data-success="right" for="defaultForm">Id of User to
-                                            Assign</label>
+                                        <input name="user" class="form-control validate" placeholder="Id of user to assign">
                                     </div>
 
                                 </div>
