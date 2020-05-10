@@ -50,8 +50,13 @@
                                     </button>
                                 </div>
                             </div>
-                            <div class="md-form mb-4">
-
+                            <div class="md-form mb-4" style="display: inline-flexbox; text-align: center;">
+                                <h1>Students on this branch</h1>
+                                {% for studentID in branch.getStudents() %}
+                                    <b>{{ studentsOnProject[studentID].getFirstName()}} : 
+                                        {{ studentsOnProject[studentID].getStudentID()}}
+                                    </b><br> 
+                                {% endfor %}
                             </div>
                             <div class="modal-body mx-4">
                                 <div class="md-form mb-4">
