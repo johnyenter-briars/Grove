@@ -116,6 +116,7 @@ create table Award(
     AwardID INTEGER,
     StudentID INTEGER,
     apple_type varchar(20),
+    ProjectName varChar(30),
     DateAwarded TEXT,
 
     PRIMARY KEY (AwardID),
@@ -124,116 +125,116 @@ create table Award(
 );
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(3, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(3, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(2, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(2, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(3, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(3, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 insert into Award 
-(StudentID, apple_type, DateAwarded) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS");
+(StudentID, apple_type, DateAwarded, ProjectName) 
+values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
 create table Branch(
     BranchID INTEGER,
