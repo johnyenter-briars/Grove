@@ -5,7 +5,9 @@ class Award(object):
         self._AwardID = awardTuple[0]
         self._StudentID = awardTuple[1]
         self._apple_type = awardTuple[2]
-        self._DateAwarded = awardTuple[3]
+        self._ProjectName = awardTuple[3]
+        self._DateAwarded = awardTuple[4]
+        
 
     def getAwardID(self):
         return self._AwardID
@@ -15,6 +17,9 @@ class Award(object):
 
     def getAppleType(self):
         return self._apple_type
+
+    def getProjectName(self):
+        return self._ProjectName
 
     def getDateAwarded(self):
         return self._DateAwarded
