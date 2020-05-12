@@ -20,6 +20,12 @@
                     <li><a href="/projects">{{branch.getBranchDesc()}}</a></li>
                     <br> {% endfor %}
                 </ul>
+                <h2>Tasks</h2>
+                <ul>
+                    {% for task in tasks%}
+                    <li><a href="/task/?taskID={{task.getTaskID()}}">{{task.getTaskDesc()}}</a></li>
+                    <br> {% endfor %}
+                </ul>
             </div>
         </td>
         <td style="border-spacing: 10px;">
