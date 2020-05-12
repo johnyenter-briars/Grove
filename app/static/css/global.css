@@ -277,6 +277,23 @@ h3 {
     border-radius: 12px;
 }
 
+.addingImage{
+  display: flex;
+  align-items: center;
+  background-image: url(/static/img/finalleaf.png);
+  background-repeat:no-repeat;
+  background-size: 240px 140px;
+  height:150px;width:250px;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.boxLeaf{
+  height:50px;width:150px;
+  margin: auto;
+  margin-left: 13px;
+}
+
 .micro-task-description > a{
     color: #3a506b;
 }
