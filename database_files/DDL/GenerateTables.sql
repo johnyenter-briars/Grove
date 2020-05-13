@@ -377,6 +377,10 @@ insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
 values(1, "Teacher", "BuckyB101", "wwII");
 
+insert into UserCredentials
+(UserID, UserType, UserName, UserPass) 
+values(7, "Student", "pm", "zoom");
+
 create table Files (
     FileID INTEGER PRIMARY KEY,
     TaskID INTEGER,
