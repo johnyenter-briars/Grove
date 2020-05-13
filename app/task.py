@@ -41,10 +41,11 @@ def task():
         fname = request.form['filename']
         database.removeFile(fname)
         return redirect('/task/?taskID='+currentTaskID)
-
+    targetTask = database.getTask(int(currentTaskID))
     return render_template("task.html", 
         name=first+' '+last, files=files, 
-        taskObj=database.getTask(int(currentTaskID)),
+        taskObj=targetTask,
+        taskAssignee = database.getStudent(targetTask.getStudentId()),
         taskID='?taskID='+currentTaskID,
         messages=messages,
     )
