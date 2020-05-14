@@ -1,11 +1,8 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
-from exceptions.NoProfileIDException import NoProfileIDException
 
 @app.route('/projects', methods=['POST', 'GET'])
 def projects():
-    if request.args.get('profileID') == None:
-        raise NoProfileIDException
     if request.method == 'POST':
         title = request.form['title']
         definition = request.form['definition']
