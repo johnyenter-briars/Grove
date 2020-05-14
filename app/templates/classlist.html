@@ -5,14 +5,14 @@
         <li><a href="/projects">Projects</a></li>
         <li><a href="/classlist">Classlist</a></li>
         <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
-        <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
+        <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
     </ul>
 </div>
 <div class="container overflow-auto">
     <h1><u>Class list</u></h1>
     {% for student in students%}
     <div class="row align-items-start">
-        <a>{{student.getFirstName()}} {{student.getLastName()}}</a>
+        <a href="/profile/?profileID={{student.getStudentID()}}">{{student.getFirstName()}} {{student.getLastName()}}</a>
         <br>
     </div>
     {% endfor %}
