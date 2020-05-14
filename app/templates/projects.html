@@ -22,19 +22,20 @@
         {% endif %}
     </div>
     <div class="branches">
+        <div class="bCenter">
         {% for branch in branches%}
-        <div style="box-sizing: border-box; display: inline-block; width: 30%; vertical-align: top;">
-            <h1>{{branch.getBranchDesc()}}</h1>
-            <!-- {% for studentID in branch.getStudents() %}
-                    <b>{{ studentsOnProject[studentID].getFirstName()}}</b> 
-                {% endfor %} -->
+        <div class="logColumn">
+        <h1>{{branch.getBranchDesc()}}</h1>
+        <div class="logImage">
             {% if branch.getBranchID() in tasksPerBranch%}
             {% for task in tasksPerBranch[branch.getBranchID()]%}
             <td>
                 <div class="addingImage">
+                    <a href="task?taskID={{task.getTaskID()}}" class="fill-div">
                     <div class="boxLeaf">
-                        <a href="task?taskID={{task.getTaskID()}}"><b>&nbsp;{{task.getTaskDesc()}}</b></a>
+                        <p><b>&nbsp;{{task.getTaskDesc()}}</b></p>
                     </div>
+                    </a>
                 </div>
             </td>
             {% endfor %}
@@ -80,7 +81,10 @@
                     data-target="#modalLoginForm_{{branch.getBranchID()}}">Add a LEAF</a>
             </div>
         </div>
+    </div>
         {% endfor %}
+    </div>
+
         </form>
         <br> {% if teach and proj %}
         <button type="button" id="branchRev">Request Branch & Task Review</button> {% endif %} {% if perm == "perm0" %}
