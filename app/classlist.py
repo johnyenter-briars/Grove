@@ -7,7 +7,7 @@ def classlist():
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     teachID = sess.get('_TeacherID')
-    
+    profileID = sess.get('_StudentID')
     students = database.getClassList(teachID)
     
-    return render_template("classlist.html", students=students, name=first+' '+last)
+    return render_template("classlist.html", students=students, name=first+' '+last, profileID=profileID)
