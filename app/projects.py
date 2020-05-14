@@ -1,9 +1,11 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
+from exceptions.NoProfileIDException import NoProfileIDException
 
 @app.route('/projects', methods=['POST', 'GET'])
 def projects():
-    
+    if request.args.get('profileID') == None:
+        raise NoProfileIDException
     if request.method == 'POST':
         title = request.form['title']
         definition = request.form['definition']
@@ -17,6 +19,7 @@ def projects():
     teacherObj = database.getTeacher(sess.get('_TeacherID'))
     pId = sess.get('_ProjectID')
     perm = sess.get('_PermissionLevel')
+    profileID = sess.get('_StudentID')
 
     branches: List[Branch] = database.getBranchesForProject(pId)
     projectObj = database.getProject(pId)
@@ -45,4 +48,5 @@ def projects():
         perm=perm,
         branches=branches,
         studentsOnProject=studentsOnProject,
-        tasksPerBranch=tasksByBranchId)
+        tasksPerBranch=tasksByBranchId,
+        profileID=profileID)
