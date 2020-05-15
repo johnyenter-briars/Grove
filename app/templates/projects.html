@@ -8,8 +8,8 @@
         <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
     </ul>
 </div>
-<h1>Project Branches</h1>
-<br>
+<!-- <h1>Project Branches</h1>
+<br> -->
 <div class="projects-page">
     <div class="projectdeets" style="text-align: center;">
         {% if perm == "perm0" %}
@@ -21,11 +21,34 @@
         <h3>Project Goal: {{ proj.getProjectDesc() }}. </h3>
         {% endif %}
     </div>
+    <div class="project-glance" style="text-align: center;">
+        <h1>Project at a glance:</h1>
+        <div class="project-info">
+            <b>Project Weight: </b ><p> {{projWeight}}</p>
+        </div>
+        <div class="project-info">
+            <b>Project Goal: </b ><p> {{projGoal}}</p>
+        </div>
+        <div class="project-info">
+            <b>Project Growth Status: </b ><p> {{projGrowthStatus}} %</p>
+        </div>
+        <div class="project-info">
+            <b>Students in project: </b >
+            {% for student in ["john", "sara", "jim"] %}
+                <p>{{student}}, </p>
+            {% endfor %}
+        </div>
+
+       
+    </div>
     <div class="branches">
         <div class="bCenter">
         {% for branch in branches%}
         <div class="logColumn">
         <h1>{{branch.getBranchDesc()}}</h1>
+        {% if branch.getResolved() %}
+            <p>(Resolved)</p>
+        {% endif %}
         <div class="logImage">
             {% if branch.getBranchID() in tasksPerBranch%}
             {% for task in tasksPerBranch[branch.getBranchID()]%}
