@@ -18,7 +18,7 @@ app.config.from_object(Config)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 database = DatabaseService()
-grader = GradingService()
+grader = GradingService(database)
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():

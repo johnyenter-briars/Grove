@@ -47,6 +47,6 @@ def projects():
         studentsOnProject=studentsOnProject,
         tasksPerBranch=tasksByBranchId,
         profileID=profileID,
-        projWeight = grader.getProjectWeight(5),
-        projGoal = grader.getProjectGoal(5),
-        projGrowthStatus = grader.getProjectGrowthStatus(5))
+        projWeight = grader.getCompletedProjectWeight(projectObj.getProjectID()),
+        projGoal = grader.getProjectGoal(projectObj.getProjectID()),
+        projGrowthStatus = grader.getProjectGrowthStatus(projectObj.getProjectID()))
