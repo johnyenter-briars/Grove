@@ -13,6 +13,7 @@ drop table Teacher;
 drop table RoleType;
 drop table AppleType;
 drop table Files;
+drop table ProjectGoal;
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
@@ -70,6 +71,8 @@ insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) v
 
 insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(2, "growth3", "Ethics Essay", "Write our essay on Socratic ethics.");
 
+insert into Project (TeacherID, GrowthStatus, ProjectName, ProjectDescription) values(1, "growth0", "Construct Meta-Diorama", "Make a diorama about us as a group making a diorama.");
+
 create table Student(
     StudentID INTEGER,
     FirstName varchar(20),
@@ -111,6 +114,22 @@ values("Wanda", "Maximoff", 1, 1, "perm2");
 insert into Student 
 (FirstName, LastName, TeacherID, ProjectID, RoleType) 
 values("Pietro", "Maximoff", 1, 1, "perm2");
+
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("Peter", "Parker", 1, 3, "perm2");
+
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("Thor", "God of Thunder", 1, 3, "perm2");
+
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("T'Challa", "T'Challa", 1, 3, "perm2");
+
+insert into Student 
+(FirstName, LastName, TeacherID, ProjectID, RoleType) 
+values("Janet", "Van Dyne", 1, 3, "perm2");
 
 create table Award(
     AwardID INTEGER,
@@ -287,6 +306,26 @@ insert into Branch
 (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
 values (1, 7, 1, "Add pictures", 0, 10);
 
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (1, 11, 3, "Construct clay models", 1, 25);
+
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (1, 8, 3, "Construct clay models", 1, 25);
+
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (1, 9, 3, "Construct clay models", 1, 25);
+
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (2, 8, 3, "Paint models", 0, 10);
+
+insert into Branch 
+(BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight) 
+values (3, 10, 3, "Make diorama base", 0, 35);
+
 
 create table Task(
     TaskID INTEGER,
@@ -326,6 +365,22 @@ values(2, 6, 1, "Close powerpoint", 0);
 insert into Task
 (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(3, 5, 1, "Choose better font", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(1, 11, 3, "Purchase clay", 1);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(1, 11, 3, "Sculpt models", 1);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(2, 8, 3, "Buy paint", 0);
+
+insert into Task
+(BranchID, StudentID, ProjectID, TaskDescription, Resolved)
+values(3, 10, 3, "Construct base out of balsa wood", 0);
 
 
 create table Chat(
@@ -381,6 +436,10 @@ insert into UserCredentials
 (UserID, UserType, UserName, UserPass) 
 values(7, "Student", "pm", "zoom");
 
+insert into UserCredentials
+(UserID, UserType, UserName, UserPass) 
+values(11, "Student", "jd", "wasp");
+
 create table Files (
     FileID INTEGER PRIMARY KEY,
     TaskID INTEGER,
@@ -389,3 +448,16 @@ create table Files (
 
     FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
 );
+
+create table ProjectGoal(
+    GoalID INTEGER,
+    ProjectID INTEGER,
+    ProjectTargetWeight INTEGER,
+
+    PRIMARY KEY (GoalID),
+    FOREIGN KEY (ProjectID) REFERENCES Project(ProjectID)
+);
+
+insert into ProjectGoal
+(ProjectID, ProjectTargetWeight)
+values(3, 70);

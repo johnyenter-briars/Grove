@@ -2,6 +2,7 @@ from flask import Flask, request, redirect, render_template, json, session, json
 from config.config import Config
 from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
+from services.GradingService import GradingService
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 from exceptions.NoTaskIDException import NoTaskIDException
@@ -17,6 +18,7 @@ app.config.from_object(Config)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
 database = DatabaseService()
+grader = GradingService(database)
 
 @app.route('/', methods=['POST', 'GET'])
 def hello():
