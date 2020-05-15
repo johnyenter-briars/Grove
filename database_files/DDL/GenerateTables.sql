@@ -461,3 +461,11 @@ create table ProjectGoal(
 insert into ProjectGoal
 (ProjectID, ProjectTargetWeight)
 values(3, 70);
+
+insert into ProjectGoal
+(ProjectID, ProjectTargetWeight)
+values(1, 100);
+
+insert into ProjectGoal
+(ProjectID, ProjectTargetWeight)
+values(2, 100);
