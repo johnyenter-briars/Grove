@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
-from app import app, database
+from app import app, database, grader
 
 @app.route('/projects', methods=['POST', 'GET'])
 def projects():
@@ -46,4 +46,7 @@ def projects():
         branches=branches,
         studentsOnProject=studentsOnProject,
         tasksPerBranch=tasksByBranchId,
-        profileID=profileID)
+        profileID=profileID,
+        projWeight = grader.getProjectWeight(5),
+        projGoal = grader.getProjectGoal(5),
+        projGrowthStatus = grader.getProjectGrowthStatus(5))
