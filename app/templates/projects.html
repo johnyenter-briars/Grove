@@ -30,12 +30,12 @@
             <b>Project Goal: </b ><p> {{projGoal}}</p>
         </div>
         <div class="project-info">
-            <b>Project Growth Status: </b ><p> {{projGrowthStatus}} %</p>
+            <b>Project Growth Status: </b ><p>{{projGrowthStatus}}%</p>
         </div>
         <div class="project-info">
             <b>Students in project: </b >
-            {% for student in ["john", "sara", "jim"] %}
-                <p>{{student}}, </p>
+            {% for studentID,studentObj in studentsOnProject.items() %}
+                <p style="margin: 4px;">{{studentObj.getFirstName()}} </p>
             {% endfor %}
         </div>
 
