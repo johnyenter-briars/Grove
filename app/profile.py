@@ -6,6 +6,13 @@ from exceptions.NoProfileIDException import NoProfileIDException
 def profile():
     if request.args.get('profileID') == None:
         raise NoProfileIDException
+    sess = json.loads(session['user_auth'])
+    if not sess:
+        return redirect('/')
+    ufirst = sess.get('_FirstName')
+    ulast = sess.get('_LastName')
+    userName = ufirst + ' ' + ulast
+    profileID = sess.get('_StudentID')
     currentProfileID = request.args.get('profileID')
     sess = json.loads(session['user_auth'])
     branches = database.getBranchesForStudent(currentProfileID)
@@ -13,4 +20,4 @@ def profile():
     tasks = database.getTasksForStudent(currentProfileID)
     first = database.getStudent(currentProfileID).getFirstName() 
     last = database.getStudent(currentProfileID).getLastName() 
-    return render_template("profile.html", name=first+' '+last, branches=branches, awards=awards, tasks=tasks)
+    return render_template("profile.html", userName=userName, profileName=first+' '+last, branches=branches, awards=awards, tasks=tasks, profileID=profileID)
