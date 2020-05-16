@@ -362,3 +362,9 @@ a.fill-div {
   margin-left: auto;
   margin-right: auto;
 }
+
+.homepage-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
