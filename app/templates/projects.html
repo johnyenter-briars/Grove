@@ -49,16 +49,19 @@
         <div class="bCenter">
             {% for branch in branches%}
             <div class="logColumn">
-                <h1>{{branch.getBranchDesc()}}</h1>
-                {% if branch.getResolved() %}
-                <p>(Resolved)</p>
-                {% endif %}
+                <!-- I would like to personally apologize for the following 6 lines - -->
+                <div style="width: 100%; text-align: center;">
+                    <h1>{{branch.getBranchDesc()}}</h1>
+                    {% if branch.getResolved() %}
+                        <img style="float:right; width: 50px; height:50px;" src="/static/img/red_checkmark.png">
+                    {% endif %}
+                </div>
                 <div class="logImage">
                     {% if branch.getBranchID() in tasksPerBranch%}
                     {% for task in tasksPerBranch[branch.getBranchID()]%}
                     <td>
                         <div class="addingImage">
-                            <a href="task?taskID={{task.getTaskID()}}" class="fill-div">
+                            <a href="/task/?taskID={{task.getTaskID()}}" class="fill-div">
                                 <div class="boxLeaf">
                                     <p><b>&nbsp;{{task.getTaskDesc()}}</b></p>
                                 </div>
