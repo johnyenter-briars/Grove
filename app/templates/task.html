@@ -25,10 +25,15 @@ function deleteFile(fname) {
 </div>
 <div class="task-page">
     <div class="task-description">
-        <p>{{taskObj.getTaskDesc()}}</p>
+        <div class="addingImage">
+            <div class="boxLeaf">
+                <p><b>&nbsp;{{taskObj.getTaskDesc()}}</b></p>
+            </div>
+            </a>
+        </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
         {% if taskObj.getResolved() %}
-            <p>(Resolved)</p>
+        <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
         {% endif %}
     </div>
     <div class="tasks">
