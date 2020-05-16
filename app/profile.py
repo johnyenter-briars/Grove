@@ -13,6 +13,7 @@ def profile():
     ulast = sess.get('_LastName')
     userName = ufirst + ' ' + ulast
     profileID = sess.get('_StudentID')
+    projectID = sess.get('_ProjectID')
     currentProfileID = request.args.get('profileID')
     sess = json.loads(session['user_auth'])
     branches = database.getBranchesForStudent(currentProfileID)
@@ -20,4 +21,4 @@ def profile():
     tasks = database.getTasksForStudent(currentProfileID)
     first = database.getStudent(currentProfileID).getFirstName() 
     last = database.getStudent(currentProfileID).getLastName() 
-    return render_template("profile.html", userName=userName, profileName=first+' '+last, branches=branches, awards=awards, tasks=tasks, profileID=profileID)
+    return render_template("profile.html", userName=userName, profileName=first+' '+last, branches=branches, awards=awards, tasks=tasks, profileID=profileID, projectID = projectID)

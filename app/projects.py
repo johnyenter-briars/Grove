@@ -14,11 +14,8 @@ def projects():
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     teacherObj = database.getTeacher(sess.get('_TeacherID'))
-    og = sess.get('_ProjectID')
+    projectID = sess.get('_ProjectID')
     pId = request.args.get('projectID')
-    print(pId)
-    print(og)
-
     perm = sess.get('_PermissionLevel')
     profileID = sess.get('_StudentID')
 
@@ -54,4 +51,5 @@ def projects():
         projectId = pId,
         projWeight = grader.getCompletedProjectWeight(projectObj.getProjectID()),
         projGoal = grader.getProjectGoal(projectObj.getProjectID()),
-        projGrowthStatus = grader.getProjectGrowthStatus(projectObj.getProjectID()))
+        projGrowthStatus = grader.getProjectGrowthStatus(projectObj.getProjectID()),
+        projectID=projectID)
