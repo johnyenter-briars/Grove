@@ -16,10 +16,10 @@ def task():
     currentTaskID = request.args.get('taskID')
     files = database.getFilesForTask(currentTaskID)
     messages = database.getChatForTask(currentTaskID)
-
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
+    profileID = sess.get('_StudentID')
     fullName = first + " " + last
     if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] :
         file = request.files['fileType']
@@ -53,6 +53,7 @@ def task():
         taskAssignee = database.getStudent(targetTask.getStudentId()),
         taskID='?taskID='+currentTaskID,
         messages=messages,
+        profileID=profileID
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])

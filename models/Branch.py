@@ -23,7 +23,7 @@ class Branch(object):
         return self._BranchDesc
 
     def getResolved(self):
-        return self._Resolved
+        return self._Resolved == 1
     
     def getWeight(self):
         return self._Weight

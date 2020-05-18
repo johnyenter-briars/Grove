@@ -1,9 +1,8 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
-from app import app, database
+from app import app, database, grader
 
 @app.route('/projects', methods=['POST', 'GET'])
 def projects():
-    
     if request.method == 'POST':
         title = request.form['title']
         definition = request.form['definition']
@@ -17,6 +16,7 @@ def projects():
     teacherObj = database.getTeacher(sess.get('_TeacherID'))
     pId = sess.get('_ProjectID')
     perm = sess.get('_PermissionLevel')
+    profileID = sess.get('_StudentID')
 
     branches: List[Branch] = database.getBranchesForProject(pId)
     projectObj = database.getProject(pId)
@@ -45,4 +45,8 @@ def projects():
         perm=perm,
         branches=branches,
         studentsOnProject=studentsOnProject,
-        tasksPerBranch=tasksByBranchId)
+        tasksPerBranch=tasksByBranchId,
+        profileID=profileID,
+        projWeight = grader.getCompletedProjectWeight(projectObj.getProjectID()),
+        projGoal = grader.getProjectGoal(projectObj.getProjectID()),
+        projGrowthStatus = grader.getProjectGrowthStatus(projectObj.getProjectID()))
