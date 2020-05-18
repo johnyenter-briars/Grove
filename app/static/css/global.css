@@ -23,7 +23,7 @@ body {
 }
 
 .guide {
-  margin: 4%;
+  margin: 1%;
 }
 
 .row {
@@ -246,9 +246,13 @@ h3 {
   padding: 16px;
   border-radius: 12px;
 }
+.bCenter {
+  display: flex;
+  justify-content: center;
+}
 
 .projectdeets {
-  display: block;
+  display: flexbox;
   margin-left: 4%;
   margin-right: 4%;
   background-color: #8EAB91;
@@ -257,6 +261,26 @@ h3 {
   height: auto;
   padding: 16px;
   border-radius: 12px;
+}
+
+.project-glance{
+  display: flex;
+  margin-left: 4%;
+  margin-right: 4%;
+  background-color: #8EAB91;
+  border: 3px solid #f1f1f1;
+  width: auto;
+  height: auto;
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.project-info{
+    display: flex;
+    padding: 4px;
+    margin: 5px;
+    border: 3px solid olive;
+    border-radius: 12px;
 }
 
 .task-description{
@@ -286,6 +310,15 @@ h3 {
   height:150px;width:250px;
   padding: 16px;
   border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
+  transition: transform .2s;
+
+}
+
+.addingImage:hover {
+  transform: scale(1.1);
 }
 
 .boxLeaf{
@@ -294,6 +327,19 @@ h3 {
   margin-left: 13px;
 }
 
+.logColumn{
+  box-sizing: border-box;
+  display: inline-block;
+  width: 30%;
+  vertical-align: top;
+  margin-left: auto;
+  margin-right: auto;
+}
+.logImage{
+  padding: 4%;
+  height:95%;
+  background-image: url(/static/img/wood.png);
+}
 .micro-task-description > a{
     color: #3a506b;
 }
@@ -303,4 +349,22 @@ h3 {
   width: 400px;
   overflow-y: auto;
 
+}
+
+a.fill-div {
+  height: 100%;
+  width: 100%;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  background-size: 240px 140px;
+  height:150px;width:250px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.homepage-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

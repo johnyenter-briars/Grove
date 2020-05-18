@@ -10,6 +10,7 @@ from models.Files import Files
 from models.Task import Task
 from models.Chat import Chat
 from models.TaskReview import TaskReview
+from models.Goal import Goal
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -82,6 +83,8 @@ class DatabaseService(object):
             select * from Project where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()][0]
 
+    
+
     def getProjects(self):
         return [Project(tuple) for tuple in self._db.execute("select * from Project").fetchall()]
 
@@ -95,9 +98,14 @@ class DatabaseService(object):
                 """select * from Chat where TaskID={id};""".format(id=TaskID)).fetchall()]
 
     def getTask(self, TaskID):
-        return [Task(tuple) for tuple in self   ._db.execute("""
+        return [Task(tuple) for tuple in self._db.execute("""
         select * from Task where TaskID={id};"""
         .format(id=TaskID)).fetchall()][0]
+
+    def getGoalForProject(self, ProjectID):
+        return [Goal(tuple) for tuple in self._db.execute("""
+        select * from ProjectGoal where ProjectID = {id}"""
+        .format(id=ProjectID)).fetchall()][0]
 
     def getFilesForTask(self, TaskID):
         return [Files(tuple) for tuple in self._db.execute(

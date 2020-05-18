@@ -15,21 +15,30 @@ function deleteFile(fname) {
 </script>
 <div class="guide">
     <ul class="gray horizontal">
+        <li><img style="margin: 10px; float: right; width: 30px; height: 30px;" src="/static/img/grove_icon.png"></li>
         <li><a href="/home">Home</a></li>
         <li><a href="/projects">Projects</a></li>
         <li><a href="/classlist">Classlist</a></li>
         <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
-        <li class="rightli" style="float:right"><a href="/profile">{{ name }}</a></li>
+        <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
     </ul>
 </div>
 <div class="task-page">
     <div class="task-description">
-        <p>{{taskObj.getTaskDesc()}}</p>
+        <div class="addingImage">
+            <div class="boxLeaf">
+                <p><b>&nbsp;{{taskObj.getTaskDesc()}}</b></p>
+            </div>
+            </a>
+        </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
         <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
             <input type="hidden" name="taskreview" value="{{taskID}}">
             <button type="button" id="branchRev">Request Task Review</button>
         </form>
+        {% if taskObj.getResolved() %}
+        <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
+        {% endif %}
     </div>
     <div class="tasks">
         <div class="files">
