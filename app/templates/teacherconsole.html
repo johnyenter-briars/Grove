@@ -37,5 +37,13 @@
             </form>
         </div>
     </div>
+    <div class="container">
+        <h2>Tasks To Review</h2>
+        <ul>
+            {% for task in tasksToReview%}
+            <li><a href="/task/?taskID={{task.getTaskID()}}">{{task.getReviewID()}}</a></li>
+            <br> {% endfor %}
+        </ul>
+    </div>
 </div>
 {% endblock %}
