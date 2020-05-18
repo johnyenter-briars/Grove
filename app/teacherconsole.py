@@ -8,8 +8,9 @@ def teacherconsole():
         return redirect('/')
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
+    tasksToReview = database.getTasksToBeReviewed
 
-    return render_template("teacherconsole.html", name=first)
+    return render_template("teacherconsole.html", name=first, taskToReview=tasksToReview)
 
 @app.route('/addstudent/', methods=['POST', 'GET'])
 def addStudent():

@@ -37,9 +37,14 @@ def task():
         database.addMessage(fullName, currentTaskID, current_time, newChat)
         return redirect('/task/?taskID='+currentTaskID)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.getlist("filename") != []:
         fname = request.form['filename']
         database.removeFile(fname)
+        return redirect('/task/?taskID='+currentTaskID)
+
+    if request.method == 'POST' and request.form.getlist("taskreview") != []:
+        tID = request.form('taskreview')
+        database.insertTaskReview(tID)
         return redirect('/task/?taskID='+currentTaskID)
     targetTask = database.getTask(int(currentTaskID))
     return render_template("task.html", 
