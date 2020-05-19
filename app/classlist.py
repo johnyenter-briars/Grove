@@ -10,4 +10,4 @@ def classlist():
     profileID = sess.get('_StudentID')
     students = database.getClassList(teachID)
     
-    return render_template("classlist.html", students=students, name=first+' '+last, profileID=profileID)
+    return render_template("classlist.html", students=students, name=first+' '+last, profileID=profileID, studentID=profileID, teacherID=teachID)
