@@ -1,15 +1,5 @@
 {% extends "header.html" %} {% block content %}
 <!--This is the navbar-->
-<div class="guide" style="margin-bottom:2%;">
-    <ul class="gray horizontal">
-        <li><a style="padding: 4px; padding-left: 5px;" href="/home"/><img style="float: right; width: 40px; height: 40px;" src="/static/img/grove_icon.png"></li>
-        {% if studentID and teacherID %} <li><a href="/projects">Projects</a></li> {% endif %}
-        <li><a href="/classlist">Classlist</a></li>
-        <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
-        {% if studentID and teacherID %} <li class="rightli" style="float:right"><a href="javascript:void(0)">{{ name }}</a></li> {% endif %}
-        {% if studentID == None %} <li class="rightli" style="float:right"><a href="/teacherconsole">Teacher Console</a></li> {% endif %}
-    </ul>
-</div>
 <h1 style="font-size: 30pt">Welcome to {{ name }}!</h1>
 <div align="center">
     <table>
