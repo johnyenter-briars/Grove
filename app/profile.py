@@ -23,9 +23,11 @@ def profile():
     tasks = database.getTasksForStudent(currentProfileID)
     first = database.getStudent(currentProfileID).getFirstName() 
     last = database.getStudent(currentProfileID).getLastName() 
+    targetProjectID = database.getStudentProject(currentProfileID).getProjectID()
     return render_template("profile.html", 
                             targetProfileName=first+' '+last, branches=branches, 
-                            awards=awards, tasks=tasks, 
+                            awards=awards, tasks=tasks, projectID=projectID,
                             studentID=studentID, teacherID=teacherID, 
-                            profileID=sess.get('_StudentID'), 
-                            name = '{} {}'.format(sess.get('_FirstName'), sess.get('_LastName')))
+                            profileID=sess.get('_StudentID'),
+                            targetProjectID=targetProjectID,
+                            name='{} {}'.format(sess.get('_FirstName'), sess.get('_LastName')))
