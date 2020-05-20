@@ -11,7 +11,7 @@ def teacherconsole():
     studentID = sess.get('_StudentID')
     teacherID = sess.get('_TeacherID')
 
-    return render_template("teacherconsole.html", name=first, teacherID=teacherID, studentID=studentID)
+    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID)
 
 @app.route('/addstudent/', methods=['POST', 'GET'])
 def addStudent():

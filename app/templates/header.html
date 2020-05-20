@@ -27,7 +27,13 @@
             <li><a href="/projects">Projects</a></li>
             <li><a href="/classlist">Classlist</a></li>
             <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
-            <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
+            {% if session['user_type'] == "STUDENT"%}
+                <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
+            {% endif %}
+            {% if session['user_type'] == "TEACHER"%}
+                <li class="rightli" style="float:right"><a href="/teacherconsole">{{ name }}</a></li>
+            {% endif %}
+        
         </ul>
     </div>
     {% endif %}
