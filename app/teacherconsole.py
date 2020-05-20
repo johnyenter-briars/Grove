@@ -8,8 +8,10 @@ def teacherconsole():
         return redirect('/')
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
+    studentID = sess.get('_StudentID')
+    teacherID = sess.get('_TeacherID')
 
-    return render_template("teacherconsole.html", name=first)
+    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID)
 
 @app.route('/addstudent/', methods=['POST', 'GET'])
 def addStudent():
