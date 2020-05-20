@@ -20,7 +20,7 @@ class Student(object):
     def getTeacherID(self):
         return self._TeacherID
 
-    def getPriojectID(self):
+    def getProjectID(self):
         return self._ProjectID
 
     def getRoleType(self):
