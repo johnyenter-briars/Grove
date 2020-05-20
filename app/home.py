@@ -9,4 +9,6 @@ def home():
     studentID = sess.get('_StudentID')
     teacherID = sess.get('_TeacherID')
     projects = database.getProjects()
-    return render_template("home.html", name=first+' '+last, projects=projects, profileID=studentID, studentID=studentID, teacherID=teacherID)
+    projectID = sess.get('_ProjectID')
+
+    return render_template("home.html", name=first+' '+last, projects=projects,  profileID=studentID, studentID=studentID, teacherID=teacherID,projectID=projectID)
