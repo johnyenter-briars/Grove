@@ -5,27 +5,27 @@
         {% for project in projects %}
         <div class="column">
             {% if project.getGrowthStatus() == "growth0" %}
-                <a href="/projects"><img src="static/img/tree1.png" /></a>
+                <a href="/projects/?projectID={{project.getProjectID()}}"><img src="static/img/tree1.png" /></a>
                 <h1>Team {{project.getProjectID()}}</h1>
                 <h2>0%</h2>
             {% endif %}
             {% if project.getGrowthStatus() == "growth1" %}
-                <a href="/projects"><img src="static/img/tree2.png" /></a>
+                <a href="/projects/?projectID={{project.getProjectID()}}"><img src="static/img/tree2.png" /></a>
                 <h1>Team {{project.getProjectID()}}</h1>
                 <h2>25%</h2>
             {% endif %}
             {% if project.getGrowthStatus() == "growth2" %}
-                <a href="/projects"><img src="static/img/tree3.png" /></a>
+                <a href="/projects/?projectID={{project.getProjectID()}}"><img src="static/img/tree3.png" /></a>
                 <h1>Team {{project.getProjectID()}}</h1>
                 <h2>50%</h2>
             {% endif %}
             {% if project.getGrowthStatus() == "growth3" %}
-                <a href="/projects"><img src="static/img/tree4.png" /></a>
+                <a href="/projects/?projectID={{project.getProjectID()}}"><img src="static/img/tree4.png" /></a>
                 <h1>Team {{project.getProjectID()}}</h1>
                 <h2>75%</h2>
             {% endif %}
             {% if project.getGrowthStatus() == "growth4" %}
-                <a href="/projects"><img src="static/img/tree5.png" /></a>
+                <a href="/projects/?projectID={{project.getProjectID()}}"><img src="static/img/tree5.png" /></a>
                 <h1>Team {{project.getProjectID()}}</h1>
                 <h2>100%</h2>
             {% endif %}

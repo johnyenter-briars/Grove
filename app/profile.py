@@ -6,6 +6,14 @@ from exceptions.NoProfileIDException import NoProfileIDException
 def profile():
     if request.args.get('profileID') == None:
         raise NoProfileIDException
+    sess = json.loads(session['user_auth'])
+    if not sess:
+        return redirect('/')
+    ufirst = sess.get('_FirstName')
+    ulast = sess.get('_LastName')
+    userName = ufirst + ' ' + ulast
+    profileID = sess.get('_StudentID')
+    projectID = sess.get('_ProjectID')
     currentProfileID = request.args.get('profileID')
     sess = json.loads(session['user_auth'])
     studentID = sess.get('_StudentID')
