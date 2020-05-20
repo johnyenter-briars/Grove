@@ -41,7 +41,7 @@ class DatabaseService(object):
          return [Project(tuple) for tuple in 
                 self._db.execute("""select * from Project where ProjectID = 
                 (select ProjectID from Student where StudentID = {id});""".format(id=StudentID))
-                .fetchall()]
+                .fetchall()][0]
 
     def getStudent(self, StudentID):
         return [Student(tuple) for tuple in self._db.execute(

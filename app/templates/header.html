@@ -20,6 +20,23 @@
     <!-- <script src="/scripts/scripts.js"></script> -->
   </head>
   <body>
+    {% if not loggedInUser %}
+    <div class="guide">
+        <ul class="gray horizontal">
+            <li><a style="padding: 4px; padding-left: 6px; height: 100%;" href="/home"><img style="float: right; width: 40px; height: 40px;" src="/static/img/grove_icon.png"></a></li>
+            <li><a href="/projects/?projectID={{projectID}}">Projects</a></li>
+            <li><a href="/classlist">Classlist</a></li>
+            <li class="rightli" style="float:right"><a href="/logout">Logout</a></li>
+            {% if session['user_type'] == "STUDENT"%}
+                <li class="rightli" style="float:right"><a href="/profile/?profileID={{profileID}}">{{ name }}</a></li>
+            {% endif %}
+            {% if session['user_type'] == "TEACHER"%}
+                <li class="rightli" style="float:right"><a href="/teacherconsole">{{ name }}</a></li>
+            {% endif %}
+        
+        </ul>
+    </div>
+    {% endif %}
     {% block content %}{% endblock %}
 </body>
 

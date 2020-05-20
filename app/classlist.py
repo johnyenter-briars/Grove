@@ -8,6 +8,12 @@ def classlist():
     last = sess.get('_LastName')
     teachID = sess.get('_TeacherID')
     profileID = sess.get('_StudentID')
+    projectID = sess.get('_ProjectID')
+
     students = database.getClassList(teachID)
-    
-    return render_template("classlist.html", students=students, name=first+' '+last, profileID=profileID)
+    projects = [project for project in database.getProjects() if project.getTeacherID() == teachID]
+
+    return render_template("classlist.html", 
+                            students=students, projects=projects,
+                            name=first+' '+last, profileID=profileID, 
+                            studentID=profileID, teacherID=teachID, projectID=projectID)
