@@ -20,6 +20,8 @@ def task():
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
+    projectID = sess.get('_ProjectID')
+
     fullName = first + " " + last
     if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] :
         file = request.files['fileType']
@@ -53,7 +55,8 @@ def task():
         taskAssignee = database.getStudent(targetTask.getStudentId()),
         taskID='?taskID='+currentTaskID,
         messages=messages,
-        profileID=profileID
+        profileID=profileID,
+        projectID=projectID,
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])
@@ -65,7 +68,7 @@ def addTaskToBranch():
     
     database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
 
-    return redirect(url_for("projects"))
+    return redirect(url_for("projects", projectID=projectId))
 
 
 
