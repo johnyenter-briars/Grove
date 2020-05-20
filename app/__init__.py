@@ -42,10 +42,12 @@ def hello():
             if userObject.getUserType() == "Student":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getStudent(userObject.getUserID()))
+                session['user_type'] = "STUDENT"
                 return redirect(url_for('home'))
             elif userObject.getUserType() == "Teacher":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getTeacher(userObject.getUserID()))
+                session['user_type'] = "TEACHER"
                 return redirect(url_for('teacherconsole'))
         else:
             return render_template('index.html', loggedInUser="User does not exist")

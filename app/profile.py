@@ -15,4 +15,9 @@ def profile():
     tasks = database.getTasksForStudent(currentProfileID)
     first = database.getStudent(currentProfileID).getFirstName() 
     last = database.getStudent(currentProfileID).getLastName() 
-    return render_template("profile.html", name=first+' '+last, branches=branches, awards=awards, tasks=tasks, studentID=studentID, teacherID=teacherID)
+    return render_template("profile.html", 
+                            targetProfileName=first+' '+last, branches=branches, 
+                            awards=awards, tasks=tasks, 
+                            studentID=studentID, teacherID=teacherID, 
+                            profileID=sess.get('_StudentID'), 
+                            name = '{} {}'.format(sess.get('_FirstName'), sess.get('_LastName')))
