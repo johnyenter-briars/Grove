@@ -11,7 +11,7 @@ class Project(object):
     def getProjectID(self):
         return self._ProjectID
 
-    def getTeacherId(self):
+    def getTeacherID(self):
         return self._TeacherID
 
     def getGrowthStatus(self):
