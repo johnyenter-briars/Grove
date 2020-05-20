@@ -143,117 +143,92 @@ create table Award(
     FOREIGN KEY (apple_type) REFERENCES AppleType(apple_type)
 );
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(3, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('4', '1', 'Rotten', 'Building Phase Project', '2020-01-03 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(2, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('5', '1', 'Red', 'HoneyPot Project', '2020-01-09 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(3, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('6', '1', 'Silver', 'Infra Availability Project', '2020-01-06 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Rotten", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('7', '1', 'Golden', 'Final Project', '2020-01-20 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('8', '1', 'Golden', 'Database Schema Project', '2020-01-30 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('9', '1', 'Golden', 'Web App Project', '2020-02-03 04:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('10', '1', 'Golden', 'Python Project', '2020-02-04 10:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('11', '1', 'Golden', 'Flask Project', '2020-02-12 05:12:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('12', '1', 'Golden', 'Organization Structure Poject', '2020-02-20 09:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('13', '1', 'Golden', 'Initial Planning Project', '2020-02-24 03:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('14', '1', 'Silver', 'Deployment Project', '2020-03-03 07:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Golden", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('15', '1', 'Silver', 'Security Project', '2020-03-13 10:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('16', '1', 'Silver', 'Application Project', '2020-03-23 3:12:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('17', '1', 'Silver', 'Pen Testing Proj', '2020-03-28 09:02:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('18', '1', 'Silver', 'Create Blue Team Project', '2020-04-03 09:32:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('19', '1', 'Silver', 'Create Red Team Proj', '2020-04-13 03:32:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('20', '1', 'Red', 'Catch The Hacker Project', '2020-04-23 03:32:.22');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Silver", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('21', '1', 'Red', 'Vulnerability Scanner Project', '2020-05-03 03:02:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('22', '1', 'Red', 'Threat Assesment Project', '2020-05-13 12:12:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('23', '1', 'Red', 'Install HVAC Project', '2020-05-23 05:42:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('24', '1', 'Red', 'Team Building Project', '2020-05-30 11:32:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('25', '1', 'Red', 'Budget Planning Project', '2020-06-03 09:32:.41');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('26', '1', 'Red', 'Test Deployment Project', '2020-06-13 03:02:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('27', '1', 'Red', 'Dev Project', '2020-06-23 05:04:.01');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('28', '1', 'Red', 'Centric Project', '2020-06-30 09:12:.21');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('2', '2', 'Red', 'ExampleProject', 'YYYY-MM-DD HH:MM:SS.SSS');
 
-insert into Award 
-(StudentID, apple_type, DateAwarded, ProjectName) 
-values(1, "Red", "YYYY-MM-DD HH:MM:SS.SSS", "ExampleProject");
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('1', '3', 'Silver', 'ExampleProject', 'YYYY-MM-DD HH:MM:SS.SSS');
+
+insert into Award ("AwardID", "StudentID", "apple_type", "ProjectName", "DateAwarded") 
+values ('3', '3', 'Rotten', 'ExampleProject', 'YYYY-MM-DD HH:MM:SS.SSS');
+
+
 
 create table Branch(
     BranchID INTEGER,
@@ -469,3 +444,13 @@ values(1, 100);
 insert into ProjectGoal
 (ProjectID, ProjectTargetWeight)
 values(2, 100);
+
+
+
+CREATE TRIGGER befor_insert_awards2 BEFORE INSERT ON Award
+BEGIN
+SELECT CASE 
+WHEN ((SELECT StudentID FROM Student WHERE StudentID = NEW.StudentID ) ISNULL) 
+THEN RAISE(ABORT, 'This is a User Define Error Message - This ID Does not Exist.') 
+END; 
+END
