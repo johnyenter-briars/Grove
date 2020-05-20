@@ -15,22 +15,25 @@
     <div class="project-glance" style="text-align: center;">
         <h1>Project at a glance:</h1>
         <div class="project-info">
-            <b>Project Weight: </b ><p> {{projWeight}}</p>
+            <b>Project Weight: </b>
+            <p> {{projWeight}}</p>
         </div>
         <div class="project-info">
-            <b>Project Goal: </b ><p> {{projGoal}}</p>
+            <b>Project Goal: </b>
+            <p> {{projGoal}}</p>
         </div>
         <div class="project-info">
-            <b>Project Growth Status: </b ><p>{{projGrowthStatus}}%</p>
+            <b>Project Growth Status: </b>
+            <p>{{projGrowthStatus}}%</p>
         </div>
         <div class="project-info">
-            <b>Students in project: </b >
+            <b>Students in project: </b>
             {% for studentID,studentObj in studentsOnProject.items() %}
-                <p style="margin: 4px;">{{studentObj.getFirstName()}} </p>
+            <p style="margin: 4px;">{{studentObj.getFirstName()}} </p>
             {% endfor %}
         </div>
 
-       
+
     </div>
     <div class="branches">
         <div class="bCenter">
