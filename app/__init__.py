@@ -29,16 +29,16 @@ def hello():
         for user in database.getUserCredentials():
             u = user._UserName
             p = user._UserPass
-            if u == username and p == password:
+            if u.lower() == username.lower() and p == password:
                 shouldLogin = True
-            elif u == username and p != password:
+            elif u.lower() == username.lower() and p != password:
                 return render_template('index.html', loggedInUser="Incorrect password")
 
         if(shouldLogin):
             # add session persistance
             # This code assumes the user is a student
             userObject = [ele for ele in database.getUserCredentials(
-            ) if ele.getUserName() == username and ele.getUserPass() == password][0]
+            ) if ele.getUserName().lower() == username.lower() and ele.getUserPass() == password][0]
             if userObject.getUserType() == "Student":
                 session['user_auth'] = ClassEncoder().encode(
                     database.getStudent(userObject.getUserID()))
