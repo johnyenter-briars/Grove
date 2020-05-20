@@ -116,6 +116,7 @@ ul.horizontal {
 
 ul.horizontal li {
   float: left;
+  max-height: 52px;
 }
 
 ul.horizontal li a {
