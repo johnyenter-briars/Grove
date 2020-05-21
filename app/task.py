@@ -21,6 +21,14 @@ def task():
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
     projectID = sess.get('_ProjectID')
+    taskReviewObj = database.getTaskReviewedStatus(currentTaskID)
+    taskReview = -1
+    appleRating = -1
+    if(taskReviewObj == []):
+        taskReview = -1
+    else:
+        taskReview = taskReviewObj[0].getResolved()
+        appleRating = taskReviewObj[0].getRating()
 
     fullName = first + " " + last
     if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] and request.form.getlist("taskreview") == [] and request.form.getlist("taskresolve") == [] :
@@ -53,9 +61,10 @@ def task():
 
     if request.method == 'POST' and request.form.getlist("taskresolve") != []:
         print("task resolve")
+        rating = request.form['rating']
         tID = request.form['taskresolve']
         tID = int(''.join(filter(str.isdigit, tID)))
-        database.markTaskResolved(tID)
+        database.markTaskResolved(tID, rating)
         return redirect('/task/?taskID='+currentTaskID)
         
     targetTask = database.getTask(int(currentTaskID))
@@ -67,6 +76,8 @@ def task():
         messages=messages,
         profileID=profileID,
         projectID=projectID,
+        taskReview=taskReview,
+        appleRating = appleRating
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])

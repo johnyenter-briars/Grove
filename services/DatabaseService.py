@@ -172,20 +172,20 @@ class DatabaseService(object):
     def insertTaskReview(self, TaskID: int):
         try:
             self._db.execute("""insert into TaskReview
-                                (TaskID, Resolved)
-                                values({tID}, 0);"""
+                                (TaskID, Resolved, Rating)
+                                values({tID}, 0, 0);"""
                                 .format(tID=TaskID))
             self._db.commit()
 
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
-    def markTaskResolved(self, TaskID: int):
+    def markTaskResolved(self, TaskID: int, Rating: int):
         try:
             self._db.execute("""UPDATE TaskReview
-                                SET Resolved = 1
+                                SET Resolved = 1, Rating = {Rating}
                                 WHERE TaskID = {tID}"""
-                                .format(tID=TaskID))
+                                .format(tID=TaskID, Rating=Rating))
             self._db.commit()
 
         except sqlite3.Error as error:
@@ -194,6 +194,9 @@ class DatabaseService(object):
     def getTasksToBeReviewed(self):
         return [TaskReview(tuple) for tuple in self._db.execute("select * from TaskReview").fetchall()]
 
+    def getTaskReviewedStatus(self, TaskID: int):
+        return [TaskReview(tuple) for tuple in self._db.execute(
+            """select * from TaskReview where TaskID={id};""".format(id=TaskID)).fetchall()]
 
     def close_connection(self, exception):
         self._db.close()
