@@ -1,5 +1,6 @@
 .teacherconsole-actionarea {
-    display: block;
+    display: flex;
+    flex-direction: row;
     margin-left: 4%;
     margin-right: 4%;
     background-color: #8EAB91;
@@ -11,7 +12,8 @@
 }
 
 .add-student{
-    display: inline-flexbox;
+    display: flex;
+    flex-direction: row;
     background-color: #808000;
     border: 3px solid #20B2AA;
     padding: 16px;
@@ -20,8 +22,9 @@
 }
 
 .project-list{
-    display: inline-flexbox;
-    background-color: #996633;
+    display: flex;
+    flex-direction: column;
+    background-color: #4d3319;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
