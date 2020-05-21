@@ -1,0 +1,25 @@
+.award-candidate{
+    /* background-color: black; */
+    display: inline-flex;
+    width: 100%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.award-candidate > li{
+    padding: 10px;
+    
+}
+
+.award-candidate > p{
+    text-align: center;
+}
+
+.award-candidate > input[type="radio"]{
+    margin: 10px;
+    float: inline-end;
+    vertical-align: middle
+
+}
