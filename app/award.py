@@ -1,5 +1,6 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
+from datetime import datetime
 
 @app.route('/award')
 def awardapplespage():
@@ -9,6 +10,7 @@ def awardapplespage():
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     projectID = sess.get('_ProjectID')
+    profileID = sess.get('_StudentID')
     visibleStudents = []
 
     if session['user_type'] == "STUDENT":
@@ -16,11 +18,14 @@ def awardapplespage():
     elif session['user_type'] == "TEACHER":
         pass
 
-    return render_template("awardapples.html", projectID=projectID, name='{} {}'.format(first, last),
+    return render_template("awardapples.html", projectID=projectID, 
+                            name='{} {}'.format(first, last),profileID=profileID,
                             visibleStudents=visibleStudents)
 
 @app.route('/awardapples', methods=['POST'])
 def awardapple():
-    x = request.form
+    for key,value in request.form.items():
+        targetProject = database.getStudentProject(int(key))
+        database.insertAward(int(key), value, targetProject.getProjectName(), datetime.now())
 
     return redirect(url_for("awardapplespage"))

@@ -88,9 +88,18 @@ class DatabaseService(object):
             select * from Student where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()]
 
-
     def getProjects(self):
         return [Project(tuple) for tuple in self._db.execute("select * from Project").fetchall()]
+
+    def insertAward(self,StudentID:int,AppleType:str,ProjectName:str,DateAwarded:str):
+        try:
+            self._db.execute("""insert into Award("StudentID", "apple_type", "ProjectName", "DateAwarded")
+                                values({id}, "{type}", "{name}", "{date}");"""
+                                .format(id=StudentID,type=AppleType,name=ProjectName,date=DateAwarded))
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
 
     def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
         self._db.execute(""" INSERT INTO Chat
