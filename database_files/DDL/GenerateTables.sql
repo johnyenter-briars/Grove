@@ -13,10 +13,21 @@ drop table Teacher;
 drop table RoleType;
 drop table AppleType;
 drop table Files;
+drop table TaskReview;
 drop table ProjectGoal;
 
-create table AppleType
-(
+create table TaskReview(
+    ReviewID INTEGER,
+    TaskID INTEGER,
+    Resolved INTEGER,
+
+    PRIMARY KEY (ReviewID),
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
+);
+
+insert into TaskReview (TaskID, Resolved) values(6,0);
+
+create table AppleType(
     apple_type varchar(20) PRIMARY KEY
 );
 
