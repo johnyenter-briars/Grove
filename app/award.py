@@ -16,7 +16,8 @@ def awardapplespage():
     if session['user_type'] == "STUDENT":
         visibleStudents = database.getStudentsOnProject(projectID)
     elif session['user_type'] == "TEACHER":
-        pass
+        for project in database.getProjectsForTeacher(sess.get('_TeacherID')):
+            visibleStudents += database.getStudentsOnProject(project.getProjectID())
 
     return render_template("awardapples.html", projectID=projectID, 
                             name='{} {}'.format(first, last),profileID=profileID,

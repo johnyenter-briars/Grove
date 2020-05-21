@@ -74,6 +74,11 @@ class DatabaseService(object):
         return [Task(tuple) for tuple in self._db.execute(
             """select * from Task where StudentID={id};""".format(id=StudentID)).fetchall()]
 
+    def getProjectsForTeacher(self, TeacherID):
+        return [Project(tuple) for tuple in self._db.execute("""
+                    select * from Project where TeacherID={id};"""
+                    .format(id=TeacherID)).fetchall()]
+
     def getClassList(self, TeacherID):
         return [Student(tuple) for tuple in self._db.execute(
                 """select * from Student where TeacherID={id};""".format(id=TeacherID)).fetchall()]
