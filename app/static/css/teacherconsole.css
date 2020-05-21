@@ -1,5 +1,5 @@
 .teacherconsole-actionarea {
-    display: block;
+    display: inline-flex;
     margin-left: 4%;
     margin-right: 4%;
     background-color: #8EAB91;
@@ -10,11 +10,20 @@
     border-radius: 12px;
 }
 
-.add-student{
+.taskstoreview {
     display: inline-flexbox;
     background-color: #808000;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
     width: 30%;
+}
+
+.add-student{
+    display: inline-flexbox;
+    background-color: #808000;
+    border: 3px solid #20B2AA;
+    padding: 16px;
+    border-radius: 12px;
+    width: 40%;
 }

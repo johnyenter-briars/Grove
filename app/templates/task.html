@@ -22,10 +22,18 @@
             </a>
         </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
+        {% if session['user_type'] == "STUDENT"%}
         <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
             <input type="hidden" name="taskreview" value="{{taskID}}">
-            <button type="button" id="branchRev">Request Task Review</button>
+            <button type="submit" id="branchRev">Request Task Review</button>
         </form>
+        {% endif %}
+        {% if session['user_type'] == "TEACHER"%}
+        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <input type="hidden" name="taskresolve" value="{{taskID}}">
+            <button type="submit" id="branchRev">Resolve Review</button>
+        </form>
+        {% endif %}
         {% if taskObj.getResolved() %}
         <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
         {% endif %}

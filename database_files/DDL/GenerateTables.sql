@@ -25,7 +25,7 @@ create table TaskReview(
     FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
 );
 
-insert into TaskReview (TaskID, Resolved) values(1,0);
+insert into TaskReview (TaskID, Resolved) values(6,0);
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
