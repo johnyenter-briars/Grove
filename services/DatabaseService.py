@@ -11,6 +11,7 @@ from models.Task import Task
 from models.Chat import Chat
 from models.TaskReview import TaskReview
 from models.Goal import Goal
+from models.Apple import Apple
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -27,6 +28,9 @@ class DatabaseService(object):
         
     def get_db(self):
         return self._db
+
+    def getValidAppleTypes(self):
+        return [Apple(tuple) for tuple in self._db.execute("select * from AppleType;").fetchall()] 
 
     def getUserCredentials(self):
         return [UserCredentials(tuple) for tuple in self._db.execute("select * from UserCredentials;").fetchall()] 
