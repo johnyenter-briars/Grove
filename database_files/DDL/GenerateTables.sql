@@ -20,12 +20,13 @@ create table TaskReview(
     ReviewID INTEGER,
     TaskID INTEGER,
     Resolved INTEGER,
+    Rating INTEGER,
 
     PRIMARY KEY (ReviewID),
     FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
 );
 
-insert into TaskReview (TaskID, Resolved) values(6,0);
+insert into TaskReview (TaskID, Resolved, Rating) values(6,0,0);
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
