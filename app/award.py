@@ -19,11 +19,12 @@ def awardapplespage():
         for project in database.getProjectsForTeacher(sess.get('_TeacherID')):
             visibleStudents += database.getStudentsOnProject(project.getProjectID())
 
-    possibleApples = database.
+    possibleApples = database.getValidAppleTypes()
+
 
     return render_template("awardapples.html", projectID=projectID, 
                             name='{} {}'.format(first, last),profileID=profileID,
-                            visibleStudents=visibleStudents)
+                            visibleStudents=visibleStudents, possibleApples=possibleApples)
 
 @app.route('/awardapples', methods=['POST'])
 def awardapple():

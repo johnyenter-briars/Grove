@@ -8,35 +8,20 @@
     
     <form action="/awardapples" method="POST">
         <ul>
-            <!-- <li>
-                <div class="award-candidate">
-                    <p><b>john : 1</b></p>
-                    <div style="float: right;">
-                        <label><input type="radio" id="male" name="1" value="Golden"><img src="/static/img/Golden.png"></label>
-                        <label><input type="radio" id="male" name="1" value="Silver"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
-                        <label><input type="radio" id="male" name="1" value="Red"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
-                        <label><input type="radio" id="male" name="1" value="Rotten"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
-                    </div>
-                </div>
-            </li> -->
             {% for student in visibleStudents%}
                 <li>
                     <div class="award-candidate">
                         <p>{{student.getFirstName()}} : {{student.getStudentID()}}</p>
                         <div style="float: right;">
-                            
-                            <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="Golden"><img src="/static/img/Golden.png"></label>
-                            <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="Silver"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
-                            <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="Red"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
-                            <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="Rotten"><img src="http://placehold.it/40x60/0bf/fff&text=A"></label>
+                            {% for apple in possibleApples%}
+                                <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/static/img/{{apple.getAppleType()}}.png"></label>
+                            {% endfor %}
                         </div>
                     </div>
                 </li>
             {% endfor %}
         </ul>
-
         <button type="submit" value="Submit">Submit Apple Awards</button>
     </form>
-
 </div>
 {% endblock %}
