@@ -37,6 +37,12 @@
                 {% endif %}{% endfor %}
             </ul>
         </div>
+        <div class="project-list">
+            <label for="studentFName"><b>List of Projects</b></label></p>
+            {% for project in projects%}
+                <a href="/projects/?projectID={{project.getProjectID()}}">{{project.getProjectName()}}</a></p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}

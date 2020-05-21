@@ -12,9 +12,10 @@ def teacherconsole():
     tasksToReview = database.getTasksToBeReviewed()
     studentID = sess.get('_StudentID')
     teacherID = sess.get('_TeacherID')
-    
-    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID,tasksToReview=tasksToReview)
+    students = database.getClassList(teacherID)
+    projects = [project for project in database.getProjects() if project.getTeacherID() == teacherID]
 
+    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID, students=students, projects=projects, tasksToReview=tasksToReview)
 
 @app.route('/addstudent/', methods=['POST', 'GET'])
 def addStudent():
