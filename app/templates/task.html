@@ -60,20 +60,27 @@
         </div>
         <div class="chat-box">
             <h2>Chat Messages</h2>
-            <div class="chat">
+            <div class="chat-body">
                 {% for message in messages%} {%if message.getUserName() == name %}
-                <div class="message darker">
-                    <h3>{{message.getUserName()}}</h3>
-                    <p>{{message.getMessageString()}}</p>
+                <div class="answer right">
+                    <div class="name">{{message.getUserName()}}</div>
+                    <div class="text">{{message.getMessageString()}}</div>
                     <span class="time-right">{{message.getTimeStamp()}}</span>
                 </div>
                 {% else %}
-                <div class="message">
-                    <h3>{{message.getUserName()}}</h3>
-                    <p>{{message.getMessageString()}}</p>
+                <div class="answer left">
+                    <div class="name">{{message.getUserName()}}</div>
+                    <div class="text">{{message.getMessageString()}}</div>
                     <span class="time-right">{{message.getTimeStamp()}}</span>
                 </div>
                 {% endif %} {% endfor %}
+                <div class="answer right">
+                    <div class="name">Alexander Herthic</div>
+                    <div class="text">
+                        It is a long established fact that a reader will be. Thanks Mate!
+                    </div>
+                    <div class="time">5 min ago</div>
+                </div>
             </div>
             <form action="/task/{{taskID}}" method=post>
                 <div class="chat-message">
