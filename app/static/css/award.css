@@ -1,6 +1,7 @@
 .award-candidate{
     /* background-color: black; */
-    display: inline-flex;
+    /* I have no idea what this does but it works */
+    display: block ruby;
     width: 100%;
 }
 
@@ -10,6 +11,7 @@ ul{
 
 .award-candidate > li{
     padding: 10px;
+    text-align: center;
     
 }
 
@@ -17,9 +19,33 @@ ul{
     text-align: center;
 }
 
-.award-candidate > input[type="radio"]{
-    margin: 10px;
+input[type="radio"]{
+    margin: 15px;
     float: inline-end;
-    vertical-align: middle
+    vertical-align: middle;
+    padding: 10%;
+    transform: scale(2);
 
 }
+
+img{
+    width: 40px; height: 40px;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* IMAGE STYLES */
+  [type=radio] + img {
+    cursor: pointer;
+  }
+  
+  /* CHECKED STYLES */
+  [type=radio]:checked + img {
+    outline: 2px solid #f00;
+  }

@@ -19,6 +19,8 @@ def awardapplespage():
         for project in database.getProjectsForTeacher(sess.get('_TeacherID')):
             visibleStudents += database.getStudentsOnProject(project.getProjectID())
 
+    possibleApples = database.
+
     return render_template("awardapples.html", projectID=projectID, 
                             name='{} {}'.format(first, last),profileID=profileID,
                             visibleStudents=visibleStudents)
