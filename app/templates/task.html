@@ -15,7 +15,7 @@
 </script>
 <div class="task-page">
     <div class="task-description">
-        <div class="addingImage">
+        <div class="addingImage" style = "pointer-events:none;">
             <div class="boxLeaf">
                 <p><b>&nbsp;{{taskObj.getTaskDesc()}}</b></p>
             </div>
@@ -23,15 +23,61 @@
         </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
         {% if session['user_type'] == "STUDENT"%}
+        {% if taskReview == -1 %}
         <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
             <input type="hidden" name="taskreview" value="{{taskID}}">
             <button type="submit" id="branchRev">Request Task Review</button>
         </form>
+        {% elif taskReview == False %}
+        <form>
+            <input type="hidden" name="taskreview" value="{{taskID}}">
+            <button type="submit" id="branchRev" style = "pointer-events:none;" disabled>Waiting for Review</button>
+        </form>
+        {% else %}
+        <form>
+            <div class="appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        {% if appleRating == i %}
+                            <input type="radio" id="star{{i}}" name="staticRating" value="{{i}}" checked disabled/><label  style = "pointer-events:none;" class = "full" for="star{{i}}"disabled ></label>
+                        {% else %}
+                            <input type="radio" id="star{{i}}" name="staticRating" value="{{i}}" disabled/><label style = "pointer-events:none;" class = "full" for="star{{i}}" disabled></label>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            </div>
+        </form>
+
         {% endif %}
-        {% if session['user_type'] == "TEACHER"%}
+        {% endif %}
+        {% if session['user_type'] == "TEACHER" and taskReview == False%}
         <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <div class="appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        <input type="radio" id="star{{i}}" name="rating" value="{{i}}" /><label class = "full" for="star{{i}}" ></label>
+                    {% endfor %}
+                </fieldset>
+            </div>
             <input type="hidden" name="taskresolve" value="{{taskID}}">
             <button type="submit" id="branchRev">Resolve Review</button>
+        </form>
+        {% endif %}
+        {% if session['user_type'] == "TEACHER" and taskReview == True%}
+        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <div class= "appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        {% if appleRating == i %}
+                            <input type="radio" id="star{{i}}" name="rating" value="{{i}}" checked /><label class = "full" for="star{{i}}" ></label>
+                        {% else %}
+                            <input type="radio" id="star{{i}}" name="rating" value="{{i}}" /><label class = "full" for="star{{i}}" ></label>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <input type="hidden" name="taskresolve" value="{{taskID}}">
+            <button type="submit" id="branchRev">Update Review</button>
         </form>
         {% endif %}
         {% if taskObj.getResolved() %}
