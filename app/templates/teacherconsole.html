@@ -27,6 +27,22 @@
                 </div>
             </form>
         </div>
+        <div class="taskstoreview">
+            <h2>Tasks To Review</h2>
+            <ul>
+                {% for task in tasksToReview%}
+                {% if task.getResolved() == 0%}
+                <li><a href="/task/?taskID={{task.getTaskID()}}">Review ID: {{task.getReviewID()}} TaskID: {{task.getTaskID()}} Resolved: {{task.getResolved()}}</a></li>
+                <br> 
+                {% endif %}{% endfor %}
+            </ul>
+        </div>
+        <div class="project-list">
+            <label for="studentFName"><b>List of Projects</b></label></p>
+            {% for project in projects%}
+                <a href="/projects/?projectID={{project.getProjectID()}}">{{project.getProjectName()}}</a></p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
