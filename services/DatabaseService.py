@@ -9,6 +9,7 @@ from services.FlattenerService import BranchFlattener
 from models.Files import Files
 from models.Task import Task
 from models.Chat import Chat
+from models.TaskReview import TaskReview
 from models.Goal import Goal
 import os
 
@@ -149,6 +150,31 @@ class DatabaseService(object):
 
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
+
+    def insertTaskReview(self, TaskID: int):
+        try:
+            self._db.execute("""insert into TaskReview
+                                (TaskID, Resolved)
+                                values({tID}, 0);"""
+                                .format(tID=TaskID))
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
+
+    def markTaskResolved(self, TaskID: int):
+        try:
+            self._db.execute("""UPDATE TaskReview
+                                SET Resolved = 1
+                                WHERE TaskID = {tID}"""
+                                .format(tID=TaskID))
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
+
+    def getTasksToBeReviewed(self):
+        return [TaskReview(tuple) for tuple in self._db.execute("select * from TaskReview").fetchall()]
 
 
     def close_connection(self, exception):
