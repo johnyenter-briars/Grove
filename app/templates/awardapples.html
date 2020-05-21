@@ -12,9 +12,9 @@
                 <li>
                     <div class="award-candidate">
                         <p>{{student.getFirstName()}} : {{student.getStudentID()}}</p>
-                        <input type="radio" id="male" name="{{student.getStudentID()}}_apple" value="Gold" checked>
-                        <input type="radio" id="female" name="{{student.getStudentID()}}_apple" value="Silver">
-                        <input type="radio" id="other" name="{{student.getStudentID()}}_apple" value="Bronze">
+                        <input type="radio" id="male" name="{{student.getStudentID()}}" value="Gold" checked>
+                        <input type="radio" id="female" name="{{student.getStudentID()}}" value="Silver">
+                        <input type="radio" id="other" name="{{student.getStudentID()}}" value="Bronze">
                     </div>
                 </li>
             {% endfor %}
