@@ -1,5 +1,27 @@
 {% extends "header.html" %} {% block content %}
+<link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/award.css') }}"
+/>
 <div class="container overflow-auto">
     <h1><u>Award apples</u></h1>
+    
+    <form action="/awardapples" method="POST">
+        <ul>
+            {% for student in visibleStudents%}
+                <li>
+                    <div class="award-candidate">
+                        <p>{{student.getFirstName()}} : {{student.getStudentID()}}</p>
+                        <input type="radio" id="male" name="{{student.getStudentID()}}_apple" value="Gold" checked>
+                        <input type="radio" id="female" name="{{student.getStudentID()}}_apple" value="Silver">
+                        <input type="radio" id="other" name="{{student.getStudentID()}}_apple" value="Bronze">
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+
+        <input type="submit" value="Submit">
+    </form>
+
 </div>
 {% endblock %}
