@@ -23,7 +23,7 @@ def task():
     projectID = sess.get('_ProjectID')
 
     fullName = first + " " + last
-    if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] :
+    if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] and request.form.getlist("taskreview") == [] and request.form.getlist("taskresolve") == [] :
         file = request.files['fileType']
         if file.filename == '':
             return redirect(request.url)
@@ -39,10 +39,25 @@ def task():
         database.addMessage(fullName, currentTaskID, current_time, newChat)
         return redirect('/task/?taskID='+currentTaskID)
 
-    if request.method == 'POST':
+    if request.method == 'POST' and request.form.getlist("filename") != []:
         fname = request.form['filename']
         database.removeFile(fname)
         return redirect('/task/?taskID='+currentTaskID)
+
+    if request.method == 'POST' and request.form.getlist("taskreview") != []:
+        print("task review post")
+        tID = request.form['taskreview']
+        tID = int(''.join(filter(str.isdigit, tID)))
+        database.insertTaskReview(tID)
+        return redirect('/task/?taskID='+currentTaskID)
+
+    if request.method == 'POST' and request.form.getlist("taskresolve") != []:
+        print("task resolve")
+        tID = request.form['taskresolve']
+        tID = int(''.join(filter(str.isdigit, tID)))
+        database.markTaskResolved(tID)
+        return redirect('/task/?taskID='+currentTaskID)
+        
     targetTask = database.getTask(int(currentTaskID))
     return render_template("task.html", 
         name=first+' '+last, files=files, 
