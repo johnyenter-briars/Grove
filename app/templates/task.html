@@ -31,7 +31,7 @@
         {% elif taskReview == False %}
         <form>
             <input type="hidden" name="taskreview" value="{{taskID}}">
-            <button type="submit" id="branchRev" disabled>Waiting for Review</button>
+            <button type="submit" id="branchRev" style = "pointer-events:none;" disabled>Waiting for Review</button>
         </form>
         {% else %}
         <form>
@@ -46,7 +46,6 @@
                     {% endfor %}
                 </fieldset>
             </div>
-            <button type="submit" id="branchRev" disabled>Result</button>
         </form>
 
         {% endif %}
