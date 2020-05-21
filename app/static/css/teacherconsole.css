@@ -18,3 +18,12 @@
     border-radius: 12px;
     width: 30%;
 }
+
+.project-list{
+    display: inline-flexbox;
+    background-color: #996633;
+    border: 3px solid #20B2AA;
+    padding: 16px;
+    border-radius: 12px;
+    width: 30%;
+}
