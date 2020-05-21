@@ -27,6 +27,11 @@
                 </div>
             </form>
         </div>
+        <div class="project-list">
+            {% for project in projects%}
+                <a href="/projects/?projectID={{project.getProjectID()}}">{{project.getProjectDesc()}}</a></p>
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
