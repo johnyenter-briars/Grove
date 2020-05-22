@@ -12,10 +12,11 @@
                 <li>
                     <div class="award-candidate">
                         <p>{{student.getFirstName()}} : {{student.getStudentID()}}</p>
-                        <div style="float: right;">
-                            {% for apple in possibleApples%}
+                        <div style="float: right; background-color: red;">
+                            <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="test"><img src="/static/img/Golden.png"></label>
+                            <!-- {% for apple in possibleApples%}
                                 <label><input type="radio" id="male" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/static/img/{{apple.getAppleType()}}.png"></label>
-                            {% endfor %}
+                            {% endfor %} -->
                         </div>
                     </div>
                 </li>
