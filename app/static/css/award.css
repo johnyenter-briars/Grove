@@ -1,6 +1,7 @@
 .award-candidate{
     display: inline-flex;
     width: 100%;
+    background-color: blue;
 }
 
 ul{
@@ -14,7 +15,7 @@ ul{
 }
 
 .award-candidate > p{
-    text-align: center;
+    padding-top: 2%;
 }
 
 input[type="radio"]{
