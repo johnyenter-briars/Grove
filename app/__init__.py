@@ -81,4 +81,4 @@ if __name__ == '__main__':
     app.run(debug=True)
 
 
-from app import task, projects, profile, home, classlist, logout, teacherconsole
+from app import task, projects, profile, home, classlist, logout, teacherconsole, award
