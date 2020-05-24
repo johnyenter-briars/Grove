@@ -1,0 +1,52 @@
+.award-candidate{
+    display: flex;
+    width: 100%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+.award-candidate > li{
+    padding: 10px;
+    text-align: center;
+    
+}
+
+.award-candidate > p{
+    padding-top: 2%;
+    width: 100%;
+    font-size: 20px;
+}
+
+input[type="radio"]{
+    margin: 15px;
+    float: inline-end;
+    vertical-align: middle;
+    padding: 10%;
+    transform: scale(2);
+
+}
+
+img{
+    width: 40px; height: 40px;
+}
+
+/* S/O to stack overflow for the below code */
+[type=radio] { 
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+[type=radio] + img {
+    cursor: pointer;
+}
+
+[type=radio]:checked + img {
+    border-radius: 10px;
+    border: 2px solid darkorange;
+    /* outline: 2px solid olive; */
+    /* -moz-outline-radius: 10px; */
+}

@@ -11,6 +11,7 @@ from models.Task import Task
 from models.Chat import Chat
 from models.TaskReview import TaskReview
 from models.Goal import Goal
+from models.Apple import Apple
 import os
 
 DATABASE_PATH = 'database_files/Grove.db'
@@ -27,6 +28,9 @@ class DatabaseService(object):
         
     def get_db(self):
         return self._db
+
+    def getValidAppleTypes(self):
+        return [Apple(tuple) for tuple in self._db.execute("select * from AppleType;").fetchall()] 
 
     def getUserCredentials(self):
         return [UserCredentials(tuple) for tuple in self._db.execute("select * from UserCredentials;").fetchall()] 
@@ -74,6 +78,11 @@ class DatabaseService(object):
         return [Task(tuple) for tuple in self._db.execute(
             """select * from Task where StudentID={id};""".format(id=StudentID)).fetchall()]
 
+    def getProjectsForTeacher(self, TeacherID):
+        return [Project(tuple) for tuple in self._db.execute("""
+                    select * from Project where TeacherID={id};"""
+                    .format(id=TeacherID)).fetchall()]
+
     def getClassList(self, TeacherID):
         return [Student(tuple) for tuple in self._db.execute(
                 """select * from Student where TeacherID={id};""".format(id=TeacherID)).fetchall()]
@@ -83,10 +92,23 @@ class DatabaseService(object):
             select * from Project where ProjectID={id}"""
             .format(id=ProjectID)).fetchall()][0]
 
-    
+    def getStudentsOnProject(self, ProjectID):
+        return [Student(tuple) for tuple in self._db.execute("""
+            select * from Student where ProjectID={id}"""
+            .format(id=ProjectID)).fetchall()]
 
     def getProjects(self):
         return [Project(tuple) for tuple in self._db.execute("select * from Project").fetchall()]
+
+    def insertAward(self,StudentID:int,AppleType:str,ProjectName:str,DateAwarded:str):
+        try:
+            self._db.execute("""insert into Award("StudentID", "apple_type", "ProjectName", "DateAwarded")
+                                values({id}, "{type}", "{name}", "{date}");"""
+                                .format(id=StudentID,type=AppleType,name=ProjectName,date=DateAwarded))
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
 
     def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
         self._db.execute(""" INSERT INTO Chat
