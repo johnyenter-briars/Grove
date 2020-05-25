@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
 from datetime import datetime
+from time import gmtime, strftime
 
 @app.route('/award')
 def awardapplespage():
@@ -21,7 +22,6 @@ def awardapplespage():
 
     possibleApples = database.getValidAppleTypes()
 
-
     return render_template("awardapples.html", projectID=projectID, 
                             name='{} {}'.format(first, last),profileID=profileID,
                             visibleStudents=visibleStudents, possibleApples=possibleApples)
@@ -30,6 +30,11 @@ def awardapplespage():
 def awardapple():
     for key,value in request.form.items():
         targetProject = database.getStudentProject(int(key))
-        database.insertAward(int(key), value, targetProject.getProjectName(), datetime.now())
+        database.insertAward(int(key), value, targetProject.getProjectName(), strftime("%Y-%m-%d %H:%M:%S", gmtime()))
+
+    sess = json.loads(session['user_auth'])
+    profileID = sess.get('_StudentID')
+    not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    database.insertAward(profileID, "Red", "Being Humble", not_ugly_time)
 
     return redirect(url_for("awardapplespage"))
