@@ -4,6 +4,7 @@ from exceptions.NoTaskIDException import NoTaskIDException
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 from datetime import datetime
+from time import gmtime, strftime
 
 
 UPLOAD_FOLDER = '/app/static/files'
@@ -57,6 +58,10 @@ def task():
         tID = request.form['taskreview']
         tID = int(''.join(filter(str.isdigit, tID)))
         database.insertTaskReview(tID)
+        sess = json.loads(session['user_auth'])
+        profileID = sess.get('_StudentID')
+        not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+        database.insertAward(profileID, "Red", "Review Task", not_ugly_time)
         return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("taskresolve") != []:
@@ -82,12 +87,16 @@ def task():
 
 @app.route('/task/addtasktobranch', methods=['POST'])
 def addTaskToBranch():
+    sess = json.loads(session['user_auth'])
     taskTitle = request.form["title"]
     studentOnTaskId = int(request.form["user"])
     branchId = request.args.get("branchID")
+    profileID = sess.get('_StudentID')
     projectId = request.args.get("projectID")
     
     database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
+    not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+    database.insertAward(profileID, "Red", "Commit", not_ugly_time)
 
     return redirect(url_for("projects", projectID=projectId))
 
