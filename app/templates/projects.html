@@ -79,16 +79,13 @@
                                             {% for studentID in branch.getStudents() %}
                                             <h6 class="text-center font-weight-bold">
                                                 {{ studentsOnProject[studentID].getFirstName()}} :
-                                                {{ studentsOnProject[studentID].getStudentID()}}
+                                                <input required id="awardoption" type="radio" name="user" 
+                                                    value="{{studentsOnProject[studentID].getStudentID()}}">
                                             </h6>
                                             {% endfor %}
                                         </div>
                                         <div class="md-form mb-4">
-                                            <input name="title" class="form-control validate" placeholder="Leaf Title">
-                                        </div>
-                                        <div class="md-form mb-4">
-                                            <input name="user" class="form-control validate"
-                                                placeholder="Id of user to assign">
+                                            <input required name="title" class="form-control validate" placeholder="Leaf Title">
                                         </div>
                                     </div>
                                     <div class="modal-footer d-flex justify-content-center">
