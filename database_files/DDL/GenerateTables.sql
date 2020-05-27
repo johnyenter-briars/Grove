@@ -16,18 +16,6 @@ drop table Files;
 drop table TaskReview;
 drop table ProjectGoal;
 
-create table TaskReview(
-    ReviewID INTEGER,
-    TaskID INTEGER,
-    Resolved INTEGER,
-    Rating INTEGER,
-
-    PRIMARY KEY (ReviewID),
-    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
-);
-
-insert into TaskReview (TaskID, Resolved, Rating) values(6,0,0);
-
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
 );
@@ -218,15 +206,15 @@ values(1, 3, 2, "Add colors", 0, 100);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(2, 1, 1, "Update ppt", 1, 25);
+values(2, 1, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(3, 2, 2, "Change font in document", 1, 25);
+values(3, 2, 2, "Change font in document", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(3, 3, 2, "Reformat document", 1, 25);
+values(3, 3, 2, "Reformat document", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -243,12 +231,12 @@ values
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (2, 5, 1, "Update ppt", 1, 25);
+    (2, 5, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (2, 6, 1, "Update ppt", 1, 25);
+    (2, 6, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -258,17 +246,17 @@ values
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 11, 3, "Construct clay models", 1, 25);
+    (1, 11, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 8, 3, "Construct clay models", 1, 25);
+    (1, 8, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 9, 3, "Construct clay models", 1, 25);
+    (1, 9, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -298,11 +286,11 @@ create table Task
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 1, 1, "Open power point", 1);
+values(2, 1, 1, "Open power point", 0);
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 2, 2, "Open ms word", 1);
+values(3, 2, 2, "Open ms word", 0);
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
@@ -323,11 +311,11 @@ values(3, 5, 1, "Choose better font", 0);
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Purchase clay", 1);
+values(1, 11, 3, "Purchase clay", 0);
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Sculpt models", 1);
+values(1, 11, 3, "Sculpt models", 0);
 
 insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
@@ -337,6 +325,17 @@ insert into Task
     (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
 values(3, 10, 3, "Construct base out of balsa wood", 0);
 
+create table TaskReview(
+    ReviewID INTEGER,
+    TaskID INTEGER,
+    Resolved INTEGER,
+    Rating INTEGER,
+
+    PRIMARY KEY (ReviewID),
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
+);
+
+insert into TaskReview (TaskID, Resolved, Rating) values(6,0,0);
 
 create table Chat
 (
@@ -443,6 +442,7 @@ WHEN ((SELECT StudentID
 THEN RAISE(ABORT, 'This is a User Define Error Message - This ID Does not Exist.') 
 END;
 END
+/
 
 
 
@@ -455,7 +455,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
-
+/
 
 CREATE TRIGGER befor_insert_branch_check_teacher BEFORE INSERT ON Branch
 BEGIN
@@ -466,6 +466,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
+/
 
 
 
@@ -478,7 +479,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
-
+/
 
 CREATE TRIGGER befor_insert_branch_check_student BEFORE INSERT ON Branch
 BEGIN
@@ -489,6 +490,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_project BEFORE INSERT ON Task
 BEGIN
@@ -499,6 +501,7 @@ WHEN ((SELECT ProjectID
 THEN RAISE(ABORT, 'ProjectID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_student BEFORE INSERT ON Task
 BEGIN
@@ -509,6 +512,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_branch BEFORE INSERT ON Task
 BEGIN
@@ -519,3 +523,4 @@ WHEN ((SELECT BranchID
 THEN RAISE(ABORT, 'BranchID does not exist.') 
 END;
 END
+/

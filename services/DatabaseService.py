@@ -190,6 +190,12 @@ class DatabaseService(object):
                                 SET Resolved = 1, Rating = {Rating}
                                 WHERE TaskID = {tID}"""
                                 .format(tID=TaskID, Rating=Rating))
+
+            self._db.execute("""UPDATE Task
+                                SET Resolved = 1
+                                WHERE TaskID = {tID}"""
+                                .format(tID=TaskID, Rating=Rating))
+
             self._db.commit()
 
         except sqlite3.Error as error:
