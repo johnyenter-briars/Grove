@@ -15,7 +15,7 @@ def teacherconsole():
     students = database.getClassList(teacherID)
     projects = [project for project in database.getProjects() if project.getTeacherID() == teacherID]
 
-    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID, students=students, projects=projects, tasksToReview=tasksToReview)
+    return render_template("teacherconsole.html", name='{} {}'.format(first, last), teacherID=teacherID, studentID=studentID, students=students, projects=projects, tasksToReview=tasksToReview,database=database)
 
 @app.route('/addstudent/', methods=['POST', 'GET'])
 def addStudent():
