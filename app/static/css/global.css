@@ -196,7 +196,7 @@ ul.vertical li a {
 
 }
 
-.chat-body {
+.chat {
   height: 320px;
   width: 400px;
   overflow-y: auto;
@@ -370,152 +370,50 @@ a.fill-div {
     justify-content: center;
 }
 
-.row.row-broken {
-  padding-bottom: 0;
-}
-.col-inside-lg {
-  padding: 20px;
-}
-.chat {
-  height: calc(100vh - 180px);
-}
-.decor-default {
-  background-color: #ffffff;
-}
-.chat-users h6 {
-  font-size: 20px;
-  margin: 0 0 20px;
-}
-.chat-users .user {
-  position: relative;
-  padding: 0 0 0 50px;
-  display: block;
-  cursor: pointer;
-  margin: 0 0 20px;
-}
-.chat-users .user .avatar {
-  top: 0;
-  left: 0;
-}
-.chat .avatar {
-  width: 40px;
-  height: 40px;
-  position: absolute;
-}
-.chat .avatar img {
-  display: block;
-  border-radius: 20px;
-  height: 100%;
-}
-.chat .avatar .status.off {
-  border: 1px solid #5a5a5a;
-  background: #ffffff;
-}
-.chat .avatar .status.online {
-  background: #4caf50;
-}
-.chat .avatar .status.busy {
-  background: #ffc107;
-}
-.chat .avatar .status.offline {
-  background: #ed4e6e;
-}
-.chat-users .user .status {
-  bottom: 0;
-  left: 28px;
-}
-.chat .avatar .status {
-  width: 10px;
-  height: 10px;
-  border-radius: 5px;
-  position: absolute;
-}
-.chat-users .user .name {
-  font-size: 14px;
-  font-weight: bold;
-  line-height: 20px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.chat-users .user .mood {
-  font: 200 14px/20px "Raleway", sans-serif;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
+@import url(//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css);
 
-/*****************CHAT BODY *******************/
+fieldset, label { margin: 0; padding: 0; }
+body{ margin: 20px; }
+h1 { font-size: 1.5em; margin: 10px; }
 
-.chat-body .answer.left {
-  padding: 0 0 0 58px;
-  text-align: left;
+/****** Style Star Rating Widget *****/
+
+.rating { 
+  border: none;
   float: left;
 }
-.chat-body .answer {
-  position: relative;
-  max-width: 600px;
-  overflow: hidden;
-  clear: both;
+
+.rating > input { display: none;
+  color: #ddd; 
+ float: right; 
+ } 
+.rating > label:before { 
+  content: url("https://img.icons8.com/carbon-copy/50/000000/apple.png");
 }
 
-.chat-body .answer .name {
-  font-size: 14px;
-  line-height: 36px;
+.rating > label { 
+  color: #ddd; 
+ float: right; 
 }
+/***** CSS Magic to Highlight Stars on Hover *****/
 
-.chat-body .answer.left .text {
-  background: #ebebeb;
-  color: #333333;
-  border-radius: 8px 8px 8px 0;
-}
-.chat-body .answer .text {
-  padding: 12px;
-  font-size: 16px;
-  line-height: 26px;
-  position: relative;
-}
-.chat-body .answer.left .text:before {
-  left: -30px;
-  border-right-color: #ebebeb;
-  border-right-width: 12px;
-}
-.chat-body .answer .text:before {
-  content: '';
-  display: block;
-  position: absolute;
-  bottom: 0;
-  border: 18px solid transparent;
-  border-bottom-width: 0;
-}
-.chat-body .answer.left .time {
-  padding-left: 12px;
-  color: #333333;
-}
-.chat-body .answer .time {
-  font-size: 16px;
-  line-height: 36px;
-  position: relative;
-  padding-bottom: 1px;
-}
-/*RIGHT*/
-.chat-body .answer.right {
-  padding: 0 58px 0 0;
-  text-align: right;
-  float: right;
-}
+.rating > input:checked ~ label, /* show gold star when clicked */
+.rating:not(:checked) > label:hover, /* hover current star */
+.rating:not(:checked) > label:hover ~ label { content: url("https://img.icons8.com/plasticine/50/000000/apple.png");  } /* hover previous stars in list */
 
-.chat-body .answer.right .text {
-  background: #7266ba;
-  color: #ffffff;
-  border-radius: 8px 8px 0 8px;
-}
-.chat-body .answer.right .text:before {
-  right: -30px;
-  border-left-color: #7266ba;
-  border-left-width: 12px;
-}
-.chat-body .answer.right .time {
-  padding-right: 12px;
-  color: #333333;
+.rating > input:checked + label:hover, /* hover current star when changing rating */
+.rating > input:checked ~ label:hover,
+.rating > label:hover ~ input:checked ~ label, /* lighten current selection */
+.rating > input:checked ~ label:hover ~ label { content: url("https://img.icons8.com/plasticine/50/000000/apple.png");   } 
+
+.appleRates{
+  display: flex;
+  align-items: center;
+  background-color: #dbecd9;
+  height:60px;width:290px;
+  padding: 16px;
+  border-radius: 12px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 5%;
 }

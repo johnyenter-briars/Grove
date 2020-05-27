@@ -16,8 +16,14 @@ git clone https://github.com/johnyenter-briars/CSC394.git
 cd CSC394
 ```
 
+#### Windows
 ```
-python[3] -m flask run
+runGrove.bat
+```
+
+#### *NIX
+```
+./runGrove.sh
 ```
 
 ## Deployment
@@ -43,4 +49,4 @@ This project is licensed under the MIT License - see the LICENSE.md file for det
 
 ## Acknowledgments
 
-* Shout out to DePaul University for guiding us along this long and winding road. 
+* Shout out to DePaul University for shepherding us along our journey.

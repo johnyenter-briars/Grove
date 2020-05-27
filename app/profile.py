@@ -1,6 +1,7 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
 from app import app, database
 from exceptions.NoProfileIDException import NoProfileIDException
+from time import gmtime, strftime
 
 @app.route('/profile/')
 def profile():

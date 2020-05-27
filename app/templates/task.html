@@ -15,13 +15,78 @@
 </script>
 <div class="task-page">
     <div class="task-description">
+<<<<<<< HEAD
         <div class="addingImage">
+=======
+        <div class="addingImage" style = "pointer-events:none;">
+>>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
             <div class="boxLeaf">
                 <p><b>&nbsp;{{taskObj.getTaskDesc()}}</b></p>
             </div>
             </a>
         </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
+<<<<<<< HEAD
+=======
+        {% if session['user_type'] == "STUDENT"%}
+        {% if taskReview == -1 %}
+        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <input type="hidden" name="taskreview" value="{{taskID}}">
+            <button type="submit" id="branchRev">Request Task Review</button>
+        </form>
+        {% elif taskReview == False %}
+        <form>
+            <input type="hidden" name="taskreview" value="{{taskID}}">
+            <button type="submit" id="branchRev" style = "pointer-events:none;" disabled>Waiting for Review</button>
+        </form>
+        {% else %}
+        <form>
+            <div class="appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        {% if appleRating == i %}
+                            <input type="radio" id="star{{i}}" name="staticRating" value="{{i}}" checked disabled/><label  style = "pointer-events:none;" class = "full" for="star{{i}}"disabled ></label>
+                        {% else %}
+                            <input type="radio" id="star{{i}}" name="staticRating" value="{{i}}" disabled/><label style = "pointer-events:none;" class = "full" for="star{{i}}" disabled></label>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            </div>
+        </form>
+
+        {% endif %}
+        {% endif %}
+        {% if session['user_type'] == "TEACHER" and taskReview == False%}
+        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <div class="appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        <input type="radio" id="star{{i}}" name="rating" value="{{i}}" /><label class = "full" for="star{{i}}" ></label>
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <input type="hidden" name="taskresolve" value="{{taskID}}">
+            <button type="submit" id="branchRev">Resolve Review</button>
+        </form>
+        {% endif %}
+        {% if session['user_type'] == "TEACHER" and taskReview == True%}
+        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <div class= "appleRates">
+                <fieldset class="rating">
+                    {% for i in range(5, 0, -1) %}
+                        {% if appleRating == i %}
+                            <input type="radio" id="star{{i}}" name="rating" value="{{i}}" checked /><label class = "full" for="star{{i}}" ></label>
+                        {% else %}
+                            <input type="radio" id="star{{i}}" name="rating" value="{{i}}" /><label class = "full" for="star{{i}}" ></label>
+                        {% endif %}
+                    {% endfor %}
+                </fieldset>
+            </div>
+            <input type="hidden" name="taskresolve" value="{{taskID}}">
+            <button type="submit" id="branchRev">Update Review</button>
+        </form>
+        {% endif %}
+>>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
         {% if taskObj.getResolved() %}
         <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
         {% endif %}
@@ -60,6 +125,7 @@
         </div>
         <div class="chat-box">
             <h2>Chat Messages</h2>
+<<<<<<< HEAD
             <div class="chat-body">
                 {% for message in messages%} {%if message.getUserName() == name %}
                 <div class="answer right">
@@ -81,6 +147,22 @@
                     </div>
                     <div class="time">5 min ago</div>
                 </div>
+=======
+            <div class="chat">
+                {% for message in messages%} {%if message.getUserName() == name %}
+                <div class="message darker">
+                    <h3>{{message.getUserName()}}</h3>
+                    <p>{{message.getMessageString()}}</p>
+                    <span class="time-right">{{message.getTimeStamp()}}</span>
+                </div>
+                {% else %}
+                <div class="message">
+                    <h3>{{message.getUserName()}}</h3>
+                    <p>{{message.getMessageString()}}</p>
+                    <span class="time-right">{{message.getTimeStamp()}}</span>
+                </div>
+                {% endif %} {% endfor %}
+>>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
             </div>
             <form action="/task/{{taskID}}" method=post>
                 <div class="chat-message">
