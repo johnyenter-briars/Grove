@@ -1,3 +1,9 @@
+a:visited {
+    color: lightgreen;
+  }
+a:hover {
+    color: green;
+}
 .teacherconsole-actionarea {
     display: flex;
     flex-direction: row;
@@ -13,7 +19,7 @@
 
 .taskstoreview {
     display: inline-flexbox;
-    background-color: #808000;
+    background-color: #d64e4f;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
