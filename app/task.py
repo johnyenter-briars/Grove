@@ -4,10 +4,7 @@ from exceptions.NoTaskIDException import NoTaskIDException
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 from datetime import datetime
-<<<<<<< HEAD
-=======
 from time import gmtime, strftime
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
 
 
 UPLOAD_FOLDER = '/app/static/files'
@@ -25,11 +22,6 @@ def task():
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
     projectID = sess.get('_ProjectID')
-<<<<<<< HEAD
-
-    fullName = first + " " + last
-    if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] :
-=======
     taskReviewObj = database.getTaskReviewedStatus(currentTaskID)
     taskReview = -1
     appleRating = -1
@@ -41,7 +33,6 @@ def task():
 
     fullName = first + " " + last
     if request.method == 'POST' and request.form.getlist("message") == [] and request.form.getlist("filename") == [] and request.form.getlist("taskreview") == [] and request.form.getlist("taskresolve") == [] :
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
         file = request.files['fileType']
         if file.filename == '':
             return redirect(request.url)
@@ -57,12 +48,6 @@ def task():
         database.addMessage(fullName, currentTaskID, current_time, newChat)
         return redirect('/task/?taskID='+currentTaskID)
 
-<<<<<<< HEAD
-    if request.method == 'POST':
-        fname = request.form['filename']
-        database.removeFile(fname)
-        return redirect('/task/?taskID='+currentTaskID)
-=======
     if request.method == 'POST' and request.form.getlist("filename") != []:
         fname = request.form['filename']
         database.removeFile(fname)
@@ -87,7 +72,6 @@ def task():
         database.markTaskResolved(tID, rating)
         return redirect('/task/?taskID='+currentTaskID)
         
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
     targetTask = database.getTask(int(currentTaskID))
     return render_template("task.html", 
         name=first+' '+last, files=files, 
@@ -97,23 +81,12 @@ def task():
         messages=messages,
         profileID=profileID,
         projectID=projectID,
-<<<<<<< HEAD
-=======
         taskReview=taskReview,
         appleRating = appleRating
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])
 def addTaskToBranch():
-<<<<<<< HEAD
-    taskTitle = request.form["title"]
-    studentOnTaskId = int(request.form["user"])
-    branchId = request.args.get("branchID")
-    projectId = request.args.get("projectID")
-    
-    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
-=======
     sess = json.loads(session['user_auth'])
     taskTitle = request.form["title"]
     studentOnTaskId = int(request.form["user"])
@@ -124,7 +97,6 @@ def addTaskToBranch():
     database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
     not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     database.insertAward(profileID, "Red", "Commit", not_ugly_time)
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
 
     return redirect(url_for("projects", projectID=projectId))
 

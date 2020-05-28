@@ -15,19 +15,13 @@
 </script>
 <div class="task-page">
     <div class="task-description">
-<<<<<<< HEAD
-        <div class="addingImage">
-=======
         <div class="addingImage" style = "pointer-events:none;">
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
             <div class="boxLeaf">
                 <p><b>&nbsp;{{taskObj.getTaskDesc()}}</b></p>
             </div>
             </a>
         </div>
         <p>Assigned to: {{taskAssignee.getFirstName()}}</p>
-<<<<<<< HEAD
-=======
         {% if session['user_type'] == "STUDENT"%}
         {% if taskReview == -1 %}
         <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
@@ -86,7 +80,6 @@
             <button type="submit" id="branchRev">Update Review</button>
         </form>
         {% endif %}
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
         {% if taskObj.getResolved() %}
         <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
         {% endif %}
@@ -125,29 +118,6 @@
         </div>
         <div class="chat-box">
             <h2>Chat Messages</h2>
-<<<<<<< HEAD
-            <div class="chat-body">
-                {% for message in messages%} {%if message.getUserName() == name %}
-                <div class="answer right">
-                    <div class="name">{{message.getUserName()}}</div>
-                    <div class="text">{{message.getMessageString()}}</div>
-                    <span class="time-right">{{message.getTimeStamp()}}</span>
-                </div>
-                {% else %}
-                <div class="answer left">
-                    <div class="name">{{message.getUserName()}}</div>
-                    <div class="text">{{message.getMessageString()}}</div>
-                    <span class="time-right">{{message.getTimeStamp()}}</span>
-                </div>
-                {% endif %} {% endfor %}
-                <div class="answer right">
-                    <div class="name">Alexander Herthic</div>
-                    <div class="text">
-                        It is a long established fact that a reader will be. Thanks Mate!
-                    </div>
-                    <div class="time">5 min ago</div>
-                </div>
-=======
             <div class="chat">
                 {% for message in messages%} {%if message.getUserName() == name %}
                 <div class="message darker">
@@ -162,7 +132,6 @@
                     <span class="time-right">{{message.getTimeStamp()}}</span>
                 </div>
                 {% endif %} {% endfor %}
->>>>>>> ed5a3c02662d886809ecc25819a8ebc9ea759fb7
             </div>
             <form action="/task/{{taskID}}" method=post>
                 <div class="chat-message">
