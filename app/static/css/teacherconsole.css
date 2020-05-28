@@ -13,7 +13,7 @@
 
 .taskstoreview {
     display: inline-flexbox;
-    background-color: #808000;
+    background-color: #b33b3c;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
@@ -22,7 +22,7 @@
 
 .add-student{
     display: inline-flexbox;
-    background-color: #808000;
+    background-color: #7d2627;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
@@ -31,7 +31,7 @@
 .project-list{
     display: flex;
     flex-direction: column;
-    background-color: #4d3319;
+    background-color: #ed5252;
     border: 3px solid #20B2AA;
     padding: 16px;
     border-radius: 12px;
