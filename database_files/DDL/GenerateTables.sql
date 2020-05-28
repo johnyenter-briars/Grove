@@ -16,6 +16,20 @@ drop table Files;
 drop table TaskReview;
 drop table ProjectGoal;
 
+create table UnreadMessages(
+    ChatID INTEGER,
+    TaskID INTEGER,
+    Viewed INTEGER,
+    StudentID INTEGER,
+
+
+    FOREIGN KEY (ChatID) REFERENCES Chat(ChatID),
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
+);
+
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0);
+
 create table TaskReview(
     ReviewID INTEGER,
     TaskID INTEGER,
@@ -343,7 +357,7 @@ create table Chat
     ChatID INTEGER,
     UserName TEXT,
     TaskID INTEGER,
-    TimeStamp TEXT,
+    TimeStmp INTEGER,
     MessageString TEXT,
 
     PRIMARY KEY (ChatID),
@@ -352,12 +366,12 @@ create table Chat
 );
 
 insert into Chat
-    (UserName, TaskID, TimeStamp, MessageString)
-values("Wanda Maximoff", 6, "01/19/20 05:34:14 AM", "All done with task number 6! You can format document now. ");
+    (UserName, TaskID, TimeStmp, MessageString)
+values("Wanda Maximoff", 6, 1579412054, "All done with task number 6! You can format document now. ");
 
 insert into Chat
-    (UserName, TaskID, TimeStamp, MessageString)
-values("Tony Stark", 1, "01/20/20 08:34:29 PM", "Hurry up you bum!");
+    (UserName, TaskID, TimeStmp, MessageString)
+values("Tony Stark", 1, 1579552469, "Hurry up you bum!");
 
 create table Admin
 (
@@ -443,6 +457,7 @@ WHEN ((SELECT StudentID
 THEN RAISE(ABORT, 'This is a User Define Error Message - This ID Does not Exist.') 
 END;
 END
+/
 
 
 
@@ -455,6 +470,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
+/
 
 
 CREATE TRIGGER befor_insert_branch_check_teacher BEFORE INSERT ON Branch
@@ -466,6 +482,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
+/
 
 
 
@@ -478,6 +495,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
+/
 
 
 CREATE TRIGGER befor_insert_branch_check_student BEFORE INSERT ON Branch
@@ -489,6 +507,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_project BEFORE INSERT ON Task
 BEGIN
@@ -499,6 +518,7 @@ WHEN ((SELECT ProjectID
 THEN RAISE(ABORT, 'ProjectID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_student BEFORE INSERT ON Task
 BEGIN
@@ -509,6 +529,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_branch BEFORE INSERT ON Task
 BEGIN
@@ -519,3 +540,4 @@ WHEN ((SELECT BranchID
 THEN RAISE(ABORT, 'BranchID does not exist.') 
 END;
 END
+/

@@ -110,9 +110,9 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
-    def addMessage(self, UserName, TaskID, TimeStamp, MessageString):
+    def addMessage(self, UserName, TaskID, TimeStmp, MessageString):
         self._db.execute(""" INSERT INTO Chat
-            (UserName, TaskID, TimeStamp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStamp, MessageString))
+            (UserName, TaskID, TimeStmp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStmp, MessageString))
         self._db.commit()
 
     def getChatForTask(self, TaskID):

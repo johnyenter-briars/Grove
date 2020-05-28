@@ -1,4 +1,7 @@
+from _datetime import datetime
+
 class Chat(object):
+    from time import strftime
     def __init__(self, chatTuple):
         super().__init__()
         self._ChatID = chatTuple[0]
@@ -14,6 +17,10 @@ class Chat(object):
         return self._UserName
 
     def getTimeStamp(self):
+        timestamp = datetime.fromtimestamp(self._TimeStamp)
+        return timestamp.strftime("%x %I:%M:%S %p")
+    
+    def getRawTime(self):
         return self._TimeStamp
 
     def getMessageString(self):

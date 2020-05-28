@@ -4,6 +4,7 @@ from exceptions.NoTaskIDException import NoTaskIDException
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 from datetime import datetime
+import time
 from time import gmtime, strftime
 
 
@@ -17,6 +18,7 @@ def task():
     currentTaskID = request.args.get('taskID')
     files = database.getFilesForTask(currentTaskID)
     messages = database.getChatForTask(currentTaskID)
+    currentTime = int(time.time())
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
@@ -42,8 +44,9 @@ def task():
             return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("message") != []:
-        now = datetime.now()
-        current_time = now.strftime("%x %I:%M:%S %p")
+        #now = datetime.now()
+        #current_time = now.strftime("%x %I:%M:%S %p")
+        current_time = int(time.time())
         newChat = request.form['message']
         database.addMessage(fullName, currentTaskID, current_time, newChat)
         return redirect('/task/?taskID='+currentTaskID)
@@ -82,7 +85,8 @@ def task():
         profileID=profileID,
         projectID=projectID,
         taskReview=taskReview,
-        appleRating = appleRating
+        appleRating = appleRating,
+        currentTime = currentTime
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])
