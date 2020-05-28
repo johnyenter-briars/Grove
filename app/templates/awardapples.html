@@ -3,10 +3,17 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/award.css') }}"
 />
+<meta id="my-data" data-name="{{validPage}}">
 <script type="text/javascript" src="{{ url_for('static', filename='js/awardapples.js') }}"></script>
 <div class="container overflow-auto">
     <h1><u>Award apples</u></h1>
-    <form action="/awardapples" method="POST">
+    {% if validPage == 0 %}
+        <div id="message">
+            <h1>Award limit has be used up</h1>
+            <h2>You used up all 10 of your awards.</h2>
+        </div>
+    {% else %}
+    <form action="/awardapples" method="POST" id="my_radio_box">
         <ul>
             {% for student in visibleStudents%}
             <li>
@@ -14,15 +21,16 @@
                     <p>{{student.getFirstName()}}</p>
                     <div style="float: right; display: flex;">
                         {% for apple in possibleApples%}
-                            <label><input id="awardoption" type="radio" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/static/img/{{apple.getAppleType()}}.png"></label>
+                            <label><input type="radio" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/static/img/{{apple.getAppleType()}}.png"></label>
                         {% endfor %}
                     </div>
                 </div>
             </li>
             {% endfor %}
         </ul>
-        <button type="submit" value="Submit">Submit Apple Awards</button>
+        <button type="submit" value="Submit" onclick="checkElements();">Submit Apple Awards</button>
     </form>
     <button onclick="clearSelection();">Clear awards</button>
+    {% endif %}
 </div>
 {% endblock %}
