@@ -28,7 +28,19 @@ create table UnreadMessages(
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
 );
 
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,0);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,1);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,2);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,3);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,4);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,5);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,6);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,7);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,8);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,9);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,10);
+insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,11);
+
 
 create table TaskReview(
     ReviewID INTEGER,
