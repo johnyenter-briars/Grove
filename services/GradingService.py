@@ -28,6 +28,3 @@ class GradingService(object):
         raw = self.getCompletedProjectWeight(projectID) / self.getProjectGoal(projectID)
         
         return round(raw, 2) * 100
-
-    def updateProject(self, projectID):
-        pass
