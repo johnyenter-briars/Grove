@@ -277,6 +277,7 @@ create table Task
     ProjectID INTEGER,
     TaskDescription TEXT,
     Resolved INTEGER,
+    Weight INTEGER,
 
     PRIMARY KEY (TaskId),
     FOREIGN KEY (BranchID) REFERENCES Branch(BranchID),
@@ -285,45 +286,45 @@ create table Task
 );
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 1, 1, "Open power point", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 1, 1, "Open power point", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 2, 2, "Open ms word", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 2, 2, "Open ms word", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 3, 2, "Click reformat button", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 3, 2, "Click reformat button", 0, 10);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 5, 1, "Add picture to powerpoint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 5, 1, "Add picture to powerpoint", 0, 2);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 6, 1, "Close powerpoint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 6, 1, "Close powerpoint", 0, 4);
 
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 5, 1, "Choose better font", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 5, 1, "Choose better font", 0, 7);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Purchase clay", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(1, 11, 3, "Purchase clay", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Sculpt models", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(1, 11, 3, "Sculpt models", 0, 2);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 8, 3, "Buy paint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 8, 3, "Buy paint", 0, 9);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 10, 3, "Construct base out of balsa wood", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 10, 3, "Construct base out of balsa wood", 0, 7);
 
 create table TaskReview(
     ReviewID INTEGER,
