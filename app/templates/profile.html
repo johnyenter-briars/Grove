@@ -5,13 +5,13 @@
     <table>
         <td style="border-spacing: 10px;">
             <div class="container" style="width: 200px;">
-                <h2>Branches</h2>
+                <p style="font-size:22px"><b>Branches</p></b>
                 <ul>
                     {% for branch in branches%}
                     <li><a href="/projects/?projectID={{targetProjectID}}">{{branch.getBranchDesc()}}</a></li>
                     <br> {% endfor %}
                 </ul>
-                <h2>Tasks</h2>
+                <p style="font-size:22px"><b>Tasks</p></b>
                 <ul>
                     {% for task in tasks%}
                     <li><a href="/task/?taskID={{task.getTaskID()}}">{{task.getTaskDesc()}}</a></li>

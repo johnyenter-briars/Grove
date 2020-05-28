@@ -9,29 +9,27 @@
         <!-- add correct perm when those are sorted lol ...--->
         {% if teach and proj %}
         <h1>{{proj.getProjectName()}}</h1>
-        <h3>Project Goal: {{ proj.getProjectDesc() }}. </h3>
+        <h3><b>Project Goal:</b> {{ proj.getProjectDesc() }}. </h3>
         {% endif %}
     </div>
     <div class="project-glance" style="text-align: center;">
         <h1>Project at a glance:</h1>
         <div class="project-info">
-            <b>Project Weight: </b>
-            <p> {{projWeight}}</p>
+            <p style="margin: 4px;"><b>Project Weight:</b> {{projWeight}}</p><p style="margin: 4px;">
         </div>
         <div class="project-info">
-            <b>Project Goal: </b>
-            <p> {{projGoal}}</p>
+            <p style="margin: 4px;"><b>Project Goal:</b> {{projGoal}}</p>
         </div>
         <div class="project-info">
-            <b>Project Growth Status: </b>
-            <p>{{projGrowthStatus}}%</p>
+            <p style="margin: 4px;"><b>Project Growth Status:</b> {{projGrowthStatus}}%</p>
         </div>
         <div class="project-info">
-            <b>Students in project: </b>
+            <p style="margin: 4px;"><b>Students in project: </b>
             {% for studentID,studentObj in studentsOnProject.items() %}
-            <p style="margin: 4px;">{{studentObj.getFirstName()}} </p>
-            {% endfor %}
+                {{studentObj.getFirstName()}}
+            {% endfor %}</p>
         </div>
+    </div>
 
 
     </div>

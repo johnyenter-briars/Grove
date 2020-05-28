@@ -13,13 +13,24 @@
   padding: 0;
 }
 
+a:link {
+  color: lightgreen;
+}
+a:visited{
+  color: lightgreen;
+}
+a:hover {
+  color: green;
+}
+
 .title {
   color: green;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
-  background-color: #E4EDE7;
+  /*background-color: #E4EDE7;*/
+  background: linear-gradient(rgba(228,237,231,1), rgba(144,153,147,1))
 }
 
 .guide {

@@ -2,7 +2,7 @@
 <div class="container overflow-auto">
     <h1><u>Class list</u></h1>
     {% for project in projects%}
-        <p>Project: {{project.getProjectDesc()}}</p>
+        <b>Project:</b> {{project.getProjectDesc()}}</p>
         {% for student in students%}
             {% if student.getProjectID() == project.getProjectID() %}
             <div class="row align-items-start">
@@ -11,6 +11,7 @@
             </div>
             {% endif %}
         {% endfor %}
+        <br>
     {% endfor %}
 </div>
 {% endblock %}
