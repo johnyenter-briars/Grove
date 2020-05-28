@@ -15,7 +15,6 @@ class GradingService(object):
         for taskR in taskReviews:
             targetTasks = list(filter(lambda t: t.getTaskID() == taskR.getTaskID(), tasks))
             if len(targetTasks) > 1: raise Exception("Somehow duplicate tasks in database!")
-            taskTuple = (taskR.getRating(), targetTasks[0])
             projectweight += (taskR.getRating() / MAX_APPLES) * targetTasks[0].getWeight()
 
         return round(projectweight, 2)
