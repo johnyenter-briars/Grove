@@ -65,10 +65,20 @@ class DatabaseService(object):
                 self._db.execute("""select * from Branch where StudentID={id};"""
                 .format(id=StudentID)).fetchall()).flatten()
 
+    def getTask(self, TaskID):
+        return [Task(tuple) for tuple in self._db.execute("""
+        select * from Task where TaskID={id};"""
+        .format(id=TaskID)).fetchall()][0]
+
     def getTasksForBranch(self, BranchID, ProjectID):
         return [Task(tuple) for tuple in self._db.execute("""
                     select * from Task where BranchID={bid} and ProjectID={pid};"""
                     .format(bid=BranchID, pid=ProjectID)).fetchall()]
+    
+    def getTasksForProject(self, ProjectID):
+        return [Task(tuple) for tuple in self._db.execute("""
+                    select * from Task where ProjectID={pid};"""
+                    .format(pid=ProjectID)).fetchall()]
 
     def getAwardsForStudent(self, StudentID):
         return [Award(tuple) for tuple in self._db.execute(
@@ -118,11 +128,6 @@ class DatabaseService(object):
     def getChatForTask(self, TaskID):
         return [Chat(tuple) for tuple in self._db.execute(
                 """select * from Chat where TaskID={id};""".format(id=TaskID)).fetchall()]
-
-    def getTask(self, TaskID):
-        return [Task(tuple) for tuple in self._db.execute("""
-        select * from Task where TaskID={id};"""
-        .format(id=TaskID)).fetchall()][0]
 
     def getGoalForProject(self, ProjectID):
         return [Goal(tuple) for tuple in self._db.execute("""
@@ -207,6 +212,12 @@ class DatabaseService(object):
     def getTaskReviewedStatus(self, TaskID: int):
         return [TaskReview(tuple) for tuple in self._db.execute(
             """select * from TaskReview where TaskID={id};""".format(id=TaskID)).fetchall()]
+
+    def getTaskReviewsForProject(self, ProjectID: int):
+        return [TaskReview(tuple) for tuple in self._db.execute(
+            """select * from Taskreview where taskid in 
+            (select TaskID from Task where ProjectID = {projID});"""
+            .format(projID=ProjectID))]
 
     def close_connection(self, exception):
         self._db.close()
