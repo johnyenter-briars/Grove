@@ -123,6 +123,7 @@ create table Student
     TeacherID INTEGER,
     ProjectID INTEGER,
     RoleType varchar(20),
+    ApplesAwarded INTEGER DEFAULT 0,
 
     PRIMARY KEY (StudentID),
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID),
@@ -443,7 +444,7 @@ WHEN ((SELECT StudentID
 THEN RAISE(ABORT, 'This is a User Define Error Message - This ID Does not Exist.') 
 END;
 END
-
+/
 
 
 CREATE TRIGGER befor_insert_student_check_teacher BEFORE INSERT ON Student
@@ -455,7 +456,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
-
+/
 
 CREATE TRIGGER befor_insert_branch_check_teacher BEFORE INSERT ON Branch
 BEGIN
@@ -466,7 +467,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
-
+/
 
 
 CREATE TRIGGER befor_insert_project_check_teacher BEFORE INSERT ON Project
@@ -478,7 +479,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'TeacherID does not exist.') 
 END;
 END
-
+/
 
 CREATE TRIGGER befor_insert_branch_check_student BEFORE INSERT ON Branch
 BEGIN
@@ -489,6 +490,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_project BEFORE INSERT ON Task
 BEGIN
@@ -499,6 +501,7 @@ WHEN ((SELECT ProjectID
 THEN RAISE(ABORT, 'ProjectID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_student BEFORE INSERT ON Task
 BEGIN
@@ -509,6 +512,7 @@ WHEN ((SELECT TeacherID
 THEN RAISE(ABORT, 'StudentID does not exist.') 
 END;
 END
+/
 
 CREATE TRIGGER befor_insert_task_check_branch BEFORE INSERT ON Task
 BEGIN
@@ -519,3 +523,4 @@ WHEN ((SELECT BranchID
 THEN RAISE(ABORT, 'BranchID does not exist.') 
 END;
 END
+/
