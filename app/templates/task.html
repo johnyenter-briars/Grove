@@ -1,5 +1,5 @@
 {% extends "header.html" %} {% block content %}
-<script>
+<script onload="">
     function deleteFile(fname) {
         const form = document.createElement('form');
         form.method = 'post';
@@ -12,6 +12,14 @@
         document.body.appendChild(form);
         form.submit();
     }
+    function showNotifications(notifications) {
+        console.log(notifications);
+        for (notification of notifications){
+            //console.log(notification)
+            alert(notification);
+        }
+    }
+    showNotifications({{ notifications|safe }})
 </script>
 <div class="task-page">
     <div class="task-description">

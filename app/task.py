@@ -24,6 +24,13 @@ def task():
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
     projectID = sess.get('_ProjectID')
+    studentID = sess.get('_StudentID')
+    notifObject = database.getNotifications(studentID,int(currentTaskID))
+    notifications = []
+    for notification in notifObject:
+        notifications.append(notification.getMessage())
+    print('student: '+str(studentID)+' task id: '+currentTaskID)
+    print(notifications)
     taskReviewObj = database.getTaskReviewedStatus(currentTaskID)
     taskReview = -1
     appleRating = -1
@@ -48,7 +55,7 @@ def task():
         #current_time = now.strftime("%x %I:%M:%S %p")
         current_time = int(time.time())
         newChat = request.form['message']
-        database.addMessage(fullName, currentTaskID, current_time, newChat)
+        database.addMessage(fullName, currentTaskID, current_time, newChat, projectID)
         return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("filename") != []:
@@ -86,7 +93,8 @@ def task():
         projectID=projectID,
         taskReview=taskReview,
         appleRating = appleRating,
-        currentTime = currentTime
+        notifications = json.dumps(notifications),
+        numOfNotifications = len(notifications)
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])

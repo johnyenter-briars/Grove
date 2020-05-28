@@ -15,31 +15,32 @@ drop table AppleType;
 drop table Files;
 drop table TaskReview;
 drop table ProjectGoal;
+drop table MessageNotifications;
 
-create table UnreadMessages(
-    ChatID INTEGER,
+create table MessageNotifications(
+    NotificationID INTEGER,
+    MessageContent TEXT,
     TaskID INTEGER,
     Viewed INTEGER,
     StudentID INTEGER,
 
-
-    FOREIGN KEY (ChatID) REFERENCES Chat(ChatID),
+    PRIMARY KEY (NotificationID),
     FOREIGN KEY (TaskID) REFERENCES Task(TaskID),
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
 );
 
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,0);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,1);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,2);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,3);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,4);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,5);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,6);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,7);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,8);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,9);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,10);
-insert into UnreadMessages (ChatID, TaskID, StudentID, Viewed) values(0,6,0,11);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test1',6,0,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test2',6,1,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test3',6,2,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test4',6,3,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test5',6,4,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test6',6,5,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test7',6,6,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test8',6,7,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test9',6,8,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test10',6,9,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test11',6,10,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test12',6,11,0);
 
 
 create table TaskReview(
