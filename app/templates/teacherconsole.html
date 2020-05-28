@@ -32,7 +32,7 @@
             <ul>
                 {% for task in tasksToReview%}
                 {% if task.getResolved() == 0%}
-                <li><a href="/task/?taskID={{task.getTaskID()}}">Review ID: {{task.getReviewID()}} TaskID: {{task.getTaskID()}} Resolved: {{task.getResolved()}}</a></li>
+                <li><a href="/task/?taskID={{task.getTaskID()}}">{{database.getTask(task.getTaskID()).getTaskDesc()}}</a></li>
                 <br> 
                 {% endif %}{% endfor %}
             </ul>
