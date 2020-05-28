@@ -213,6 +213,10 @@ class DatabaseService(object):
         return [TaskReview(tuple) for tuple in self._db.execute(
             """select * from TaskReview where TaskID={id};""".format(id=TaskID)).fetchall()]
 
+    def updateAwardedApples(self, StudentID: int):
+        self._db.execute("""UPDATE Student SET ApplesAwarded = ApplesAwarded + 1 WHERE StudentID = {StudentID}""".format(StudentID=StudentID))
+        self._db.commit()
+
     def getTaskReviewsForProject(self, ProjectID: int):
         return [TaskReview(tuple) for tuple in self._db.execute(
             """select * from Taskreview where taskid in 

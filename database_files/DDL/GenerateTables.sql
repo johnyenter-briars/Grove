@@ -111,6 +111,7 @@ create table Student
     TeacherID INTEGER,
     ProjectID INTEGER,
     RoleType varchar(20),
+    ApplesAwarded INTEGER DEFAULT 0,
 
     PRIMARY KEY (StudentID),
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID),
@@ -221,12 +222,10 @@ insert into Branch
 values
     (1, 1, 1, "Add pictures", 0, 10);
 
-
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
     (3, 5, 1, "Change font in document", 0, 5);
-
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -422,15 +421,15 @@ create table ProjectGoal
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(3, 70);
+values(3, 65);
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(1, 100);
+values(1, 40);
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(2, 100);
+values(2, 35);
 
 
 
@@ -444,7 +443,6 @@ THEN RAISE(ABORT, 'This is a User Define Error Message - This ID Does not Exist.
 END;
 END
 /
-
 
 
 CREATE TRIGGER befor_insert_student_check_teacher BEFORE INSERT ON Student
@@ -468,7 +466,6 @@ THEN RAISE(ABORT, 'TeacherID does not exist.')
 END;
 END
 /
-
 
 
 CREATE TRIGGER befor_insert_project_check_teacher BEFORE INSERT ON Project

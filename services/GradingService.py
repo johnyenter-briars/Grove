@@ -18,7 +18,7 @@ class GradingService(object):
             taskTuple = (taskR.getRating(), targetTasks[0])
             projectweight += (taskR.getRating() / MAX_APPLES) * targetTasks[0].getWeight()
 
-        return projectweight
+        return round(projectweight, 2)
 
     def getProjectGoal(self, projectID):
         goalObj = self._databaseService.getGoalForProject(projectID)
