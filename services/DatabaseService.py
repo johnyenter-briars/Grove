@@ -206,6 +206,10 @@ class DatabaseService(object):
         self._db.execute("""UPDATE Student SET ApplesAwarded = ApplesAwarded + 1 WHERE StudentID = {StudentID}""".format(StudentID=StudentID))
         self._db.commit()
 
+    def updateTaskCreation(self, StudentID: int):
+        self._db.execute("""UPDATE Student SET FirstTask = 1 WHERE StudentID = {StudentID}""".format(StudentID=StudentID))
+        self._db.commit()
+
     def close_connection(self, exception):
         self._db.close()
         

@@ -124,6 +124,7 @@ create table Student
     ProjectID INTEGER,
     RoleType varchar(20),
     ApplesAwarded INTEGER DEFAULT 0,
+    FirstTask INTEGER DEFAULT 0,
 
     PRIMARY KEY (StudentID),
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID),

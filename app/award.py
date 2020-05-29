@@ -12,7 +12,6 @@ def awardapplespage():
     last = sess.get('_LastName')
     projectID = sess.get('_ProjectID')
     profileID = sess.get('_StudentID')
-    print(profileID)
     visibleStudents = []
     validPage = 0
 
@@ -38,15 +37,17 @@ def awardapple():
     if not sess:
         return redirect('/')
     student = sess.get('_StudentID')
+    if(student != None ):
+        appleNumber = database.getStudent(student).getApplesAwarded()
+        if(appleNumber == 0):
+            time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            database.insertAward(student, "Red", "Being Humble", time)
+    
     for key,value in request.form.items():
         targetProject = database.getStudentProject(int(key))
         if(student != None):
             database.updateAwardedApples(student)
         database.insertAward(int(key), value, targetProject.getProjectName(), strftime("%Y-%m-%d %H:%M:%S", gmtime()))
 
-    sess = json.loads(session['user_auth'])
-    profileID = sess.get('_StudentID')
-    not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    database.insertAward(profileID, "Red", "Being Humble", not_ugly_time)
 
     return redirect(url_for("awardapplespage"))
