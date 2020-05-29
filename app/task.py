@@ -90,6 +90,7 @@ def addTaskToBranch():
     sess = json.loads(session['user_auth'])
     taskTitle = request.form["title"]
     studentOnTaskId = int(request.form["user"])
+    taskWeight = int(request.form["weight"])
     branchId = request.args.get("branchID")
     profileID = sess.get('_StudentID')
     projectId = request.args.get("projectID")
@@ -100,7 +101,6 @@ def addTaskToBranch():
             database.insertAward(profileID, "Red", "First Commit", time)
             database.updateTaskCreation(profileID)
     database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
-
 
     return redirect(url_for("projects", projectID=projectId))
 
