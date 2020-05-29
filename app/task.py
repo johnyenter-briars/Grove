@@ -100,7 +100,8 @@ def addTaskToBranch():
             time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
             database.insertAward(profileID, "Red", "First Commit", time)
             database.updateTaskCreation(profileID)
-    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
+            
+    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle, taskWeight)
 
     return redirect(url_for("projects", projectID=projectId))
 
