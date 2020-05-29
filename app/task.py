@@ -90,11 +90,12 @@ def addTaskToBranch():
     sess = json.loads(session['user_auth'])
     taskTitle = request.form["title"]
     studentOnTaskId = int(request.form["user"])
+    taskWeight = int(request.form["weight"])
     branchId = request.args.get("branchID")
     profileID = sess.get('_StudentID')
     projectId = request.args.get("projectID")
     
-    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
+    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle, taskWeight)
     not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
     database.insertAward(profileID, "Red", "Commit", not_ugly_time)
 

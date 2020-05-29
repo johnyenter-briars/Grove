@@ -8,6 +8,7 @@ class Task(object):
         self._ProjectID = taskTuple[3]
         self._TaskDescription = taskTuple[4]
         self._Resolved = taskTuple[5]
+        self._Weight = taskTuple[6]
 
     def getTaskID(self):
         return self._TaskID
@@ -26,3 +27,6 @@ class Task(object):
     
     def getResolved(self):
         return self._Resolved == 1
+
+    def getWeight(self):
+        return self._Weight

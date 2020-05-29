@@ -65,10 +65,20 @@ class DatabaseService(object):
                 self._db.execute("""select * from Branch where StudentID={id};"""
                 .format(id=StudentID)).fetchall()).flatten()
 
+    def getTask(self, TaskID):
+        return [Task(tuple) for tuple in self._db.execute("""
+        select * from Task where TaskID={id};"""
+        .format(id=TaskID)).fetchall()][0]
+
     def getTasksForBranch(self, BranchID, ProjectID):
         return [Task(tuple) for tuple in self._db.execute("""
                     select * from Task where BranchID={bid} and ProjectID={pid};"""
                     .format(bid=BranchID, pid=ProjectID)).fetchall()]
+    
+    def getTasksForProject(self, ProjectID):
+        return [Task(tuple) for tuple in self._db.execute("""
+                    select * from Task where ProjectID={pid};"""
+                    .format(pid=ProjectID)).fetchall()]
 
     def getAwardsForStudent(self, StudentID):
         return [Award(tuple) for tuple in self._db.execute(
@@ -119,11 +129,6 @@ class DatabaseService(object):
         return [Chat(tuple) for tuple in self._db.execute(
                 """select * from Chat where TaskID={id};""".format(id=TaskID)).fetchall()]
 
-    def getTask(self, TaskID):
-        return [Task(tuple) for tuple in self._db.execute("""
-        select * from Task where TaskID={id};"""
-        .format(id=TaskID)).fetchall()][0]
-
     def getGoalForProject(self, ProjectID):
         return [Goal(tuple) for tuple in self._db.execute("""
         select * from ProjectGoal where ProjectID = {id}"""
@@ -162,12 +167,12 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
-    def insertNewTask(self, BranchID: int, StudentID: int, ProjectID: int, TaskDesc: str):
+    def insertNewTask(self, BranchID: int, StudentID: int, ProjectID: int, TaskDesc: str, TaskWeight: int):
         try:
             self._db.execute("""insert into Task
-                                (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-                                values({bID}, {sID}, {pID}, "{tDesc}", 0);"""
-                                .format(bID=BranchID, sID=StudentID, pID=ProjectID, tDesc=TaskDesc))
+                                (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+                                values({bID}, {sID}, {pID}, "{tDesc}", 0, "{tWght}");"""
+                                .format(bID=BranchID, sID=StudentID, pID=ProjectID, tDesc=TaskDesc, tWght=TaskWeight))
             self._db.commit()
 
         except sqlite3.Error as error:
@@ -190,6 +195,12 @@ class DatabaseService(object):
                                 SET Resolved = 1, Rating = {Rating}
                                 WHERE TaskID = {tID}"""
                                 .format(tID=TaskID, Rating=Rating))
+
+            self._db.execute("""UPDATE Task
+                                SET Resolved = 1
+                                WHERE TaskID = {tID}"""
+                                .format(tID=TaskID, Rating=Rating))
+
             self._db.commit()
 
         except sqlite3.Error as error:
@@ -205,6 +216,12 @@ class DatabaseService(object):
     def updateAwardedApples(self, StudentID: int):
         self._db.execute("""UPDATE Student SET ApplesAwarded = ApplesAwarded + 1 WHERE StudentID = {StudentID}""".format(StudentID=StudentID))
         self._db.commit()
+
+    def getTaskReviewsForProject(self, ProjectID: int):
+        return [TaskReview(tuple) for tuple in self._db.execute(
+            """select * from Taskreview where taskid in 
+            (select TaskID from Task where ProjectID = {projID});"""
+            .format(projID=ProjectID))]
 
     def close_connection(self, exception):
         self._db.close()
