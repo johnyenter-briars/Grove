@@ -111,15 +111,17 @@ class DatabaseService(object):
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
-    def addMessage(self, UserName, TaskID, TimeStmp, MessageString, ProjectID):
+    def addMessage(self, UserName, TaskID, TimeStmp, MessageString, StudentID):
         self._db.execute(""" INSERT INTO Chat
             (UserName, TaskID, TimeStmp, MessageString) VALUES (?, ?, ?, ?)""", (UserName, TaskID, TimeStmp, MessageString))
         self._db.commit()
+        ProjectID = self.getTask(TaskID).getProjectID()
         students = self.getStudentsOnProject(ProjectID)
         for student in students:
-            self._db.execute(""" INSERT INTO MessageNotifications
-            (MessageContent, TaskID, Viewed, StudentID) VALUES (?, ?, ?, ?)""", (MessageString, TaskID, 0, student.getStudentID()))
-            self._db.commit()
+            if student.getStudentID() != StudentID:
+                self._db.execute(""" INSERT INTO MessageNotifications
+                (MessageContent, TaskID, Viewed, StudentID) VALUES (?, ?, ?, ?)""", (MessageString, TaskID, 0, student.getStudentID()))
+                self._db.commit()
 
     def removeNotification(self, NotificationID):
         try:
@@ -132,14 +134,9 @@ class DatabaseService(object):
 
     def getNotifications(self, StudentID, TaskID):
         try:
-            #return [MessageNotifications(tuple) for tuple in self._db.execute("select * from MessageNotifications;").fetchall()]
             return [MessageNotifications(tuple) for tuple in self._db.execute("""
                     select * from MessageNotifications where TaskID={tid} and StudentID={sid};"""
                     .format(tid=TaskID, sid=StudentID)).fetchall()]
-            
-            #return [MessageNotifications(tuple) for tuple in self._db.execute(
-                    #"""select * from MessageNotifications where TaskID={tid}
-                    #AND StudentID={sid};""".format(tid=TaskID,sid=StudentID)).fetchall()]
         except sqlite3.Error as error:
             print("Failed to insert data into sqlite table", error)
 
@@ -229,6 +226,7 @@ class DatabaseService(object):
     def getTaskReviewedStatus(self, TaskID: int):
         return [TaskReview(tuple) for tuple in self._db.execute(
             """select * from TaskReview where TaskID={id};""".format(id=TaskID)).fetchall()]
+
 
     def close_connection(self, exception):
         self._db.close()
