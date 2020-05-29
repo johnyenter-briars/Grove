@@ -12,6 +12,12 @@
         document.body.appendChild(form);
         form.submit();
     }
+    function showNotifications(notifications) {
+        for (notification of notifications){
+            alert(notification);
+        }
+    }
+    showNotifications({{ notifications|safe }})
 </script>
 <div class="task-page">
     <div class="task-description">

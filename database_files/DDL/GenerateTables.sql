@@ -15,6 +15,33 @@ drop table AppleType;
 drop table Files;
 drop table TaskReview;
 drop table ProjectGoal;
+drop table MessageNotifications;
+
+create table MessageNotifications(
+    NotificationID INTEGER,
+    MessageContent TEXT,
+    TaskID INTEGER,
+    Viewed INTEGER,
+    StudentID INTEGER,
+
+    PRIMARY KEY (NotificationID),
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID),
+    FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
+);
+
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test1',6,0,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test2',6,1,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test3',6,2,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test4',6,3,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test5',6,4,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test6',6,5,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test7',6,6,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test8',6,7,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test9',6,8,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test10',6,9,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test11',6,10,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test12',6,11,0);
+
 
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
@@ -343,7 +370,7 @@ create table Chat
     ChatID INTEGER,
     UserName TEXT,
     TaskID INTEGER,
-    TimeStamp TEXT,
+    TimeStmp INTEGER,
     MessageString TEXT,
 
     PRIMARY KEY (ChatID),
@@ -352,12 +379,12 @@ create table Chat
 );
 
 insert into Chat
-    (UserName, TaskID, TimeStamp, MessageString)
-values("Wanda Maximoff", 6, "01/19/20 05:34:14 AM", "All done with task number 6! You can format document now. ");
+    (UserName, TaskID, TimeStmp, MessageString)
+values("Wanda Maximoff", 6, 1579412054, "All done with task number 6! You can format document now. ");
 
 insert into Chat
-    (UserName, TaskID, TimeStamp, MessageString)
-values("Tony Stark", 1, "01/20/20 08:34:29 PM", "Hurry up you bum!");
+    (UserName, TaskID, TimeStmp, MessageString)
+values("Tony Stark", 1, 1579552469, "Hurry up you bum!");
 
 create table Admin
 (

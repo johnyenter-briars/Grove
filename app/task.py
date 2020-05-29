@@ -4,6 +4,7 @@ from exceptions.NoTaskIDException import NoTaskIDException
 from werkzeug.utils import secure_filename
 from models.Branch import Branch
 from datetime import datetime
+import time
 from time import gmtime, strftime
 
 
@@ -17,11 +18,20 @@ def task():
     currentTaskID = request.args.get('taskID')
     files = database.getFilesForTask(currentTaskID)
     messages = database.getChatForTask(currentTaskID)
+    currentTime = int(time.time())
     sess = json.loads(session['user_auth'])
     first = sess.get('_FirstName')
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
     projectID = sess.get('_ProjectID')
+    studentID = sess.get('_StudentID')
+    notifObject = database.getNotifications(studentID,int(currentTaskID))
+    notifications = []
+    if notifObject is not None:
+        for notification in notifObject:
+            database.removeNotification(notification.getNotificationID())
+            notifications.append(notification.getMessage())
+    
     taskReviewObj = database.getTaskReviewedStatus(currentTaskID)
     taskReview = -1
     appleRating = -1
@@ -42,10 +52,9 @@ def task():
             return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("message") != []:
-        now = datetime.now()
-        current_time = now.strftime("%x %I:%M:%S %p")
+        current_time = int(time.time())
         newChat = request.form['message']
-        database.addMessage(fullName, currentTaskID, current_time, newChat)
+        database.addMessage(fullName, currentTaskID, current_time, newChat, profileID)
         return redirect('/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("filename") != []:
@@ -82,7 +91,8 @@ def task():
         profileID=profileID,
         projectID=projectID,
         taskReview=taskReview,
-        appleRating = appleRating
+        appleRating = appleRating,
+        notifications = json.dumps(notifications),
     )
 
 @app.route('/task/addtasktobranch', methods=['POST'])
