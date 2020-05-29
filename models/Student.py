@@ -7,6 +7,8 @@ class Student(object):
         self._TeacherID = studentTuple[3]
         self._ProjectID = studentTuple[4]
         self._RoleType = studentTuple[5]
+        self._ApplesAwarded = studentTuple[6]
+        self._FirstTask = studentTuple[7]
 
     def getStudentID(self):
         return self._StudentID
@@ -25,3 +27,9 @@ class Student(object):
 
     def getRoleType(self):
         return self._RoleType
+
+    def getApplesAwarded(self):
+        return self._ApplesAwarded
+    
+    def getFirstTask(self):
+        return self._FirstTask

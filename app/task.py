@@ -100,13 +100,18 @@ def addTaskToBranch():
     sess = json.loads(session['user_auth'])
     taskTitle = request.form["title"]
     studentOnTaskId = int(request.form["user"])
+    taskWeight = int(request.form["weight"])
     branchId = request.args.get("branchID")
     profileID = sess.get('_StudentID')
     projectId = request.args.get("projectID")
-    
-    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle)
-    not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
-    database.insertAward(profileID, "Red", "Commit", not_ugly_time)
+    if profileID != None:
+        firstTask = database.getStudent(profileID).getFirstTask()
+        if firstTask == 0:
+            time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
+            database.insertAward(profileID, "Red", "First Commit", time)
+            database.updateTaskCreation(profileID)
+            
+    database.insertNewTask(branchId, studentOnTaskId, projectId, taskTitle, taskWeight)
 
     return redirect(url_for("projects", projectID=projectId))
 

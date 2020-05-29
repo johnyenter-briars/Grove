@@ -43,18 +43,6 @@ insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) val
 insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test12',6,11,0);
 
 
-create table TaskReview(
-    ReviewID INTEGER,
-    TaskID INTEGER,
-    Resolved INTEGER,
-    Rating INTEGER,
-
-    PRIMARY KEY (ReviewID),
-    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
-);
-
-insert into TaskReview (TaskID, Resolved, Rating) values(6,0,0);
-
 create table AppleType(
     apple_type varchar(20) PRIMARY KEY
 );
@@ -150,6 +138,8 @@ create table Student
     TeacherID INTEGER,
     ProjectID INTEGER,
     RoleType varchar(20),
+    ApplesAwarded INTEGER DEFAULT 0,
+    FirstTask INTEGER DEFAULT 0,
 
     PRIMARY KEY (StudentID),
     FOREIGN KEY (TeacherID) REFERENCES Teacher(TeacherID),
@@ -245,37 +235,35 @@ values(1, 3, 2, "Add colors", 0, 100);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(2, 1, 1, "Update ppt", 1, 25);
+values(2, 1, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(3, 2, 2, "Change font in document", 1, 25);
+values(3, 2, 2, "Change font in document", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values(3, 3, 2, "Reformat document", 1, 25);
+values(3, 3, 2, "Reformat document", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
     (1, 1, 1, "Add pictures", 0, 10);
 
-
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
     (3, 5, 1, "Change font in document", 0, 5);
 
+insert into Branch
+    (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
+values
+    (2, 5, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (2, 5, 1, "Update ppt", 1, 25);
-
-insert into Branch
-    (BranchID, StudentID, ProjectID, BranchDescription, Resolved, Weight)
-values
-    (2, 6, 1, "Update ppt", 1, 25);
+    (2, 6, 1, "Update ppt", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -285,17 +273,17 @@ values
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 11, 3, "Construct clay models", 1, 25);
+    (1, 11, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 8, 3, "Construct clay models", 1, 25);
+    (1, 8, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
 values
-    (1, 9, 3, "Construct clay models", 1, 25);
+    (1, 9, 3, "Construct clay models", 0, 25);
 
 insert into Branch
     (BranchId, StudentID, ProjectID, BranchDescription, Resolved, Weight)
@@ -316,6 +304,7 @@ create table Task
     ProjectID INTEGER,
     TaskDescription TEXT,
     Resolved INTEGER,
+    Weight INTEGER,
 
     PRIMARY KEY (TaskId),
     FOREIGN KEY (BranchID) REFERENCES Branch(BranchID),
@@ -324,46 +313,57 @@ create table Task
 );
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 1, 1, "Open power point", 1);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 1, 1, "Open power point", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 2, 2, "Open ms word", 1);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 2, 2, "Open ms word", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 3, 2, "Click reformat button", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 3, 2, "Click reformat button", 0, 10);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 5, 1, "Add picture to powerpoint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 5, 1, "Add picture to powerpoint", 0, 2);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 6, 1, "Close powerpoint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 6, 1, "Close powerpoint", 0, 4);
 
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 5, 1, "Choose better font", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 5, 1, "Choose better font", 0, 7);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Purchase clay", 1);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(1, 11, 3, "Purchase clay", 0, 5);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(1, 11, 3, "Sculpt models", 1);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(1, 11, 3, "Sculpt models", 0, 2);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(2, 8, 3, "Buy paint", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(2, 8, 3, "Buy paint", 0, 9);
 
 insert into Task
-    (BranchID, StudentID, ProjectID, TaskDescription, Resolved)
-values(3, 10, 3, "Construct base out of balsa wood", 0);
+    (BranchID, StudentID, ProjectID, TaskDescription, Resolved, Weight)
+values(3, 10, 3, "Construct base out of balsa wood", 0, 7);
 
+create table TaskReview(
+    ReviewID INTEGER,
+    TaskID INTEGER,
+    Resolved INTEGER,
+    Rating INTEGER,
+
+    PRIMARY KEY (ReviewID),
+    FOREIGN KEY (TaskID) REFERENCES Task(TaskID)
+);
+
+insert into TaskReview (TaskID, Resolved, Rating) values(6,0,0);
 
 create table Chat
 (
@@ -449,15 +449,15 @@ create table ProjectGoal
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(3, 70);
+values(3, 65);
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(1, 100);
+values(1, 40);
 
 insert into ProjectGoal
     (ProjectID, ProjectTargetWeight)
-values(2, 100);
+values(2, 35);
 
 
 
@@ -473,7 +473,6 @@ END
 /
 
 
-
 CREATE TRIGGER befor_insert_student_check_teacher BEFORE INSERT ON Student
 BEGIN
     SELECT CASE 
@@ -484,7 +483,6 @@ THEN RAISE(ABORT, 'TeacherID does not exist.')
 END;
 END
 /
-
 
 CREATE TRIGGER befor_insert_branch_check_teacher BEFORE INSERT ON Branch
 BEGIN
@@ -498,7 +496,6 @@ END
 /
 
 
-
 CREATE TRIGGER befor_insert_project_check_teacher BEFORE INSERT ON Project
 BEGIN
     SELECT CASE 
@@ -509,7 +506,6 @@ THEN RAISE(ABORT, 'TeacherID does not exist.')
 END;
 END
 /
-
 
 CREATE TRIGGER befor_insert_branch_check_student BEFORE INSERT ON Branch
 BEGIN
