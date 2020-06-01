@@ -245,6 +245,18 @@ class DatabaseService(object):
     def updateTaskCreation(self, StudentID: int):
         self._db.execute("""UPDATE Student SET FirstTask = 1 WHERE StudentID = {StudentID}""".format(StudentID=StudentID))
         self._db.commit()
+
+    def updateGrowthStatus(self, ProjectID, GrowthStatus: str):
+        try:
+            self._db.execute("""UPDATE Project
+                                SET GrowthStatus = '{gStatus}'
+                                WHERE ProjectID = {pID}"""
+                                .format(gStatus=GrowthStatus, pID=ProjectID))
+
+            self._db.commit()
+
+        except sqlite3.Error as error:
+            print("Failed to insert data into sqlite table", error)
         
     def getTaskReviewsForProject(self, ProjectID: int):
         return [TaskReview(tuple) for tuple in self._db.execute(
