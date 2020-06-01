@@ -53,7 +53,6 @@
                     </fieldset>
                 </div>
             </form>
-
             {% endif %}
         {% endif %}
         {% if session['user_type'] == "TEACHER" and taskReview == False%}
@@ -61,6 +60,7 @@
             <div class="appleRates">
                 <fieldset class="rating">
                     {% for i in range(5, 0, -1) %}
+                        
                         <input type="radio" id="star{{i}}" name="rating" value="{{i}}" /><label class = "full" for="star{{i}}" ></label>
                     {% endfor %}
                 </fieldset>
