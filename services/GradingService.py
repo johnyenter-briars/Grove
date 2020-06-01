@@ -33,7 +33,7 @@ class GradingService(object):
         if growthString != currentProject.getGrowthStatus():
             self._databaseService.updateGrowthStatus(projectID, growthString)
 
-        return growthPercentage
+        return round(growthPercentage, 2)
 
     def getGrowthString(self, percentage: int):
         if percentage < 0 and percentage < 20:

@@ -1,5 +1,5 @@
 from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
-from app import app,database
+from app import app,database, grader
 
 @app.route('/home')
 def home():
@@ -8,7 +8,11 @@ def home():
     last = sess.get('_LastName')
     studentID = sess.get('_StudentID')
     teacherID = sess.get('_TeacherID')
-    projects = database.getProjects()
     projectID = sess.get('_ProjectID')
+    projectObjs = database.getProjects()
 
-    return render_template("home.html", name=first+' '+last, projects=projects,  profileID=studentID, studentID=studentID, teacherID=teacherID,projectID=projectID)
+    projectsData = [(project.getProjectID(), project.getGrowthStatus(), 
+                    grader.getProjectGrowthStatus(project.getProjectID())) 
+                    for project in projectObjs]
+
+    return render_template("home.html", name=first+' '+last, projects=projectsData,  profileID=studentID, studentID=studentID, teacherID=teacherID,projectID=projectID)
