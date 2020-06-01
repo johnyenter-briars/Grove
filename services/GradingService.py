@@ -26,5 +26,23 @@ class GradingService(object):
 
     def getProjectGrowthStatus(self, projectID):
         raw = self.getCompletedProjectWeight(projectID) / self.getProjectGoal(projectID)
-        
-        return round(raw, 2) * 100
+        currentProject = self._databaseService.getProject(projectID)
+        growthPercentage = round(raw, 2) * 100
+        growthString = self.getGrowthString(growthPercentage)
+
+        if growthString != currentProject.getGrowthStatus():
+            self._databaseService.updateGrowthStatus(projectID, growthString)
+
+        return growthPercentage
+
+    def getGrowthString(self, percentage: int):
+        if percentage < 0 and percentage < 20:
+            return "growth0"
+        elif percentage < 40:
+            return "growth1"
+        elif percentage < 60:
+            return "growth2"
+        elif percentage < 80:
+            return "growth3"
+        elif percentage <=100:
+            return "growth4"
