@@ -24,8 +24,10 @@ def task():
     last = sess.get('_LastName')
     profileID = sess.get('_StudentID')
     projectID = sess.get('_ProjectID')
-    studentID = sess.get('_StudentID')
-    notifObject = database.getNotifications(studentID,int(currentTaskID))
+    notifObject = None
+    if session['user_type'] == "STUDENT":
+        studentID = sess.get('_StudentID')
+        notifObject = database.getNotifications(studentID,int(currentTaskID))
     notifications = []
     if notifObject is not None:
         for notification in notifObject:
