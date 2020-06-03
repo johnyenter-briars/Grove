@@ -29,18 +29,18 @@ create table MessageNotifications(
     FOREIGN KEY (StudentID) REFERENCES Student(StudentID)
 );
 
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test1',6,0,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test2',6,1,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test3',6,2,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test4',6,3,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test5',6,4,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test6',6,5,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test7',6,6,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test8',6,7,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test9',6,8,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test10',6,9,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test11',6,10,0);
-insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('test12',6,11,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,0,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,1,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,2,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,3,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,4,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,5,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,6,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,7,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,8,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,9,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,10,0);
+insert into MessageNotifications (MessageContent, TaskID, StudentID, Viewed) values('Test notification!',6,11,0);
 
 
 create table AppleType(
