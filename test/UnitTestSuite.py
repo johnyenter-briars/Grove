@@ -9,9 +9,13 @@ from services.DatabaseService import DatabaseService
 """
 class TestDBConnection(unittest.TestCase): 
   
-    def test(self):   
+    def test_firststudent_thomas(self):   
         d = DatabaseService()
-        assert('Thomas' == d.getStudent(1).getFirstName())
+        self.assertEqual('Thomas', d.getStudent(1).getFirstName())
+
+    def test_numprojects_three(self):
+        d = DatabaseService()
+        self.assertEqual(3, len(d.getProjects()))
 
 if __name__ == '__main__': 
     unittest.main() 
