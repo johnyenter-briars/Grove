@@ -28,7 +28,7 @@ runGrove.bat
 
 ## Deployment
 
-To view this project running live, visit: [Grove2020.com](https://grove2020.herokuapp.com/)
+[Grove running live](http://www.johnyenterbriars.com/grove/)
 
 ## Built With
 
