@@ -21,6 +21,7 @@ database = DatabaseService()
 grader = GradingService(database)
 
 @app.route('/', methods=['POST', 'GET'])
+@app.route('/grove', methods=['POST', 'GET'])
 def hello():
     if request.method == 'POST':
         username = request.form['username']
