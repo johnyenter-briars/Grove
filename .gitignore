@@ -9,3 +9,5 @@ test/__pycache__/
 !static/tmp/.gitkeep
 env/
 .vscode/
+*.out
+*.err
