@@ -320,7 +320,7 @@ h3 {
 .addingImage{
   display: flex;
   align-items: center;
-  background-image: url(/static/img/finalleaf.png);
+  background-image: url(/grove/static/img/finalleaf.png);
   background-repeat:no-repeat;
   background-size: 240px 140px;
   height:150px;width:250px;
@@ -354,7 +354,7 @@ h3 {
 .logImage{
   padding: 4%;
   height:95%;
-  background-image: url(/static/img/wood.png);
+  background-image: url(/grove/static/img/wood.png);
 }
 .micro-task-description > a{
     color: #3a506b;

@@ -51,18 +51,18 @@ def task():
         if file and allowed_file(file.filename):
             filename = secure_filename(file.filename)
             database.addFile(currentTaskID, filename, file.read())
-            return redirect('/task/?taskID='+currentTaskID)
+            return redirect('/grove/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("message") != []:
         current_time = int(time.time())
         newChat = request.form['message']
         database.addMessage(fullName, currentTaskID, current_time, newChat, profileID)
-        return redirect('/task/?taskID='+currentTaskID)
+        return redirect('/grove/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("filename") != []:
         fname = request.form['filename']
         database.removeFile(fname)
-        return redirect('/task/?taskID='+currentTaskID)
+        return redirect('/grove/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("taskreview") != []:
         print("task review post")
@@ -73,7 +73,7 @@ def task():
         profileID = sess.get('_StudentID')
         not_ugly_time = strftime("%Y-%m-%d %H:%M:%S", gmtime())
         database.insertAward(profileID, "Red", "Review Task", not_ugly_time)
-        return redirect('/task/?taskID='+currentTaskID)
+        return redirect('/grove/task/?taskID='+currentTaskID)
 
     if request.method == 'POST' and request.form.getlist("taskresolve") != []:
         print("task resolve")
@@ -81,7 +81,7 @@ def task():
         tID = request.form['taskresolve']
         tID = int(''.join(filter(str.isdigit, tID)))
         database.markTaskResolved(tID, rating)
-        return redirect('/task/?taskID='+currentTaskID)
+        return redirect('/grove/task/?taskID='+currentTaskID)
         
     targetTask = database.getTask(int(currentTaskID))
     return render_template("task.html", 

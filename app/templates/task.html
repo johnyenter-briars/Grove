@@ -57,7 +57,7 @@
         <p>Assigned to: {{taskAssignee.getFirstName()}}, Weight: {{taskObj.getWeight()}}</p>
         {% if session['user_type'] == "STUDENT"%}
             {% if taskReview == -1 %}
-            <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <form action="/grove/task/{{taskID}}" method=post enctype=multipart/form-data>
                 <input type="hidden" name="taskreview" value="{{taskID}}">
                 <button type="submit" id="branchRev">Request Task Review</button>
             </form>
@@ -83,7 +83,7 @@
             {% endif %}
         {% endif %}
         {% if session['user_type'] == "TEACHER" and taskReview == False%}
-        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+        <form action="/grove/task/{{taskID}}" method=post enctype=multipart/form-data>
             <div class="appleRates">
                 <fieldset class="rating">
                     {% for i in range(5, 0, -1) %}
@@ -97,7 +97,7 @@
         </form>
         {% endif %}
         {% if session['user_type'] == "TEACHER" and taskReview == True%}
-        <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+        <form action="/grove/task/{{taskID}}" method=post enctype=multipart/form-data>
             <div class= "appleRates">
                 <fieldset class="rating">
                     {% for i in range(5, 0, -1) %}
@@ -114,7 +114,7 @@
         </form>
         {% endif %}
         {% if taskObj.getResolved() %}
-        <img style="width: 50px; height:50px;" src="/static/img/red_checkmark.png">
+        <img style="width: 50px; height:50px;" src="/grove/static/img/red_checkmark.png">
         {% endif %}
     </div>
     <div class="tasks">
@@ -126,13 +126,13 @@
                     <li>
                         <a href="{{file.getFile()}}" download>{{file.getFileName()}}</a>
                         <input type="image" align="right" style="padding-top: 10px;padding-right: 10px;" height=40px
-                            src="/static/img/delete-icon.png" onclick="deleteFile('{{file.getFileName()}}');">
+                            src="/grove/static/img/delete-icon.png" onclick="deleteFile('{{file.getFileName()}}');">
                     </li>
                     {% endfor %}
                 </ul>
             </div>
 
-            <form action="/task/{{taskID}}" method=post enctype=multipart/form-data>
+            <form action="/grove/task/{{taskID}}" method=post enctype=multipart/form-data>
                 <div class="uploadDiv">
                     <div class="input-group">
                         <div class="input-group-prepend">
@@ -166,7 +166,7 @@
                 </div>
                 {% endif %} {% endfor %}
             </div>
-            <form action="/task/{{taskID}}" method=post>
+            <form action="/grove/task/{{taskID}}" method=post>
                 <div class="chat-message">
                     <input class="chat-input" type="text" name="message" placeholder="enter your message" />
                     <button type="submit">Send</button>

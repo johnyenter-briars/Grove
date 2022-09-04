@@ -5,4 +5,4 @@ from flask import session, redirect
 @app.route('/logout')
 def logout():
     session.pop('user_auth')
-    return redirect('/')
+    return redirect('/grove')

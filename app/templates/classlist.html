@@ -6,7 +6,7 @@
         {% for student in students%}
             {% if student.getProjectID() == project.getProjectID() %}
             <div class="row align-items-start">
-                <a href="/profile/?profileID={{student.getStudentID()}}">{{student.getFirstName()}} {{student.getLastName()}}</a>
+                <a href="/grove/profile/?profileID={{student.getStudentID()}}">{{student.getFirstName()}} {{student.getLastName()}}</a>
                 <br>
             </div>
             {% endif %}

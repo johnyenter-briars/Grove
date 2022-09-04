@@ -1,7 +1,7 @@
 {% extends "header.html" %} {% block content %}
 <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/teacherconsole.css') }}"
+      href="{{ url_for('static', filename='/grove/css/teacherconsole.css') }}"
     />
 <h1>Teacher Console</h1>
 <br>
@@ -17,7 +17,7 @@
                 <input type="text" placeholder="Enter student's last name", name="studentLName" required>
                 <button type="submit">Add student</button>
             </form> -->
-            <form action="/addstudent/" method=post enctype=multipart/form-data>
+            <form action="/grove/addstudent/" method=post enctype=multipart/form-data>
                 <div class="input-group">
                     <label for="studentFName"><b>Enter Student Information to Add</b></label>
                     <input type="text" placeholder="Enter student's first name" name="studentFName" required>
@@ -32,7 +32,7 @@
             <ul>
                 {% for task in tasksToReview%}
                 {% if task.getResolved() == 0%}
-                <li><a href="/task/?taskID={{task.getTaskID()}}">{{database.getTask(task.getTaskID()).getTaskDesc()}}</a></li>
+                <li><a href="/grove/task/?taskID={{task.getTaskID()}}">{{database.getTask(task.getTaskID()).getTaskDesc()}}</a></li>
                 <br> 
                 {% endif %}{% endfor %}
             </ul>
@@ -40,7 +40,7 @@
         <div class="project-list">
             <label for="studentFName"><b>List of Projects</b></label></p>
             {% for project in projects%}
-                <a href="/projects/?projectID={{project.getProjectID()}}">{{project.getProjectName()}}</a></p>
+                <a href="/grove/projects/?projectID={{project.getProjectID()}}">{{project.getProjectName()}}</a></p>
             {% endfor %}
         </div>
     </div>

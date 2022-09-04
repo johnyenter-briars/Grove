@@ -1,4 +1,4 @@
-from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for
+from flask import Flask, request, redirect, render_template, json, session, jsonify,url_for, blueprints
 from config.config import Config
 from services.DatabaseService import DatabaseService
 from services.JSONEncoderService import ClassEncoder
@@ -9,6 +9,22 @@ from exceptions.NoTaskIDException import NoTaskIDException
 import os
 import sqlite3
 from flask.helpers import url_for
+class PrefixMiddleware(object):
+
+    def __init__(self, app, prefix=''):
+        self.app = app
+        self.prefix = prefix
+
+    def __call__(self, environ, start_response):
+
+        if environ['PATH_INFO'].startswith(self.prefix):
+            environ['PATH_INFO'] = environ['PATH_INFO'][len(self.prefix):]
+            environ['SCRIPT_NAME'] = self.prefix
+            return self.app(environ, start_response)
+        else:
+            start_response('404', [('Content-Type', 'text/plain')])
+            return ["This url does not belong to the app.".encode()]
+
 
 UPLOAD_FOLDER = '/app/static/files'
 ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
@@ -16,12 +32,14 @@ ALLOWED_EXTENSIONS = {'txt', 'pdf', 'png', 'jpg', 'jpeg', 'gif'}
 app = Flask(__name__)
 app.config.from_object(Config)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
+app.wsgi_app = PrefixMiddleware(app.wsgi_app, prefix='/grove')
+
+# app.register_blueprint(bp, url_prefix='/grove')
 
 database = DatabaseService()
 grader = GradingService(database)
 
 @app.route('/', methods=['POST', 'GET'])
-@app.route('/grove', methods=['POST', 'GET'])
 def hello():
     if request.method == 'POST':
         username = request.form['username']
@@ -64,7 +82,7 @@ def after_request_func(response):
     #print(os.getcwd())
     path = request.path
     #print(path)
-    if (not path in ['/task/', '/scripts/scripts.js', '/scripts/scripts.js', '/static/css/global.css']):
+    if (not path in ['/grove/task/', '/grove/scripts/scripts.js', '/grove/scripts/scripts.js', '/grove/static/css/global.css']):
         if '/static/tmp/' not in path:
             #print("after_request is running")
             directory = os.getcwd()+"/app/static/tmp/"

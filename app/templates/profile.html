@@ -8,13 +8,13 @@
                 <p style="font-size:22px"><b>Branches</p></b>
                 <ul>
                     {% for branch in branches%}
-                    <li><a href="/projects/?projectID={{targetProjectID}}">{{branch.getBranchDesc()}}</a></li>
+                    <li><a href="/grove/projects/?projectID={{targetProjectID}}">{{branch.getBranchDesc()}}</a></li>
                     <br> {% endfor %}
                 </ul>
                 <p style="font-size:22px"><b>Tasks</p></b>
                 <ul>
                     {% for task in tasks%}
-                    <li><a href="/task/?taskID={{task.getTaskID()}}">{{task.getTaskDesc()}}</a></li>
+                    <li><a href="/grove/task/?taskID={{task.getTaskID()}}">{{task.getTaskDesc()}}</a></li>
                     <br> {% endfor %}
                 </ul>
             </div>
@@ -25,7 +25,7 @@
                 <div class="row align-items-start">
                     {% for award in awards%}
                     <div class="col" style="display: grid;">
-                        <img width="100" height="100" src="/static/img/{{award.getAppleType()}}.png">
+                        <img width="100" height="100" src="/grove/static/img/{{award.getAppleType()}}.png">
                         <b style="font-size:11px">{{award.getProjectName()}}</b>
                         <p style="font-size:11px">{{award.getDateAwarded()}}</p>
                     </div>

@@ -1,7 +1,7 @@
 {% extends "header.html" %} {% block content %}
 <link
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/award.css') }}"
+    href="{{ url_for('static', filename='/grove/css/award.css') }}"
 />
 <meta id="my-data" data-name="{{validPage}}">
 <script type="text/javascript" src="{{ url_for('static', filename='js/awardapples.js') }}"></script>
@@ -13,7 +13,7 @@
             <h2>You used up all 10 of your awards.</h2>
         </div>
     {% else %}
-    <form action="/awardapples" method="POST" id="my_radio_box">
+    <form action="/grove/awardapples" method="POST" id="my_radio_box">
         <ul>
             {% for student in visibleStudents%}
             <li>
@@ -21,7 +21,7 @@
                     <p>{{student.getFirstName()}}</p>
                     <div style="float: right; display: flex;">
                         {% for apple in possibleApples%}
-                            <label><input type="radio" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/static/img/{{apple.getAppleType()}}.png"></label>
+                            <label><input type="radio" name="{{student.getStudentID()}}" value="{{apple.getAppleType()}}"><img src="/grove/static/img/{{apple.getAppleType()}}.png"></label>
                         {% endfor %}
                     </div>
                 </div>
