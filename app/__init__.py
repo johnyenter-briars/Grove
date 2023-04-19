@@ -97,7 +97,7 @@ def keyerror_exception_handler(error):
     return render_template('generalexception.html')
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(debug=True, host="0.0.0.0")
 
 
 from app import task, projects, profile, home, classlist, logout, teacherconsole, award
